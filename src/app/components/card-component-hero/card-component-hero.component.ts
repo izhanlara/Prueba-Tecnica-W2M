@@ -2,7 +2,6 @@ import { Component, Signal } from '@angular/core';
 import { CommonModule } from '@angular/common'; // 1. Importar CommonModule
 
 import { HerosJson } from '../../services/core/heros.service';
-
 @Component({
   selector: 'app-card-component-hero',
   template: `
