@@ -1,0 +1,86 @@
+[
+  {
+    "nombre": "Wonder Woman",
+    "poderes": "Fuerza sobrehumana, Supervelocidad",
+    "descripcion": "Wonder Woman es considerada una de las guerreras más fuertes del universo.",
+    "ubicacion": "Sevilla, Esp.",
+    "img": "img/wonder_woman.png"
+  },
+  {
+    "nombre": "Hulk",
+    "poderes": "Super fuerte y enojón",
+    "descripcion": "Hulk es un ser colosal con una inmensa fuerza que prácticamente carece de límites.",
+    "ubicacion": "Barcelona, Esp.",
+    "img": "img/hulk.png"
+  },
+  {
+    "nombre": "Capitana Marvel",
+    "poderes": "Curación acelerada e inmortal",
+    "descripcion": "La Capitana Marvel es una guerrera extraterrestre con habilidades sobrehumanas.",
+    "ubicacion": "New York, USA.",
+    "img": "img/capitana_marvel.png"
+  },
+  {
+    "nombre": "Spiderman",
+    "poderes": "Superpoderes arácnidos",
+    "descripcion": "Peter Parker, mejor conocido como Spiderman, tiene habilidades similares a las de una araña.",
+    "ubicacion": "Mallorca, Esp.",
+    "img": "img/spiderman.png"
+  },
+  {
+    "nombre": "Gamora",
+    "poderes": "Experta en artes marciales",
+    "descripcion": "Gamora se considera capaz de derrotar a cualquiera que se cruce en su camino.",
+    "ubicacion": "Culiacán, Méx.",
+    "img": "img/gamora.png"
+  },
+  {
+    "nombre": "Hulk",
+    "poderes": "Super fuerte y enojón",
+    "descripcion": "Hulk es un ser colosal con una inmensa fuerza que prácticamente carece de límites.",
+    "ubicacion": "Barcelona, Esp.",
+    "img": "img/hulk.png"
+  },
+  {
+    "nombre": "Batman",
+    "poderes": "Una gran fortuna",
+    "descripcion": "Bruce Wayne es un multimillonario nocturno que combate el crimen.",
+    "ubicacion": "Ciudad de México, Méx.",
+    "img": "img/batman.png"
+  },
+  {
+    "nombre": "Wonder Woman",
+    "poderes": "Fuerza sobrehumana, Supervelocidad",
+    "descripcion": "Wonder Woman es considerada una de las guerreras más fuertes del universo.",
+    "ubicacion": "Sevilla, Esp.",
+    "img": "img/wonder_woman.png"
+  },
+  {
+    "nombre": "Capitana Marvel",
+    "poderes": "Curación acelerada e inmortal",
+    "descripcion": "La Capitana Marvel es una guerrera extraterrestre con habilidades sobrehumanas.",
+    "ubicacion": "New York, USA.",
+    "img": "img/capitana_marvel.png"
+  },
+  {
+    "nombre": "Spiderman",
+    "poderes": "Superpoderes arácnidos",
+    "descripcion": "Peter Parker, mejor conocido como Spiderman, tiene habilidades similares a las de una araña.",
+    "ubicacion": "Mallorca, Esp.",
+    "img": "img/spiderman.png"
+  },
+  {
+    "nombre": "Viuda Negra",
+    "poderes": "Espionaje avanzado, artista marcial y experta gladiadora",
+    "descripcion": "Una espía experta del más alto nivel.",
+    "ubicacion": "Washington, USA.",
+    "img": "img/viuda_negra.png"
+  },
+  {
+    "nombre": "Ironman",
+    "poderes": "Armadura",
+    "descripcion": "Un genio millonario, inventor, empresario y filántropo.",
+    "ubicacion": "Buenos Aires, Arg.",
+    "img": "img/ironman.png"
+  }
+]
