@@ -23,6 +23,5 @@ export class SearchBarComponent {
       .Hero()
       .filter((hero: any) => hero.nombre.toLowerCase().includes(searchTerm.toLowerCase()));
     this.herosJson.Hero.set(filteredHeroes);
-    console.log(filteredHeroes);
   }
 }

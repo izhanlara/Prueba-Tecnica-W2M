@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   template: `
     <ng-container>
-      <img src="img/banner-superHero.png" alt="tets" class="hero-img" />
+      <img src="img/banner-superHero.png" alt="banner SuperHero!" class="hero-img" />
     </ng-container>
   `,
   styleUrls: [],

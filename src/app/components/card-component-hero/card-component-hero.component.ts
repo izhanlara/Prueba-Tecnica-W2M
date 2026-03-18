@@ -1,31 +1,39 @@
-import { Component, Signal } from '@angular/core';
-import { CommonModule } from '@angular/common'; // 1. Importar CommonModule
+import { Component, Signal, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import { HerosJson } from '../../services/core/heros.service';
+import { Hero, HerosJson } from '../../services/core/heros.service';
+
+import { ModalEditHeroComponent } from '../modal-components/modal-editHero.component';
+
 @Component({
   selector: 'app-card-component-hero',
   template: `
     <ng-container>
-      <div *ngFor="let hero of Hero()">
+      <div *ngFor="let hero of Hero(); let i = index">
         <img [src]="hero.img" alt="{{ hero.nombre }}" />
         <h2>{{ hero.nombre }}</h2>
         <p>{{ hero.descripcion }}</p>
         <p>{{ hero.poderes }}</p>
         <p>{{ hero.ubicacion }}</p>
+        <button (click)="editHeroModal(hero, i)">Editar</button>
       </div>
-      <!--
-      <button (click)="herosJson.actualizar()">Editar</button>
-      <button (click)="Hero.delete()">Eliminar</button> -->
+      <!-- <button (click)="Hero.deleteHeroModal()">Eliminar</button> -->
     </ng-container>
+    <app-modal-edit-hero #modalEditHero />
   `,
   styleUrls: [],
-  imports: [CommonModule],
+  imports: [CommonModule, ModalEditHeroComponent],
 })
 export class CardComponentHeroComponent {
-  Hero!: Signal<any>;
+  @ViewChild('modalEditHero', { static: true }) modalEditHero!: ModalEditHeroComponent;
+  Hero!: Signal<Hero[]>;
 
   constructor(public herosJson: HerosJson) {
     this.herosJson.getInfoHeros();
     this.Hero = this.herosJson.Hero;
+  }
+
+  editHeroModal(hero: Hero, index: number) {
+    this.modalEditHero.openModalEdit(hero, index);
   }
 }

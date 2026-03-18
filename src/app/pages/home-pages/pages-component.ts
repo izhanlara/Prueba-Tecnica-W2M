@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { HeroComponent } from '../../components/hero-component/hero.component';
 import { CardComponentHeroComponent } from '../../components/card-component-hero/card-component-hero.component';
-import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
+import { SearchBarComponent } from '../../components/search-bar-component/search-bar.component';
 
 @Component({
   selector: 'app-home-pages',
