@@ -8,10 +8,8 @@ import { Hero, HerosJson } from '../../services/core/heros.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @if (isOpen()) {
-      <div
-        style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border: 1px solid #ccc; z-index: 1000;"
-      >
-        <h2>Editar Héroe</h2>
+      <div class="modal-overlay">
+        <h2>Editar héroe</h2>
         <form [formGroup]="formControlUpdate" (ngSubmit)="onSubmit()">
           <label for="nombre">Nombre:</label>
           <input id="nombre" formControlName="nombre" type="text" />
@@ -32,7 +30,7 @@ import { Hero, HerosJson } from '../../services/core/heros.service';
       </div>
     }
   `,
-  styleUrls: [],
+  styleUrls: ['./modal-styles.scss'],
   imports: [ReactiveFormsModule],
 })
 export class ModalEditHeroComponent {

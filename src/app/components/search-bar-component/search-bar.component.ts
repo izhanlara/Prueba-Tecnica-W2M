@@ -1,16 +1,26 @@
 import { Component } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 
 import { HerosJson } from '../../services/core/heros.service';
 
 @Component({
   selector: 'app-search-bar',
   template: `
-    <ng-container>
-      <input type="text" placeholder="Buscar..." class="search-input" #searchInput />
-      <button type="button" (click)="filterHero(searchInput.value)">Search</button>
-    </ng-container>
+    <div class="search-bar-container">
+      <input
+        type="text"
+        placeholder="Busca un Héroe..."
+        class="search-input"
+        #searchInput
+        class="bar-input"
+      />
+      <button type="button" (click)="filterHero(searchInput.value)" class="btn-search">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
   `,
-  styleUrls: [],
+  styleUrls: ['../styles.components.scss'],
+  imports: [MatIconModule],
 })
 export class SearchBarComponent {
   constructor(public herosJson: HerosJson) {}

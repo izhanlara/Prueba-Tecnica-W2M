@@ -1,59 +1,134 @@
-# SuperHero
+# SuperHero W2M
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.2.
+Aplicacion web desarrollada con Angular para visualizar un catalogo de heroes, filtrarlos por nombre y editar su informacion mediante un modal.
 
-## Development server
+## Descripcion
 
-To start a local development server, run:
+SuperHero es una interfaz tipo CRUD (en progreso) orientada a la gestion de heroes.
+
+Actualmente permite:
+
+- Mostrar tarjetas de heroes desde un archivo JSON local.
+- Buscar heroes por nombre.
+- Editar datos de un heroe desde un modal.
+
+## Demo local
+
+Una vez levantado el proyecto, la aplicacion estara disponible en:
+
+- http://localhost:4200/
+
+## Tecnologias
+
+- Angular 21
+- TypeScript
+- SCSS
+- Angular Material (iconos y botones en la barra de busqueda)
+- Vitest (testing)
+
+## Requisitos previos
+
+- Node.js 20 o superior recomendado
+- npm 10 o superior
+
+## Instalacion
+
+```bash
+npm install
+```
+
+## Ejecucion en desarrollo
+
+```bash
+npm start
+```
+
+Tambien puedes usar Angular CLI directamente:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Scripts disponibles
 
 ```bash
-ng generate component component-name
+# Servidor de desarrollo
+npm start
+
+# Build de produccion
+npm run build
+
+# Build en modo watch (desarrollo)
+npm run watch
+
+# Tests unitarios
+npm test
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Estructura principal
+
+```text
+src/
+	app/
+		components/
+			hero-component/
+			search-bar-component/
+			card-component-hero/
+			modal-components/
+		pages/
+			home-pages/
+		services/
+			core/
+				heros.service.ts
+	assets/
+		json/
+			heros.json
+```
+
+## Flujo funcional actual
+
+1. El servicio HerosJson carga heroes desde src/assets/json/heros.json.
+2. Se renderizan en tarjetas dentro del componente de cards.
+3. La barra de busqueda filtra por nombre sobre el estado actual.
+4. El modal de edicion actualiza el heroe seleccionado en memoria.
+
+Nota: la edicion se aplica al estado en ejecucion (no persiste en el archivo JSON).
+
+## Estado del proyecto
+
+Funcionalidades implementadas:
+
+- Carga de heroes desde JSON.
+- Render de tarjetas.
+- Busqueda por nombre.
+- Edicion de heroe.
+
+Pendiente / roadmap:
+
+- Boton eliminar funcional.
+- Boton para crear nuevo heroe.
+- Ajustes visuales del banner/logo.
+- Mejoras de UX en la busqueda (icono y comportamiento).
+
+## Testing
+
+Para ejecutar pruebas unitarias:
 
 ```bash
-ng generate --help
+npm test
 ```
 
-## Building
+## Build
 
-To build the project run:
+Para generar la version de produccion:
 
 ```bash
-ng build
+npm run build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Los artefactos se generan en la carpeta dist/.
 
-## Running unit tests
+## Recursos utiles
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Angular CLI: https://angular.dev/tools/cli
+- Documentacion Angular: https://angular.dev/
