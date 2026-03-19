@@ -1,44 +1,27 @@
-import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, signal, Injectable } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
-import { Hero, HerosJson } from '../../services/core/heros.service';
+import { MatIconModule } from '@angular/material/icon';
+
+import { Hero, HerosJson } from '../../../services/core/heros.service';
 
 @Component({
   selector: 'app-modal-edit-hero',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    @if (isOpen()) {
-      <div class="modal-overlay">
-        <h2>Editar héroe</h2>
-        <form [formGroup]="formControlUpdate" (ngSubmit)="onSubmit()">
-          <label for="nombre">Nombre:</label>
-          <input id="nombre" formControlName="nombre" type="text" />
-          <br />
-          <label for="descripcion">Descripción:</label>
-          <input id="descripcion" formControlName="descripcion" type="text" />
-          <br />
-          <label for="poderes">Poderes:</label>
-          <input id="poderes" formControlName="poderes" type="text" />
-          <br />
-          <label for="ubicacion">Ubicación:</label>
-          <input id="ubicacion" formControlName="ubicacion" type="text" />
-          <br />
-          <input type="file" name="img" id="img" (change)="onFileChange($event)" />
-          <button type="submit">Actualizar</button>
-          <button type="button" (click)="closeModalEdit()">Cerrar</button>
-        </form>
-      </div>
-    }
-  `,
-  styleUrls: ['./modal-styles.scss'],
-  imports: [ReactiveFormsModule],
+  templateUrl: './edit-modalHero.html',
+  styleUrls: ['../modal-styles.scss'],
+  imports: [ReactiveFormsModule, MatIconModule],
+})
+@Injectable({
+  providedIn: 'root',
+  useClass: ModalEditHeroComponent,
 })
 export class ModalEditHeroComponent {
   private readonly herosJson = inject(HerosJson);
   private readonly selectedHeroIndex = signal<number | null>(null);
 
-  readonly isOpen = signal(false);
-  readonly Hero = this.herosJson.Hero;
+  protected readonly isOpen = signal(false);
+  private readonly Hero = this.herosJson.Hero;
 
   openModalEdit(hero: Hero, index: number) {
     this.selectedHeroIndex.set(index);

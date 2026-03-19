@@ -1,0 +1,12 @@
+<div class="search-bar-container">
+  <div class="search-container">
+    <input type="text" placeholder="Busca un Héroe..." #searchInput class="bar-input" />
+    <button type="button" (click)="filterHero(searchInput.value)" class="btn-search">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+  <button type="button" (click)="openAddHeroModal()" class="btn-add">
+    <mat-icon>add</mat-icon>Añadir Heroe
+  </button>
+  <app-modal-add-hero #modalAddHero />
+</div>

@@ -1,28 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+
+import { ModalAddHeroComponent } from '../modal-components/add-modal/modal-addHero.component';
 
 import { HerosJson } from '../../services/core/heros.service';
 
 @Component({
   selector: 'app-search-bar',
-  template: `
-    <div class="search-bar-container">
-      <input
-        type="text"
-        placeholder="Busca un Héroe..."
-        class="search-input"
-        #searchInput
-        class="bar-input"
-      />
-      <button type="button" (click)="filterHero(searchInput.value)" class="btn-search">
-        <mat-icon>search</mat-icon>
-      </button>
-    </div>
-  `,
-  styleUrls: ['../styles.components.scss'],
-  imports: [MatIconModule],
+  templateUrl: './search-bar.component.html',
+  styleUrls: ['./search-bar-styles.scss'],
+  imports: [MatIconModule, ModalAddHeroComponent],
 })
 export class SearchBarComponent {
+  @ViewChild('modalAddHero', { static: true }) modalAddHero!: ModalAddHeroComponent;
+
   constructor(public herosJson: HerosJson) {}
   filterHero(searchTerm: string) {
     if (!searchTerm) {
@@ -33,5 +24,15 @@ export class SearchBarComponent {
       .Hero()
       .filter((hero: any) => hero.nombre.toLowerCase().includes(searchTerm.toLowerCase()));
     this.herosJson.Hero.set(filteredHeroes);
+  }
+
+  openAddHeroModal() {
+    this.modalAddHero.openAddHeroModal({
+      nombre: '',
+      poderes: '',
+      ubicacion: '',
+      descripcion: '',
+      img: '',
+    });
   }
 }

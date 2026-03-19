@@ -1,12 +1,148 @@
+@use '../../_varibales.sass' as *;
+
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(78, 78, 78, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
+  background-color: rgba(58, 58, 58, 0.45);
   z-index: 1000;
+}
+
+.modal-container {
+  width: min(100%, 58.5rem);
+  max-height: 92vh;
+  border-radius: 1.5rem;
+}
+
+.form-modal-edit {
+  width: 100%;
+  min-height: 39rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 2rem;
+  background-color: #f8f8f8;
+  border-radius: 1.5rem;
+  opacity: 1;
+}
+
+.form-modal-edit h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.form-modal-edit form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.form-modal-edit > label {
+  display: flex;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.form-modal-edit input {
+  width: 30rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  background-color: #254e7e17;
+  border: 1px solid #ccc;
+  border-radius: 0.625rem;
+}
+
+.form-modal-edit .test {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.form-modal-edit .test input {
+  display: flex;
+  width: 15rem;
+}
+
+.test2 {
+  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.test3 input,
+textarea {
+  width: 95%;
+}
+
+#descripcion {
+  width: 30rem;
+  height: 5rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.625rem;
+}
+
+.btn-close-modal {
+  float: right;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.form-modal-edit button[type='submit'] {
+  display: flex;
+  width: 8.625rem;
+  height: 2.5rem;
+  background-color: #e7d8fe;
+  color: black;
+  border: none;
+  border-radius: 3.125rem;
+  cursor: pointer;
+  float: right;
+
+  margin-right: 1.25rem;
+}
+
+.file-input {
+  float: left;
+  width: 11rem;
+  height: 3rem;
+  padding: 0.5rem;
+  background-color: #e7d8fe;
+  color: black;
+  border: 1px solid #e7d8fe;
+  border-radius: 25rem;
+}
+
+.file-input label {
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.file-input input[type='file'] {
+  display: none;
+}
+
+.file-input::before {
+  content: 'Seleccionar archivo';
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #e7d8fe;
+  color: black;
+  border-radius: 3.125rem;
+  cursor: pointer;
+}
+
+.terminos {
+  float: left;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }

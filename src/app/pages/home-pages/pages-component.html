@@ -1,0 +1,8 @@
+<app-spinner />
+<app-hero-component />
+<app-search-bar />
+<app-card-component-hero />
+@if (herosJson.allHeros().length > 12) {
+  <button class="btn-show-more" (click)="showBtn()">Ver {{ showMore ? 'menos' : 'más' }}</button>
+}
+<app-footer />

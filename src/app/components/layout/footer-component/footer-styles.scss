@@ -1,6 +1,53 @@
-.footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 10px;
+@use '../../../_varibales.sass' as *;
+
+footer {
+  width: 100%;
+  max-width: 84.1875rem;
+  margin: 3.125rem auto 0;
+  color: $color-black;
+  text-align: left;
+  padding: $space-2;
+
+  .footer-elements {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-2;
+    margin-top: $space-5;
+    width: 100%;
+  }
+
+  hr {
+    margin: $space-2 0;
+    border: 1px solid #0000001a;
+  }
+
+  p {
+    margin: 0;
+    font-size: $font-size-sm;
+  }
+}
+
+.rrss-icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: $space-3;
+  margin-left: auto;
+  width: auto;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .footer-elements {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .rrss-icons {
+    margin-left: 0;
+    justify-content: center;
+    width: 100%;
+  }
 }

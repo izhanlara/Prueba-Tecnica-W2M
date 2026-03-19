@@ -1,0 +1,27 @@
+@use '../../_varibales.sass' as *;
+.card-component-section {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(15.625rem, 1fr));
+  gap: 1.25rem;
+  max-width: 75rem;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-hero {
+  width: 100%;
+  height: 100%;
+  background-color: $color-white;
+  border-radius: 0.625rem;
+  overflow: hidden;
+
+  p {
+    margin: $space-3;
+  }
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}

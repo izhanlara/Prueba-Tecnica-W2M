@@ -1,0 +1,41 @@
+@if (isOpen()) {
+  <div class="modal-overlay">
+    <div class="modal-container">
+      <form [formGroup]="formControlAdd" (ngSubmit)="onSubmit()" class="form-modal-edit">
+        <button type="button" (click)="closeModalAdd()" class="btn-close-modal">
+          <mat-icon>close</mat-icon>
+        </button>
+        <h2>Crear nuevo héroe</h2>
+        <div class="test">
+          <label for="nombre" class="test">Nombre</label>
+          <label for="poderes" class="test">Superpoder</label>
+        </div>
+        <div class="test2">
+          <input id="nombre" formControlName="nombre" type="text" />
+          <input id="poderes" formControlName="poderes" type="text" />
+        </div>
+        <label for="ubicacion" class="label-city">Ciudad</label>
+        <div class="test3">
+          <input id="ubicacion" formControlName="ubicacion" type="text" />
+          <br />
+          <label for="descripcion" class="label-desc">Descripción</label>
+          <br />
+          <textarea id="descripcion" formControlName="descripcion"></textarea>
+          <br />
+        </div>
+        <div class="file-input">
+          <label for="img">Elige una imagen</label>
+          <input type="file" name="img" id="img" (change)="onFileChange($event)" />
+        </div>
+        <div class="terminos">
+          <input type="checkbox" />
+          <label id="terminos" for="terminos"
+            >Acepto los <u style="cursor: pointer">terminos y condiciones</u></label
+          >
+        </div>
+        <br />
+        <button type="submit">Guardar cambios</button>
+      </form>
+    </div>
+  </div>
+}

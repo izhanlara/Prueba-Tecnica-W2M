@@ -1,53 +1,55 @@
+@use '../_varibales.sass' as *;
+
 .hero-container {
   position: relative;
-}
 
-.hero-img {
-  width: 120rem;
-  height: 30rem;
-  object-fit: cover;
-}
+  .hero-img {
+    width: 120rem;
+    height: 30rem;
+    object-fit: cover;
+  }
 
-.logo-img {
-  position: absolute;
-  width: 15.375rem;
-  height: 6.9375rem;
-  top: 4.5rem;
-  left: 5.5rem;
-}
+  .logo-img {
+    position: absolute;
+    width: 15.375rem;
+    height: 6.9375rem;
+    top: 4.5rem;
+    left: 5.5rem;
+  }
 
-.crud-text {
-  font-family:
-    Comic Sans MS,
-    cursive,
-    sans-serif;
-  position: absolute;
-  width: 10.875rem;
-  height: 4.8125rem;
-  top: 22.75rem;
-  left: 80rem;
-  font-size: 3.125rem;
-  color: rgb(0, 0, 0);
-  font-weight: bold;
+  .crud-text {
+    font-family:
+      Comic Sans MS,
+      cursive,
+      sans-serif;
+    position: absolute;
+    width: 10.875rem;
+    height: 4.8125rem;
+    top: 22.75rem;
+    left: 80rem;
+    font-size: $font-size-xl;
+    color: $color-black;
+    font-weight: bold;
+  }
 }
 
 .titleSectionCards,
 .descriptionSectionCards {
-  font-size: 2rem;
-  color: #8a42fb;
+  font-size: $font-size-lg;
+  color: $color-primary;
   text-align: center;
 }
 
 .descriptionSectionCards {
-  color: #343434;
-  font-size: 1rem;
-  margin-bottom: 0.625rem;
+  color: $color-text-dark;
+  font-size: $font-size-md;
+  margin-bottom: $space-3;
 }
 
 .card-component-section {
   display: grid;
-  grid-template-columns: repeat(4, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(4, minmax(15.625rem, 1fr));
+  gap: 1.25rem;
   max-width: 75rem;
   width: 100%;
   justify-content: center;
@@ -57,41 +59,41 @@
 .card-hero {
   width: 100%;
   height: 100%;
-  background-color: rgb(255, 255, 255);
-  border-radius: 10px;
+  background-color: $color-white;
+  border-radius: 0.625rem;
   overflow: hidden;
-}
 
-.card-hero p {
-  margin: 0.625rem;
-}
+  p {
+    margin: $space-3;
+  }
 
-.card-hero img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
+  img {
+    width: 100%;
+    height: $card-img-height;
+    object-fit: cover;
+  }
 }
 
 .card-buttons {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.625rem;
-  margin: 0.625rem 0;
+  gap: $space-3;
+  margin: $space-3 0;
 }
 
 .btn-edit,
 .btn-delete {
-  font-size: 1rem;
+  font-size: $font-size-md;
   width: 8.625rem;
-  height: 2.5rem;
-  background-color: #8a42fb;
-  color: white;
+  height: $button-height;
+  background-color: $color-primary;
+  color: $color-white;
   border: none;
-  border-radius: 3.125rem;
-  padding: 10px 20px;
+  border-radius: $radius-xl;
+  padding: $space-3 $space-5;
   cursor: pointer;
-  margin: 0;
+  margin: $space-0;
 }
 
 .pen-edit {
@@ -99,34 +101,18 @@
 }
 
 .btn-delete {
-  color: black;
-  background-color: #f3f3f3;
+  color: $color-black;
+  background-color: $color-gray-200;
 }
 
-.search-bar-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px 0;
-}
-
-.bar-input {
-  top: 30.625rem;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3.125rem;
-  width: 46rem;
-  height: 3.5rem;
-  box-shadow: #a0a0a0 2px 2px 0px;
-}
-
-.btn-search {
-  margin-left: 42rem;
-  position: absolute;
-  background-color: #8a42fb;
-  color: white;
+.btn-add {
+  background-color: $color-primary;
+  color: $color-white;
   border: none;
-  border-radius: 2.5rem;
-  padding: 10px 20px;
+  border-radius: $radius-lg;
+  padding: $space-3 $space-5;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
