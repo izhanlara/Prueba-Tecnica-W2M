@@ -6,7 +6,7 @@
 <div class="card-component-section">
   <div *ngFor="let hero of Hero(); let i = index" class="card-hero">
     <img [src]="hero.img" alt="{{ hero.nombre }}" />
-    <p style="font-size: 1.5rem">{{ hero.nombre }}</p>
+    <p style="font-size: 1.5rem">{{ primeraLetraMayuscula(hero.nombre) }}</p>
     <p style="font-size: 0.875rem; font-weight: bold">{{ hero.descripcion }}</p>
     <p style="font-size: 1rem">{{ hero.poderes }}</p>
     <p style="font-size: 1rem">{{ hero.ubicacion }}</p>

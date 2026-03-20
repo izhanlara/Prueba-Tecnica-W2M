@@ -1,7 +1,23 @@
 @if (modalDeleteService.isOpen()) {
   <div class="modal-overlay">
-    <h2>¿Estás seguro de que quieres eliminar este héroe?</h2>
-    <button (click)="modalDeleteService.confirmDelete()">Sí, eliminar</button>
-    <button (click)="modalDeleteService.closeModalDelete()">Cancelar</button>
+    <div class="modal-container delete-modal-container">
+      <div class="delete-modal-content">
+        <h2>¿Estás seguro de que quieres eliminar este héroe?</h2>
+        <p>Esta acción no se puede deshacer.</p>
+        <div class="delete-actions">
+          <button
+            type="button"
+            mat-raised-button
+            color="warn"
+            (click)="modalDeleteService.confirmDelete()"
+          >
+            Sí, eliminar
+          </button>
+          <button type="button" mat-stroked-button (click)="modalDeleteService.closeModalDelete()">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 }

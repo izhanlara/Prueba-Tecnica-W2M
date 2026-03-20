@@ -1,6 +1,8 @@
 import { Component, ChangeDetectionStrategy, inject, Injectable } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ModalEditService } from '../../../services/core/modal-services/modal-edit.service';
 
 @Component({
@@ -8,7 +10,7 @@ import { ModalEditService } from '../../../services/core/modal-services/modal-ed
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './edit-modalHero.html',
   styleUrls: ['../modal-styles.scss'],
-  imports: [ReactiveFormsModule, MatIconModule],
+  imports: [ReactiveFormsModule, MatIconModule, MatButtonModule, MatCheckboxModule],
 })
 @Injectable({
   providedIn: 'root',

@@ -1,7 +1,8 @@
 import { Component, inject, Signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { Hero, HerosJson } from '../../services/core/heros.service';
+import { HerosJson } from '../../services/core/heros.service';
+import { Hero } from '../../services/core/heroes.model';
 import { ModalEditHeroComponent } from '../modal-dates/edit-modal/modal-editHero.component';
 import { ModalDeleteHeroComponent } from '../modal-dates/delete-modal/modal-deleteHero.component';
 import { ModalEditService } from '../../services/core/modal-services/modal-edit.service';
@@ -31,5 +32,12 @@ export class CardComponentHeroComponent {
   deleteHeroModal(index: number) {
     this.modalDeleteService.selectedHeroIndex.set(index);
     this.modalDeleteService.isOpen.set(true);
+  }
+
+  primeraLetraMayuscula(nombre: string): string {
+    if (!nombre) {
+      return '';
+    }
+    return nombre.charAt(0).toUpperCase() + nombre.slice(1);
   }
 }

@@ -6,39 +6,43 @@
         (ngSubmit)="modalAddService.onSubmit()"
         class="form-modal-edit"
       >
-        <button type="button" (click)="modalAddService.closeModalAdd()" class="btn-close-modal">
+        <button
+          type="button"
+          mat-icon-button
+          (click)="modalAddService.closeModalAdd()"
+          class="btn-close-modal"
+        >
           <mat-icon>close</mat-icon>
         </button>
         <h2>Crear nuevo héroe</h2>
-        <div class="test">
-          <label for="nombre" class="test">Nombre</label>
-          <label for="poderes" class="test">Superpoder</label>
+        <div class="fields-row">
+          <div class="field-group">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" formControlName="nombre" type="text" />
+          </div>
+          <div class="field-group">
+            <label for="poderes">Superpoder</label>
+            <input id="poderes" formControlName="poderes" type="text" />
+          </div>
         </div>
-        <div class="test2">
-          <input id="nombre" formControlName="nombre" type="text" />
-          <input id="poderes" formControlName="poderes" type="text" />
-        </div>
-        <label for="ubicacion" class="label-city">Ciudad</label>
-        <div class="test3">
+        <div class="field-group field-full">
+          <label for="ubicacion">Ciudad</label>
           <input id="ubicacion" formControlName="ubicacion" type="text" />
-          <br />
-          <label for="descripcion" class="label-desc">Descripción</label>
-          <br />
-          <textarea id="descripcion" formControlName="descripcion"></textarea>
-          <br />
+        </div>
+        <div class="field-group field-full">
+          <label for="descripcion">Descripción</label>
+          <textarea id="descripcion" formControlName="descripcion" rows="3"></textarea>
         </div>
         <div class="file-input">
           <label for="img">Elige una imagen</label>
           <input type="file" name="img" id="img" (change)="modalEditService.onFileChange($event)" />
         </div>
-        <div class="terminos">
-          <input type="checkbox" />
-          <label id="terminos" for="terminos"
-            >Acepto los <u style="cursor: pointer">terminos y condiciones</u></label
-          >
-        </div>
-        <br />
-        <button type="submit">Guardar cambios</button>
+        <mat-checkbox class="terminos">
+          <p>Acepto los <u style="cursor: pointer">terminos y condiciones</u></p>
+        </mat-checkbox>
+        <button type="submit" mat-raised-button color="primary" class="btn-submit">
+          Guardar cambios
+        </button>
       </form>
     </div>
   </div>

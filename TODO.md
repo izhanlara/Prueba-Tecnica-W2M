@@ -1,8 +1,8 @@
 SuperHero
 
 Falta:
-Mostrar la primera letras de cada heroe en mayuscula
 Añadir mensajes de confirmacion cuando se añade/edita/elimina un heroe
+Posibilidad: Hacer con modales con timeout para que se cierren solos de forma automatica
 
 Refactorizar el codigo para que sea mas limpio y ordenado
 
@@ -25,3 +25,14 @@ Añadir btn nuevo hereo
 Añadir footer maquetado
 Añadir btn de ver mas
 Loader informativo mientras se cargan los heroes
+
+Dia 20:
+Refactorizar codigo:
+Separamos servicios
+Creamos el pipe para el search
+Limpiamos el codigo de los componentes
+Aplicamos algo mas de estilos a los modales
+Aplicamos etiquetas de angular material cuando es posible (checkbox, btn y search)
+
+Corregimos el buscadodr que no podia concatener busquedas
+Añadimos primera letra siempre en mayuscula

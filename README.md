@@ -89,10 +89,18 @@ src/
 
 1. El servicio HerosJson carga heroes desde src/assets/json/heros.json.
 2. Se renderizan en tarjetas dentro del componente de cards.
-3. La barra de busqueda filtra por nombre sobre el estado actual.
+3. La barra de busqueda filtra por nombre sobre el estado actual (Hero signal).
 4. El modal de edicion actualiza el heroe seleccionado en memoria.
 
 Nota: la edicion se aplica al estado en ejecucion (no persiste en el archivo JSON).
+
+### ⚠️ Problema conocido solventado: Búsquedas concatenadas
+
+El filtro de búsqueda filtraba sobre `Hero()` en lugar de `allHeros()`, lo que causaba que cada búsqueda dependa del resultado anterior. Ejemplo:
+
+- Buscas "bat" → resultado: Batman
+- Buscas "super" → busca "super" dentro del resultado anterior (solo Batman), no en todos los héroes
+- Solución: El método `filterHero()` debe filtrar sobre `allHeros()` y luego establecer el resultado en `Hero()`.
 
 ## Estado del proyecto
 
@@ -105,10 +113,8 @@ Funcionalidades implementadas:
 
 Pendiente / roadmap:
 
-- Boton eliminar funcional.
-- Boton para crear nuevo heroe.
-- Ajustes visuales del banner/logo.
-- Mejoras de UX en la busqueda (icono y comportamiento).
+- Añadir mensajes de confirmacion al añadir/editar/eliminar un heroe.
+- Ajustes visuales desde SASS.
 
 ## Testing
 

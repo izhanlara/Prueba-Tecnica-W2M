@@ -1,15 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 import { LoaderService } from './loader/loader';
-
-export interface Hero {
-  nombre: string;
-  poderes: string;
-  descripcion: string;
-  ubicacion: string;
-  img: string;
-}
+import { Hero } from './heroes.model';
 
 @Injectable({
   providedIn: 'root',

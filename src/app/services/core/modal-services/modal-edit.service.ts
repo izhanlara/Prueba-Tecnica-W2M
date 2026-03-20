@@ -1,7 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-
-import { Hero, HerosJson } from '../../../services/core/heros.service';
+import { Hero } from '../../../services/core/heroes.model';
+import { HerosJson } from '../../../services/core/heros.service';
 
 @Injectable({
   providedIn: 'root',

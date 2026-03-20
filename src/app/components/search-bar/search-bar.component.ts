@@ -1,17 +1,19 @@
 import { Component, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ModalAddHeroComponent } from '../modal-dates/add-modal/modal-addHero.component';
-import { SearchBarService } from '../../services/core/search-bar-service/search-bar.service';
+import { FilterHeroPipe } from '../../pipes/search-bar-pipe/search-bar.pipe';
+
 @Component({
   selector: 'app-search-bar',
+  standalone: true,
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss'],
   imports: [MatIconModule, ModalAddHeroComponent],
 })
 export class SearchBarComponent {
-  readonly searchBarService = inject(SearchBarService);
+  readonly pipe = inject(FilterHeroPipe);
 
   openAddHeroModal() {
-    this.searchBarService.openAddHeroModal();
+    this.pipe.openAddHeroModal();
   }
 }

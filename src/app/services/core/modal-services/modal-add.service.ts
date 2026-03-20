@@ -1,5 +1,6 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { Hero, HerosJson } from '../heros.service';
+import { HerosJson } from '../heros.service';
+import { Hero } from '../heroes.model';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Injectable({
@@ -30,6 +31,10 @@ export class ModalAddService {
   }
 
   onSubmit() {
+    if (this.formControlAdd.value.nombre === '' || this.formControlAdd.value.poderes === '') {
+      alert('Por favor, rellene el nombre y losp poderes para poder enviar el formulario.');
+      return;
+    }
     const newHero: Hero = {
       nombre: this.formControlAdd.value.nombre || '',
       poderes: this.formControlAdd.value.poderes || '',

@@ -1,5 +1,4 @@
 import { Component, signal } from '@angular/core';
-
 import { HomePage } from './pages/page-home/page-home.component';
 
 @Component({
