@@ -16,7 +16,7 @@ export class SearchBarService {
     }
     const filteredHeroes = this.herosJson
       .Hero()
-      .filter((hero: any) => hero.nombre.toLowerCase().includes(searchTerm.toLowerCase()));
+      .filter((hero) => hero.nombre.toLowerCase().includes(searchTerm.toLowerCase()));
     this.herosJson.Hero.set(filteredHeroes);
   }
 

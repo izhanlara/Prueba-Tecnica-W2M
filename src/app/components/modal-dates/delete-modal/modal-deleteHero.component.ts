@@ -17,19 +17,4 @@ export class ModalDeleteHeroComponent {
   closeModalDelete() {
     this.modalDeleteService.closeModalDelete();
   }
-
-  // confirmDelete() {
-  //   const index = this.selectedHeroIndex();
-  //   if (index !== null) {
-  //     const heroToDelete = this.herosJson.Hero()[index];
-
-  //     const updatedAllHeroes = this.herosJson
-  //       .allHeros()
-  //       .filter((hero) => hero.nombre !== heroToDelete.nombre);
-  //     this.herosJson.allHeros.set(updatedAllHeroes);
-
-  //     this.herosJson.Hero.set(updatedAllHeroes.slice(0, 12));
-  //   }
-  //   this.closeModalDelete();
-  // }
 }
