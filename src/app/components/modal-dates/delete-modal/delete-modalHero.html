@@ -1,0 +1,7 @@
+@if (modalDeleteService.isOpen()) {
+  <div class="modal-overlay">
+    <h2>¿Estás seguro de que quieres eliminar este héroe?</h2>
+    <button (click)="modalDeleteService.confirmDelete()">Sí, eliminar</button>
+    <button (click)="modalDeleteService.closeModalDelete()">Cancelar</button>
+  </div>
+}

@@ -1,25 +1,15 @@
-import { Component, signal, ViewChild, inject } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { Injectable, inject, signal } from '@angular/core';
+import { Hero, HerosJson } from '../heros.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
-import { ModalEditHeroComponent } from '../edit-modal/modal-editHero.component';
-
-import { Hero, HerosJson } from '../../../services/core/heros.service';
-
-@Component({
-  selector: 'app-modal-add-hero',
-  templateUrl: './add-modalHero.html',
-  styleUrls: ['../modal-styles.scss', '../../search-bar-component/search-bar-styles.scss'],
-  imports: [MatIconModule, ReactiveFormsModule],
+@Injectable({
+  providedIn: 'root',
 })
-export class ModalAddHeroComponent {
-  @ViewChild('modalEditHero', { static: true }) modalEditHero!: ModalEditHeroComponent;
-
-  protected readonly isOpen = signal(false);
+export class ModalAddService {
+  readonly isOpen = signal(false);
 
   private readonly herosJson = inject(HerosJson);
   private readonly Hero = this.herosJson.Hero;
-
   formControlAdd = new FormGroup({
     nombre: new FormControl(''),
     poderes: new FormControl(''),
@@ -39,10 +29,6 @@ export class ModalAddHeroComponent {
     this.isOpen.set(true);
   }
 
-  closeModalAdd() {
-    this.isOpen.set(false);
-  }
-
   onSubmit() {
     const newHero: Hero = {
       nombre: this.formControlAdd.value.nombre || '',
@@ -57,8 +43,7 @@ export class ModalAddHeroComponent {
     this.formControlAdd.reset();
     this.closeModalAdd();
   }
-
-  onFileChange(event: Event) {
-    this.modalEditHero.onFileChange(event);
+  closeModalAdd() {
+    this.isOpen.set(false);
   }
 }

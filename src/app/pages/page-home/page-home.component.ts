@@ -1,17 +1,15 @@
 import { Component, inject } from '@angular/core';
-
 import { SpinnerComponent } from '../../components/layout/loading-component/spinner/spinner';
-import { HeroComponent } from '../../components/hero-component/hero.component';
-import { CardComponentHeroComponent } from '../../components/card-component-hero/card-component-hero.component';
-import { SearchBarComponent } from '../../components/search-bar-component/search-bar.component';
-import { FooterComponent } from '../../components/layout/footer-component/footer.component';
-
+import { HeroComponent } from '../../sections/section-hero/section-hero.component';
+import { CardComponentHeroComponent } from '../../components/card/card.component';
+import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
+import { FooterComponent } from '../../sections/section-footer/section-footer.component';
 import { HerosJson } from '../../services/core/heros.service';
 
 @Component({
   selector: 'app-home-pages',
-  templateUrl: './pages-component.html',
-  styleUrls: ['./home-pages-styles.scss'],
+  templateUrl: './page-home.component.html',
+  styleUrls: ['./page-home.component.scss'],
   imports: [
     HeroComponent,
     CardComponentHeroComponent,

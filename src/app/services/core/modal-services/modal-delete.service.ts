@@ -1,24 +1,14 @@
-import { Component, inject, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 
 import { HerosJson } from '../../../services/core/heros.service';
 
-@Component({
-  selector: 'app-delete-btn',
-  templateUrl: './delete-modalHero.html',
-  styleUrls: ['../modal-styles.scss'],
+@Injectable({
+  providedIn: 'root',
 })
-export class ModalDeleteHeroComponent {
+export class ModalDeleteService {
   private readonly herosJson = inject(HerosJson);
   public readonly selectedHeroIndex = signal<number | null>(null);
   public readonly isOpen = signal(false);
-
-  openModalDelete() {
-    this.isOpen.set(true);
-  }
-
-  closeModalDelete() {
-    this.isOpen.set(false);
-  }
 
   confirmDelete() {
     const index = this.selectedHeroIndex();
@@ -33,5 +23,8 @@ export class ModalDeleteHeroComponent {
       this.herosJson.Hero.set(updatedAllHeroes.slice(0, 12));
     }
     this.closeModalDelete();
+  }
+  closeModalDelete() {
+    this.isOpen.set(false);
   }
 }

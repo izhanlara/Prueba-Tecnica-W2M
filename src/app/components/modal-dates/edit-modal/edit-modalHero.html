@@ -1,8 +1,8 @@
-@if (isOpen()) {
+@if (modalEditService.isOpen()) {
   <div class="modal-overlay">
     <div class="modal-container">
       <form [formGroup]="formControlUpdate" (ngSubmit)="onSubmit()" class="form-modal-edit">
-        <button type="button" (click)="closeModalEdit()" class="btn-close-modal">
+        <button type="button" (click)="modalEditService.closeModalEdit()" class="btn-close-modal">
           <mat-icon>close</mat-icon>
         </button>
         <h2>Editar héroe</h2>
@@ -23,7 +23,7 @@
         <br />
         <div class="file-input">
           <label for="img">Elige una imagen</label>
-          <input type="file" name="img" id="img" (change)="onFileChange($event)" />
+          <input type="file" name="img" id="img" (change)="modalEditService.onFileChange($event)" />
         </div>
         <input type="checkbox" />
         <label id="terminos" for="terminos"

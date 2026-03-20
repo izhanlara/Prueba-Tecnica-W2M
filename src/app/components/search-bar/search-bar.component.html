@@ -1,7 +1,11 @@
 <div class="search-bar-container">
   <div class="search-container">
     <input type="text" placeholder="Busca un Héroe..." #searchInput class="bar-input" />
-    <button type="button" (click)="filterHero(searchInput.value)" class="btn-search">
+    <button
+      type="button"
+      (click)="searchBarService.filterHero(searchInput.value)"
+      class="btn-search"
+    >
       <mat-icon>search</mat-icon>
     </button>
   </div>

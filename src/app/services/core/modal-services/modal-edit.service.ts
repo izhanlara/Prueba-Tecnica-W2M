@@ -1,27 +1,25 @@
-import { Component, ChangeDetectionStrategy, inject, signal, Injectable } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-
-import { MatIconModule } from '@angular/material/icon';
+import { inject, Injectable, signal } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 import { Hero, HerosJson } from '../../../services/core/heros.service';
 
-@Component({
-  selector: 'app-modal-edit-hero',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './edit-modalHero.html',
-  styleUrls: ['../modal-styles.scss'],
-  imports: [ReactiveFormsModule, MatIconModule],
-})
 @Injectable({
   providedIn: 'root',
-  useClass: ModalEditHeroComponent,
 })
-export class ModalEditHeroComponent {
+export class ModalEditService {
   private readonly herosJson = inject(HerosJson);
   private readonly selectedHeroIndex = signal<number | null>(null);
 
-  protected readonly isOpen = signal(false);
+  readonly isOpen = signal(false);
   private readonly Hero = this.herosJson.Hero;
+
+  formControlUpdate = new FormGroup({
+    nombre: new FormControl(''),
+    descripcion: new FormControl(''),
+    poderes: new FormControl(''),
+    ubicacion: new FormControl(''),
+    img: new FormControl(''),
+  });
 
   openModalEdit(hero: Hero, index: number) {
     this.selectedHeroIndex.set(index);
@@ -34,20 +32,6 @@ export class ModalEditHeroComponent {
     });
     this.isOpen.set(true);
   }
-
-  closeModalEdit() {
-    this.isOpen.set(false);
-    this.selectedHeroIndex.set(null);
-  }
-
-  formControlUpdate = new FormGroup({
-    nombre: new FormControl(''),
-    descripcion: new FormControl(''),
-    poderes: new FormControl(''),
-    ubicacion: new FormControl(''),
-    img: new FormControl(''),
-  });
-
   updateHeroAsync() {
     const index = this.selectedHeroIndex();
 
@@ -86,7 +70,8 @@ export class ModalEditHeroComponent {
     }
   }
 
-  onSubmit() {
-    this.updateHeroAsync();
+  closeModalEdit() {
+    this.isOpen.set(false);
+    this.selectedHeroIndex.set(null);
   }
 }
