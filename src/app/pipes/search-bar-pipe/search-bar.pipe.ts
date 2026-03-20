@@ -16,7 +16,9 @@ interface PipeTransform {
 export class FilterHeroPipe implements PipeTransform {
   readonly modalEditService = inject(ModalEditService);
   readonly modalAddService = inject(ModalAddService);
-  constructor(public herosJson: HerosJson) {
+  readonly herosJson = inject(HerosJson);
+
+  constructor() {
     this.herosJson.getInfoHeros();
   }
 

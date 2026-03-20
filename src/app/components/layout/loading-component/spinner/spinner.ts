@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, inject } from '@angular/core';
 import { LoaderService } from '../../.././../services/core/loader/loader';
 
 @Component({
@@ -9,5 +9,5 @@ import { LoaderService } from '../../.././../services/core/loader/loader';
   encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class SpinnerComponent {
-  constructor(public loader: LoaderService) {}
+  readonly loader = inject(LoaderService);
 }

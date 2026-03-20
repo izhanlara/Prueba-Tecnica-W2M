@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoaderService } from './loader/loader';
 import { Hero } from './heroes.model';
@@ -7,14 +7,13 @@ import { Hero } from './heroes.model';
   providedIn: 'root',
 })
 export class HerosJson {
+  private readonly http = inject(HttpClient);
+  private readonly loaderService = inject(LoaderService);
+
   Hero = signal<Hero[]>([]);
   allHeros = signal<Hero[]>([]);
 
   jsonUrl = 'json/heros.json';
-  constructor(
-    private readonly http: HttpClient,
-    private readonly loaderService: LoaderService,
-  ) {}
 
   getInfoHeros() {
     this.loaderService.setLoading(true);

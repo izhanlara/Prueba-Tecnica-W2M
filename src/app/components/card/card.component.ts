@@ -17,12 +17,12 @@ import { ModalDeleteService } from '../../services/core/modal-services/modal-del
 export class CardComponentHeroComponent {
   readonly modalEditService = inject(ModalEditService);
   readonly modalDeleteService = inject(ModalDeleteService);
+  readonly herosJson = inject(HerosJson);
 
-  Hero!: Signal<Hero[]>;
+  readonly Hero: Signal<Hero[]> = this.herosJson.Hero;
 
-  constructor(public herosJson: HerosJson) {
+  constructor() {
     this.herosJson.getInfoHeros();
-    this.Hero = this.herosJson.Hero;
   }
 
   editHeroModal(hero: Hero, index: number) {
