@@ -2,13 +2,13 @@ import { Injectable, inject, signal } from '@angular/core';
 import { HerosJson } from '../heros.service';
 import { Hero } from '../heroes.model';
 import { FormControl, FormGroup } from '@angular/forms';
-
+import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
 export class ModalAddService {
   readonly isOpen = signal(false);
-
+  http = inject(HttpClient);
   private readonly herosJson = inject(HerosJson);
   private readonly Hero = this.herosJson.Hero;
   formControlAdd = new FormGroup({
@@ -31,10 +31,6 @@ export class ModalAddService {
   }
 
   onSubmit() {
-    if (this.formControlAdd.value.nombre === '' || this.formControlAdd.value.poderes === '') {
-      alert('Por favor, rellene el nombre y losp poderes para poder enviar el formulario.');
-      return;
-    }
     const newHero: Hero = {
       nombre: this.formControlAdd.value.nombre || '',
       poderes: this.formControlAdd.value.poderes || '',
@@ -43,10 +39,14 @@ export class ModalAddService {
       img: this.formControlAdd.value.img || 'img/default-image-url.png',
     };
     const currentAllHeroes = this.herosJson.allHeros();
-    this.herosJson.allHeros.set([...currentAllHeroes, newHero]);
-    this.herosJson.Hero.set(this.herosJson.allHeros().slice(0, 12));
-    this.formControlAdd.reset();
-    this.closeModalAdd();
+
+    this.http
+      .post('http://localhost:3000/allHeros', [...currentAllHeroes, newHero])
+      .subscribe(() => {
+        this.herosJson.Hero.set(this.herosJson.allHeros().slice(0, 12));
+        this.formControlAdd.reset();
+        this.closeModalAdd();
+      });
   }
   closeModalAdd() {
     this.isOpen.set(false);

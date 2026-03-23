@@ -33,22 +33,27 @@
           <label for="descripcion">Descripción</label>
           <textarea id="descripcion" formControlName="descripcion" rows="3"></textarea>
         </div>
-        <div class="file-input">
+        <div class="field-group field-full file-field">
           <label for="img">Elige una imagen</label>
-          <input type="file" name="img" id="img" (change)="modalEditService.onFileChange($event)" />
+          <div class="file-input file-input-row">
+            <label for="img" class="file-input-trigger">Seleccionar archivo</label>
+            <input
+              type="file"
+              name="img"
+              id="img"
+              (change)="modalEditService.onFileChange($event)"
+            />
+            <p class="file-input-hint">Sin archivos seleccionados</p>
+          </div>
         </div>
-        <mat-checkbox class="terminos">
-          <p>Acepto los <u style="cursor: pointer">terminos y condiciones</u></p>
-        </mat-checkbox>
-        <button
-          type="submit"
-          mat-raised-button
-          color="primary"
-          class="btn-submit"
-          (click)="viewPopup()"
-        >
-          Guardar cambios
-        </button>
+        <div class="form-actions">
+          <mat-checkbox class="terminos">
+            Acepto los <span class="terms-link">Términos y condiciones</span>
+          </mat-checkbox>
+          <button type="submit" mat-raised-button color="primary" class="btn-submit">
+            Crear héroe
+          </button>
+        </div>
       </form>
     </div>
   </div>

@@ -31,6 +31,16 @@ Una vez levantado el proyecto, la aplicacion estara disponible en:
 - Node.js 20 o superior recomendado
 - npm 10 o superior
 
+## EndPoint local
+
+> [!Note]
+> Cambiamos a json server para simular backend real y permitir persistencia de datos en las operaciones CRUD.
+
+- Con json server el codigo es mas limpio y sencillo, ya que se pueden hacer peticiones HTTP reales (GET, POST, PUT, DELETE) a un endpoint local.
+- El endpoint para acceder a los heroes es:
+
+http://localhost:3000/allHeros
+
 ## Instalacion
 
 ```bash
@@ -43,11 +53,15 @@ npm install
 npm start
 ```
 
+````bash
+npx json-server json/heros.json
+```
+
 Tambien puedes usar Angular CLI directamente:
 
 ```bash
 ng serve
-```
+````
 
 ## Scripts disponibles
 

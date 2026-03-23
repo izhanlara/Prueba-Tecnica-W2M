@@ -5,7 +5,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalEditService } from '../../../services/core/modal-services/modal-edit.service';
 import { ModalAddService } from '../../../services/core/modal-services/modal-add.service';
-import { PopupModalEditComponent } from '../../../popup-component/popup-modal-component/popup-modalEdit-component/popup-modal.component';
+import { PopupModalEditComponent } from '../../../popup-component/popup-modal-component/popup-modal-component/popup-modal.component';
 
 @Component({
   selector: 'app-modal-add-hero',
@@ -24,9 +24,5 @@ export class ModalAddHeroComponent {
 
   onSubmit() {
     this.modalAddService.onSubmit();
-  }
-
-  viewPopup() {
-    this.popUpComponent.controlPopup(1);
   }
 }

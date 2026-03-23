@@ -2,6 +2,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Hero } from '../../../services/core/heroes.model';
 import { HerosJson } from '../../../services/core/heros.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ import { HerosJson } from '../../../services/core/heros.service';
 export class ModalEditService {
   private readonly herosJson = inject(HerosJson);
   private readonly selectedHeroIndex = signal<number | null>(null);
-
+  private readonly http = inject(HttpClient);
   readonly isOpen = signal(false);
   private readonly Hero = this.herosJson.Hero;
 
@@ -45,15 +46,25 @@ export class ModalEditService {
       return;
     }
 
-    const updatedHero = {
+    if (!oldHero.id) {
+      return;
+    }
+
+    const updatedHero: Hero = {
+      ...oldHero,
       nombre: this.formControlUpdate.get('nombre')?.value || oldHero.nombre,
       descripcion: this.formControlUpdate.get('descripcion')?.value || oldHero.descripcion,
       poderes: this.formControlUpdate.get('poderes')?.value || oldHero.poderes,
       ubicacion: this.formControlUpdate.get('ubicacion')?.value || oldHero.ubicacion,
       img: this.formControlUpdate.get('img')?.value || oldHero.img,
     };
-    this.herosJson.updateHero(index, updatedHero);
-    this.closeModalEdit();
+
+    this.http
+      .put<Hero>(`http://localhost:3000/allHeros/${oldHero.id}`, updatedHero)
+      .subscribe((savedHero) => {
+        this.herosJson.updateHero(index, savedHero);
+        this.closeModalEdit();
+      });
   }
 
   onFileChange(event: Event) {

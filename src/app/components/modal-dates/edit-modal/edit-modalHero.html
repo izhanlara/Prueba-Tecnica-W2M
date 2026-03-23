@@ -29,20 +29,14 @@
           <label for="descripcion">Descripción</label>
           <textarea id="descripcion" formControlName="descripcion" rows="3"></textarea>
         </div>
+        <label for="img">Elige una imagen</label>
         <div class="file-input">
-          <label for="img">Elige una imagen</label>
           <input type="file" name="img" id="img" (change)="modalEditService.onFileChange($event)" />
         </div>
         <mat-checkbox class="terminos">
           Acepto los <u style="cursor: pointer">terminos y condiciones</u>
         </mat-checkbox>
-        <button
-          type="submit"
-          mat-raised-button
-          color="primary"
-          class="btn-submit"
-          (click)="viewPopup()"
-        >
+        <button type="submit" mat-raised-button color="primary" class="btn-submit">
           Guardar cambios
         </button>
       </form>

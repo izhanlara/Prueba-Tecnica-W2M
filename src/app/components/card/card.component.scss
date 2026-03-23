@@ -25,3 +25,17 @@
     object-fit: cover;
   }
 }
+
+@media (max-width: 1024px) {
+  .card-component-section {
+    grid-template-columns: repeat(2, minmax(13rem, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .card-component-section {
+    grid-template-columns: 1fr;
+    padding: 0 $space-4;
+    max-width: 100%;
+  }
+}

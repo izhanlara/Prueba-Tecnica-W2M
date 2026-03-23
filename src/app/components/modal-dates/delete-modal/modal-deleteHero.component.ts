@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { ModalDeleteService } from '../../../services/core/modal-services/modal-delete.service';
-import { PopupModalEditComponent } from '../../../popup-component/popup-modal-component/popup-modalEdit-component/popup-modal.component';
+import { PopupModalEditComponent } from '../../../popup-component/popup-modal-component/popup-modal-component/popup-modal.component';
 
 @Component({
   selector: 'app-delete-btn',
@@ -19,9 +19,5 @@ export class ModalDeleteHeroComponent {
 
   closeModalDelete() {
     this.modalDeleteService.closeModalDelete();
-  }
-
-  viewPopup() {
-    this.popUpComponent.controlPopup(3);
   }
 }

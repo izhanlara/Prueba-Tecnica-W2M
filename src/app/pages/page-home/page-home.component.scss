@@ -11,3 +11,9 @@
   display: flex;
   margin-top: 6.25rem;
 }
+
+@media (max-width: 768px) {
+  .btn-show-more {
+    margin-top: 2rem;
+  }
+}

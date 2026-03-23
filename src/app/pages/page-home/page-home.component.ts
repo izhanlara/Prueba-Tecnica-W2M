@@ -5,7 +5,7 @@ import { CardComponentHeroComponent } from '../../components/card/card.component
 import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
 import { FooterComponent } from '../../sections/section-footer/section-footer.component';
 import { HerosJson } from '../../services/core/heros.service';
-import { PopupModalEditComponent } from '../../popup-component/popup-modal-component/popup-modalEdit-component/popup-modal.component';
+import { PopupModalEditComponent } from '../../popup-component/popup-modal-component/popup-modal-component/popup-modal.component';
 
 @Component({
   selector: 'app-home-pages',
