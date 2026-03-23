@@ -40,7 +40,13 @@
         <mat-checkbox class="terminos">
           <p>Acepto los <u style="cursor: pointer">terminos y condiciones</u></p>
         </mat-checkbox>
-        <button type="submit" mat-raised-button color="primary" class="btn-submit">
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          class="btn-submit"
+          (click)="viewPopup()"
+        >
           Guardar cambios
         </button>
       </form>

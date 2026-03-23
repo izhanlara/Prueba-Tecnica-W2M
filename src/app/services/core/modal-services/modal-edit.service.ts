@@ -52,7 +52,6 @@ export class ModalEditService {
       ubicacion: this.formControlUpdate.get('ubicacion')?.value || oldHero.ubicacion,
       img: this.formControlUpdate.get('img')?.value || oldHero.img,
     };
-
     this.herosJson.updateHero(index, updatedHero);
     this.closeModalEdit();
   }

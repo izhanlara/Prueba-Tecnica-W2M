@@ -1,0 +1,43 @@
+.popup-modal-done {
+  position: fixed;
+  display: flex;
+  margin-top: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 304px;
+  height: 56px;
+  top: 32px;
+  left: 808px;
+  border-radius: 6.25rem;
+  padding: space/200;
+  gap: 8;
+  opacity: 1;
+  background-color: #29f4b0;
+
+  svg {
+    vertical-align: middle;
+  }
+}
+
+.popup-modal-error {
+  position: fixed;
+  display: flex;
+  margin-top: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 304px;
+  height: 56px;
+  top: 32px;
+  left: 808px;
+  border-radius: 6.25rem;
+  padding: space/200;
+  gap: 8;
+  opacity: 1;
+  background-color: #29f4b0;
+
+  svg {
+    vertical-align: middle;
+  }
+}

@@ -1,9 +1,7 @@
 SuperHero
 
 Falta:
-Añadir mensajes de confirmacion cuando se añade/edita/elimina un heroe
-Posibilidad: Hacer con modales con timeout para que se cierren solos de forma automatica
-
+corregir los test
 Refactorizar el codigo para que sea mas limpio y ordenado
 
 Pulir SCSS
@@ -36,3 +34,7 @@ Aplicamos etiquetas de angular material cuando es posible (checkbox, btn y searc
 
 Corregimos el buscadodr que no podia concatener busquedas
 Añadimos primera letra siempre en mayuscula
+
+Dia 23:
+Añadir mensajes de confirmacion cuando se añade/edita/elimina un heroe
+Posibilidad: Hacer con modales con timeout para que se cierren solos de forma automatica
