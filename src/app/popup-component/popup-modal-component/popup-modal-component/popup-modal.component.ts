@@ -1,21 +1,17 @@
-import { Component, Injectable, signal, inject } from '@angular/core';
-
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Component, Injectable } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-popup-modalEdit',
   templateUrl: './popup-modal.component.html',
   styleUrls: ['../popup-modal.component.scss'],
-  imports: [],
+  imports: [CommonModule, MatButtonModule, MatSelectModule, MatFormFieldModule],
 })
 @Injectable({
   providedIn: 'root',
   useClass: PopupModalEditComponent,
 })
-export class PopupModalEditComponent {
-  _snackBar = inject(MatSnackBar);
-  message = signal<string>('');
-  openSnackBar(message: string) {
-    this._snackBar.open(message);
-  }
-}
+export class PopupModalEditComponent {}

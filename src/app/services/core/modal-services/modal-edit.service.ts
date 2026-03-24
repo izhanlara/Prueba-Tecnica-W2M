@@ -14,7 +14,7 @@ export class ModalEditService {
   private readonly http = inject(HttpClient);
   readonly isOpen = signal(false);
   private readonly Hero = this.herosJson.Hero;
-  public readonly message = signal<string>('Heroe Eliminado con éxito');
+  public readonly message = signal<string>('Heroe editado con éxito');
   popUpComponent = inject(PopupModalEditComponent);
 
   formControlUpdate = new FormGroup({
@@ -66,7 +66,6 @@ export class ModalEditService {
       .put<Hero>(`http://localhost:3000/allHeros/${oldHero.id}`, updatedHero)
       .subscribe((savedHero) => {
         this.herosJson.updateHero(index, savedHero);
-        this.popUpComponent.openSnackBar(this.message());
         this.closeModalEdit();
       });
   }

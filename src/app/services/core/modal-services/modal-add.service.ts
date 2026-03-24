@@ -4,6 +4,8 @@ import { Hero } from '../heroes.model';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { PopupModalEditComponent } from '../../../popup-component/popup-modal-component/popup-modal-component/popup-modal.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -12,7 +14,9 @@ export class ModalAddService {
   http = inject(HttpClient);
   private readonly herosJson = inject(HerosJson);
   private readonly Hero = this.herosJson.Hero;
-  public readonly message = signal<string>('Heroe Eliminado con éxito');
+
+  snackBar = inject(MatSnackBar);
+
   popUpComponent = inject(PopupModalEditComponent);
   formControlAdd = new FormGroup({
     nombre: new FormControl(),
@@ -42,9 +46,19 @@ export class ModalAddService {
       img: this.formControlAdd.value.img || 'img/default-image-url.png',
     };
 
-    this.http.post('http://localhost:3000/allHeros', newHero).subscribe(() => {
-      this.popUpComponent.openSnackBar(this.message());
+    if (this.formControlAdd.valid) {
+      this.snackBar.open('Héroe añadido con éxito', '', {
+        duration: 3000,
+        panelClass: ['popup-modal-done'],
+      });
+    } else {
+      this.snackBar.open('Error', '', {
+        duration: 3000,
+        panelClass: ['popup-modal-error'],
+      });
+    }
 
+    this.http.post('http://localhost:3000/allHeros', newHero).subscribe(() => {
       this.formControlAdd.reset();
       this.closeModalAdd();
     });

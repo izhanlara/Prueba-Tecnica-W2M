@@ -2,6 +2,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HerosJson } from '../../../services/core/heros.service';
 import { PopupModalEditComponent } from '../../../popup-component/popup-modal-component/popup-modal-component/popup-modal.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +15,8 @@ export class ModalDeleteService {
   public readonly message = signal<string>('Heroe Eliminado con éxito');
   popUpComponent = inject(PopupModalEditComponent);
 
+  snackBar = inject(MatSnackBar);
+
   confirmDelete() {
     const index = this.selectedHeroIndex();
     if (index !== null) {
@@ -22,17 +25,25 @@ export class ModalDeleteService {
       if (!heroToDelete.id) {
         return;
       }
-
+      if (index) {
+        this.snackBar.open('Héroe Eliminado con éxito', '', {
+          duration: 3000,
+          panelClass: ['popup-modal-done'],
+        });
+      } else {
+        this.snackBar.open('Error', '', {
+          duration: 3000,
+          panelClass: ['popup-modal-error'],
+        });
+      }
       this.http.delete(`http://localhost:3000/allHeros/${heroToDelete.id}`).subscribe(() => {
         const updatedAllHeroes = this.herosJson
           .allHeros()
           .filter((hero) => hero.id !== heroToDelete.id);
         this.herosJson.allHeros.set(updatedAllHeroes);
-
         this.herosJson.Hero.set(updatedAllHeroes.slice(0, 12));
       });
     }
-    this.popUpComponent.openSnackBar(this.message());
     this.closeModalDelete();
   }
 

@@ -33,7 +33,7 @@
       "id": "fa0d"
     },
     {
-      "nombre": "Test ",
+      "nombre": "Capitana Marvel",
       "poderes": "Curación acelerada e inmortal",
       "descripcion": "La Capitana Marvel es una guerrera extraterrestre con habilidades sobrehumanas.",
       "ubicacion": "New York, USA.",
@@ -41,7 +41,7 @@
       "id": "2821"
     },
     {
-      "nombre": "Viuda negra 1",
+      "nombre": "Viuda negra 2",
       "poderes": "Espionaje avanzado, artista marcial y experta gladiadora",
       "descripcion": "Una espía experta del más alto nivel.",
       "ubicacion": "Washington, USA.",
@@ -89,15 +89,7 @@
       "id": "9d28"
     },
     {
-      "nombre": "Spiderman",
-      "poderes": "Superpoderes arácnidos",
-      "descripcion": "Peter Parker, mejor conocido como Spiderman, tiene habilidades similares a las de una araña.",
-      "ubicacion": "Mallorca, Esp.",
-      "img": "img/spiderman.png",
-      "id": "9d28"
-    },
-    {
-      "nombre": "test",
+      "nombre": "test23",
       "poderes": "test",
       "ubicacion": "test",
       "descripcion": "test",

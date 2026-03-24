@@ -1,4 +1,4 @@
-.popup-modal-done {
+::ng-deep .popup-modal-done {
   position: fixed;
   display: flex;
   margin-top: auto;
@@ -14,13 +14,9 @@
   gap: 8;
   opacity: 1;
   background-color: #29f4b0;
-
-  svg {
-    vertical-align: middle;
-  }
 }
 
-.popup-modal-error {
+::ng-deep .popup-modal-error {
   position: fixed;
   display: flex;
   margin-top: auto;
@@ -35,9 +31,5 @@
   padding: space/200;
   gap: 8;
   opacity: 1;
-  background-color: #29f4b0;
-
-  svg {
-    vertical-align: middle;
-  }
+  background-color: rgb(255, 0, 0);
 }
