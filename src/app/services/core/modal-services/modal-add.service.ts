@@ -45,6 +45,19 @@ export class ModalAddService {
     });
   }
 
+  onFileChange(event: Event) {
+    this.formControlAdd.get('img')?.setValue('/img/default-hero.png');
+    const input = event.target as HTMLInputElement;
+    if (input?.files?.[0]) {
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.formControlAdd.get('img')?.setValue(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
   closeModalAdd() {
     this.isOpen.set(false);
   }

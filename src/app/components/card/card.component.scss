@@ -1,12 +1,12 @@
 @use '../../_varibales.sass' as *;
+
 .card-component-section {
   display: grid;
   grid-template-columns: repeat(4, minmax(15.625rem, 1fr));
   gap: 1.25rem;
   max-width: 75rem;
   width: 100%;
-  justify-content: center;
-  align-items: center;
+  margin: 0 auto;
 }
 
 .card-hero {

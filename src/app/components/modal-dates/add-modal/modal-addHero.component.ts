@@ -3,7 +3,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ModalEditService } from '../../../services/core/modal-services/modal-edit.service';
 import { ModalAddService } from '../../../services/core/modal-services/modal-add.service';
 import { PopupModalEditComponent } from '../../../popup-component/popup-modal-component/popup-modal-component/popup-modal.component';
 
@@ -14,7 +13,6 @@ import { PopupModalEditComponent } from '../../../popup-component/popup-modal-co
   imports: [MatIconModule, ReactiveFormsModule, MatButtonModule, MatCheckboxModule],
 })
 export class ModalAddHeroComponent {
-  readonly modalEditService = inject(ModalEditService);
   readonly modalAddService = inject(ModalAddService);
   readonly popUpComponent = inject(PopupModalEditComponent);
 
