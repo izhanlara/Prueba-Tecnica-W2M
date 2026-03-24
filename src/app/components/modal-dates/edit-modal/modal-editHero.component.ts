@@ -20,7 +20,6 @@ import { PopupModalEditComponent } from '../../../popup-component/popup-modal-co
 export class ModalEditHeroComponent {
   readonly modalEditService = inject(ModalEditService);
   popUpComponent = inject(PopupModalEditComponent);
-  message = signal<string>('');
 
   formControlUpdate = this.modalEditService.formControlUpdate;
 
