@@ -1,6 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HerosJson } from '../../../services/core/heros.service';
+import { PopupModalEditComponent } from '../../../popup-component/popup-modal-component/popup-modal-component/popup-modal.component';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +11,8 @@ export class ModalDeleteService {
   private readonly herosJson = inject(HerosJson);
   public readonly selectedHeroIndex = signal<number | null>(null);
   public readonly isOpen = signal(false);
+  public readonly message = signal<string>('Heroe Eliminado con éxito');
+  popUpComponent = inject(PopupModalEditComponent);
 
   confirmDelete() {
     const index = this.selectedHeroIndex();
@@ -29,6 +32,7 @@ export class ModalDeleteService {
         this.herosJson.Hero.set(updatedAllHeroes.slice(0, 12));
       });
     }
+    this.popUpComponent.openSnackBar(this.message());
     this.closeModalDelete();
   }
 

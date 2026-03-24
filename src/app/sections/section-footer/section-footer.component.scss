@@ -3,8 +3,8 @@
 footer {
   width: 100%;
   max-width: 84.1875rem;
-  margin: 3.125rem auto 0;
   color: $color-black;
+  margin: auto;
 
   .footer-elements {
     align-items: center;
@@ -29,7 +29,7 @@ footer {
   display: flex;
   gap: $space-3;
   float: right;
-  margin-left: auto;
+  margin: auto;
   flex-shrink: 0;
 }
 
@@ -41,7 +41,6 @@ footer {
   }
 
   .rrss-icons {
-    margin-left: 0;
     justify-content: center;
     width: 100%;
   }

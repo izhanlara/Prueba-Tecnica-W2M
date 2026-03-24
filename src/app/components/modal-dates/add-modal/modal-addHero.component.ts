@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -15,6 +15,7 @@ import { PopupModalEditComponent } from '../../../popup-component/popup-modal-co
 export class ModalAddHeroComponent {
   readonly modalAddService = inject(ModalAddService);
   readonly popUpComponent = inject(PopupModalEditComponent);
+  message = signal<string>('Heroe Añadido correctamente');
 
   closeModalAdd() {
     this.modalAddService.closeModalAdd();

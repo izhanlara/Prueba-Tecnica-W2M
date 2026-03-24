@@ -41,3 +41,7 @@ Añadimos primera letra siempre en mayuscula
 
 Dia 23:
 Añadimos json server y configuramos
+
+Dia 24:
+Mejoramos CSS
+Terminamos de configurar json server events add, delete, edit

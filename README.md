@@ -54,7 +54,7 @@ npm start
 ```
 
 ````bash
-npx json-server json/heros.json
+npm run server
 ```
 
 Tambien puedes usar Angular CLI directamente:
@@ -77,26 +77,6 @@ npm run watch
 
 # Tests unitarios
 npm test
-```
-
-## Estructura principal
-
-```text
-src/
-	app/
-		components/
-			hero-component/
-			search-bar-component/
-			card-component-hero/
-			modal-components/
-		pages/
-			home-pages/
-		services/
-			core/
-				heros.service.ts
-	assets/
-		json/
-			heros.json
 ```
 
 ## Flujo funcional actual

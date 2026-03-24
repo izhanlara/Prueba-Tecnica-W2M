@@ -1,6 +1,6 @@
-import { Component, Injectable, inject } from '@angular/core';
+import { Component, Injectable, signal, inject } from '@angular/core';
 
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-popup-modalEdit',
@@ -14,7 +14,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 })
 export class PopupModalEditComponent {
   _snackBar = inject(MatSnackBar);
-  message: string = 'Error';
+  message = signal<string>('');
   openSnackBar(message: string) {
     this._snackBar.open(message);
   }

@@ -3,6 +3,7 @@ import { HerosJson } from '../heros.service';
 import { Hero } from '../heroes.model';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { PopupModalEditComponent } from '../../../popup-component/popup-modal-component/popup-modal-component/popup-modal.component';
 @Injectable({
   providedIn: 'root',
 })
@@ -11,6 +12,8 @@ export class ModalAddService {
   http = inject(HttpClient);
   private readonly herosJson = inject(HerosJson);
   private readonly Hero = this.herosJson.Hero;
+  public readonly message = signal<string>('Heroe Eliminado con éxito');
+  popUpComponent = inject(PopupModalEditComponent);
   formControlAdd = new FormGroup({
     nombre: new FormControl(),
     poderes: new FormControl(),
@@ -40,6 +43,8 @@ export class ModalAddService {
     };
 
     this.http.post('http://localhost:3000/allHeros', newHero).subscribe(() => {
+      this.popUpComponent.openSnackBar(this.message());
+
       this.formControlAdd.reset();
       this.closeModalAdd();
     });
