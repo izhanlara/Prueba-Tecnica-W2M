@@ -3,6 +3,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Hero } from '../../../services/core/heroes.model';
 import { HerosJson } from '../../../services/core/heros.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +14,7 @@ export class ModalEditService {
   private readonly http = inject(HttpClient);
   readonly isOpen = signal(false);
   private readonly heroList = this.herosJson.Hero;
+  readonly snackBar = inject(MatSnackBar);
 
   readonly formControlUpdate = new FormGroup({
     nombre: new FormControl('', {
@@ -89,6 +91,24 @@ export class ModalEditService {
       this.formControlUpdate.controls.img.setValue(reader.result as string);
     };
     reader.readAsDataURL(file);
+  }
+
+  onSubmit() {
+    this.formControlUpdate.markAllAsTouched();
+
+    if (this.formControlUpdate.invalid) {
+      this.snackBar.open('Error', '', {
+        duration: 3000,
+        panelClass: ['popup-modal-error'],
+      });
+      return;
+    }
+
+    this.updateHeroAsync();
+    this.snackBar.open('Héroe editado con éxito', '', {
+      duration: 3000,
+      panelClass: ['popup-modal-done'],
+    });
   }
 
   closeModalEdit() {

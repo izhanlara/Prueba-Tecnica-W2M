@@ -19,20 +19,6 @@ export class ModalEditHeroComponent {
   readonly formControlUpdate = this.modalEditService.formControlUpdate;
 
   onSubmit() {
-    this.formControlUpdate.markAllAsTouched();
-
-    if (this.formControlUpdate.invalid) {
-      this.snackBar.open('Error', '', {
-        duration: 3000,
-        panelClass: ['popup-modal-error'],
-      });
-      return;
-    }
-
-    this.modalEditService.updateHeroAsync();
-    this.snackBar.open('Héroe editado con éxito', '', {
-      duration: 3000,
-      panelClass: ['popup-modal-done'],
-    });
+    this.modalEditService.onSubmit();
   }
 }
