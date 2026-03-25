@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-popup-modalEdit',
-  templateUrl: './popup-modal.component.html',
+  template: '',
   styleUrls: ['../popup-modal.component.scss'],
   imports: [MatButtonModule, MatSelectModule, MatFormFieldModule],
 })

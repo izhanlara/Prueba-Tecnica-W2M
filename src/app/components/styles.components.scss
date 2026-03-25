@@ -4,7 +4,7 @@
   position: relative;
 
   .hero-img {
-    width: 120rem;
+    width: 100vw;
     height: 30rem;
     object-fit: cover;
   }
@@ -28,7 +28,6 @@
     top: 22.75rem;
     left: 80rem;
     font-size: $font-size-xl;
-    color: $color-black;
     font-weight: bold;
   }
 }
@@ -47,13 +46,7 @@
 }
 
 .card-component-section {
-  display: grid;
   grid-template-columns: repeat(4, minmax(15.625rem, 1fr));
-  gap: 1.25rem;
-  max-width: 75rem;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
 }
 
 .card-hero {
@@ -70,14 +63,11 @@
   .card-img {
     width: 100%;
     height: $card-img-height;
-    object-fit: cover;
   }
 }
 
 .card-buttons {
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: $space-3;
   margin: $space-3 0;
 }
@@ -93,7 +83,6 @@
   border-radius: $radius-xl;
   padding: $space-3 $space-5;
   cursor: pointer;
-  margin: $space-0;
 
   .pen-edit {
     width: 1.5625rem;
@@ -114,9 +103,6 @@
   border-radius: $radius-lg;
   padding: $space-3 $space-5;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 @media (max-width: 1024px) {
@@ -171,7 +157,7 @@
     }
 
     .logo-img {
-      width: 6rem;
+      width: 3.125rem;
       top: 1rem;
       left: 1rem;
     }

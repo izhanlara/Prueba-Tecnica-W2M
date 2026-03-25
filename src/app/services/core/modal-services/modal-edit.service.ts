@@ -94,8 +94,6 @@ export class ModalEditService {
   }
 
   onSubmit() {
-    this.formControlUpdate.markAllAsTouched();
-
     if (this.formControlUpdate.invalid) {
       this.snackBar.open('Error', '', {
         duration: 3000,
@@ -103,14 +101,12 @@ export class ModalEditService {
       });
       return;
     }
-
     this.updateHeroAsync();
     this.snackBar.open('Héroe editado con éxito', '', {
       duration: 3000,
       panelClass: ['popup-modal-done'],
     });
   }
-
   closeModalEdit() {
     this.isOpen.set(false);
     this.selectedHeroIndex.set(null);

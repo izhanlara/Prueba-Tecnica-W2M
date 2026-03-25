@@ -44,8 +44,6 @@ export class ModalAddService {
   }
 
   onSubmit() {
-    this.formControlAdd.markAllAsTouched();
-
     if (this.formControlAdd.invalid) {
       this.snackBar.open('Error', '', {
         duration: 3000,

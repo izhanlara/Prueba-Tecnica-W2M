@@ -2,8 +2,8 @@
   "allHeros": [
     {
       "nombre": "Wonder Woman",
-      "poderes": "Curación acelerada e inmortal",
       "descripcion": "La Capitana Marvel es una guerrera extraterrestre con habilidades sobrehumanas.",
+      "poderes": "Curación acelerada e inmortal",
       "ubicacion": "New York, USA.",
       "img": "img/wonder_woman.png",
       "id": "f198"
@@ -17,7 +17,7 @@
       "id": "36bd"
     },
     {
-      "nombre": "BATMAN",
+      "nombre": "Batman",
       "descripcion": "Bruce Wayne es un multimillonario nocturno que combate el crimen.",
       "poderes": "Una gran fortuna",
       "ubicacion": "Ciudad de México, Méx.",
@@ -26,8 +26,8 @@
     },
     {
       "nombre": "Wonder Woman",
-      "poderes": "Fuerza sobrehumana, Supervelocidad",
       "descripcion": "Wonder Woman es considerada una de las guerreras más fuertes del universo.",
+      "poderes": "Fuerza sobrehumana, Supervelocidad",
       "ubicacion": "Sevilla, Esp.",
       "img": "img/wonder_woman.png",
       "id": "fa0d"

@@ -23,20 +23,18 @@ export class ModalDeleteService {
       const heroToDelete = this.herosJson.Hero()[index];
 
       if (!heroToDelete.id) {
-        return;
-      }
-      if (index) {
-        this.snackBar.open('Héroe Eliminado con éxito', '', {
-          duration: 3000,
-          panelClass: ['popup-modal-done'],
-        });
-      } else {
         this.snackBar.open('Error', '', {
           duration: 3000,
           panelClass: ['popup-modal-error'],
         });
+        return;
       }
+
       this.http.delete(`http://localhost:3000/allHeros/${heroToDelete.id}`).subscribe(() => {
+        this.snackBar.open('Héroe Eliminado con éxito', '', {
+          duration: 3000,
+          panelClass: ['popup-modal-done'],
+        });
         const updatedAllHeroes = this.herosJson
           .allHeros()
           .filter((hero) => hero.id !== heroToDelete.id);
