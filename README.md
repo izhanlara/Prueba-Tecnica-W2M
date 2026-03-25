@@ -5,7 +5,7 @@ Desarrollada en la ultima version LST Anuglar 21, utilizando TypeScript, SCSS y 
 
 ## Descripcion
 
-SuperHero es una interfaz tipo CRUD (en progreso) orientada a la gestion de heroes.
+SuperHero es una interfaz tipo CRUD orientada a la gestion de heroes.
 
 Actualmente permite:
 
@@ -37,7 +37,7 @@ Una vez levantado el proyecto, la aplicacion estara disponible en:
 - Node.js 20 o superior recomendado
 - npm 10 o superior
 
-## EndPoint local
+## EndPoint
 
 > [!Note]
 > Cambiamos a json server para simular backend real y permitir persistencia de datos en las operaciones CRUD. Originalmente se cargaban los heroes desde un archivo JSON estático, pero con json server podemos realizar peticiones HTTP reales y mantener el estado de los datos entre sesiones.
@@ -128,31 +128,6 @@ Funcionalidades implementadas:
 - Edicion de heroe.
 - Añadir mensajes de confirmacion al añadir/editar/eliminar un heroe.
 - Ajustes visuales desde SASS.
-
-> [!Warning]
-> Pendiente de mejorar:
->
-> - Maquetar pop up de confirmacion mejor (Quitar background nativo)
-> - Mejorar codigo antes de la entraga tanto scss como logica front
-> - No permitir repetir id en el json
-
-## Posibles problemas conocidos
-
-> [!Warning]
-> Adjuntamos posibles problemas que nos hemos encontrado a la hora del desarrollo
-
-<details>
-  <summary>Ver mas</summary>
-  - El buscador no podia concatenar busquedas, se ha corregido y ahora permite filtrar por nombre y luego eliminar el heroe filtrado para volver a mostrar todos. 
-</details>
-
-## Testing
-
-Para ejecutar pruebas unitarias:
-
-```bash
-npm test
-```
 
 ## Build
 
