@@ -67,7 +67,7 @@
     margin: $space-3;
   }
 
-  img {
+  .card-img {
     width: 100%;
     height: $card-img-height;
     object-fit: cover;
@@ -94,10 +94,12 @@
   padding: $space-3 $space-5;
   cursor: pointer;
   margin: $space-0;
-}
 
-.pen-edit {
-  vertical-align: middle;
+  .pen-edit {
+    width: 1.5625rem;
+    height: 1.5625rem;
+    vertical-align: middle;
+  }
 }
 
 .btn-delete {

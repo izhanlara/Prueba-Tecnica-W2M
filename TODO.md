@@ -4,7 +4,6 @@ Falta:
 Maquetar pop up de confirmacion mejor
 Pulir SCSS
 Revisar pop up error test
-
 Refactorizar el codigo para que sea mas limpio y ordenado
 
 Dia 17:
@@ -43,3 +42,7 @@ Dia 24:
 Mejoramos CSS
 Terminamos de configurar json server events add, delete, edit
 Añadir mensajes de confirmacion cuando se añade/edita/elimina un heroe
+
+Dia 25:
+Cambiamos los logos a img svg para ahorrar lineas de codigo
+Modularizamos el codigo del formulario para editar/añadir

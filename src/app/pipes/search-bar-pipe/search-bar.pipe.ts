@@ -38,12 +38,6 @@ export class FilterHeroPipe implements PipeTransform {
   }
 
   openAddHeroModal() {
-    this.modalAddService.openAddHeroModal({
-      nombre: '',
-      poderes: '',
-      ubicacion: '',
-      descripcion: '',
-      img: '',
-    });
+    this.modalAddService.openAddHeroModal();
   }
 }

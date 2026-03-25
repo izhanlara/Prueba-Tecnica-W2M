@@ -1,9 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Hero } from '../../../services/core/heroes.model';
 import { HerosJson } from '../../../services/core/heros.service';
-import { HttpClient } from '@angular/common/http';
-import { PopupModalEditComponent } from '../../../popup-component/popup-modal-component/popup-modal-component/popup-modal.component';
 
 @Injectable({
   providedIn: 'root',
@@ -13,22 +12,32 @@ export class ModalEditService {
   private readonly selectedHeroIndex = signal<number | null>(null);
   private readonly http = inject(HttpClient);
   readonly isOpen = signal(false);
-  private readonly Hero = this.herosJson.Hero;
-  public readonly message = signal<string>('Heroe editado con éxito');
-  popUpComponent = inject(PopupModalEditComponent);
+  private readonly heroList = this.herosJson.Hero;
 
-  formControlUpdate = new FormGroup({
-    nombre: new FormControl(''),
-    descripcion: new FormControl(''),
-    poderes: new FormControl(''),
-    ubicacion: new FormControl(''),
-    img: new FormControl(''),
+  readonly formControlUpdate = new FormGroup({
+    nombre: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required, Validators.minLength(2)],
+    }),
+    descripcion: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required, Validators.minLength(10)],
+    }),
+    poderes: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required, Validators.minLength(2)],
+    }),
+    ubicacion: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required, Validators.minLength(2)],
+    }),
+    img: new FormControl('', { nonNullable: true }),
   });
 
   openModalEdit(hero: Hero, index: number) {
     this.selectedHeroIndex.set(index);
-    this.formControlUpdate.setValue({
-      nombre: hero.nombre,
+    this.formControlUpdate.reset({
+      nombre: hero.nombre.toUpperCase(),
       descripcion: hero.descripcion,
       poderes: hero.poderes,
       ubicacion: hero.ubicacion,
@@ -36,30 +45,27 @@ export class ModalEditService {
     });
     this.isOpen.set(true);
   }
+
   updateHeroAsync() {
     const index = this.selectedHeroIndex();
 
-    if (index === null) {
+    if (index === null || this.formControlUpdate.invalid) {
       return;
     }
 
-    const oldHero = this.Hero()[index];
+    const oldHero = this.heroList()[index];
 
-    if (!oldHero) {
+    if (!oldHero?.id) {
       return;
     }
 
-    if (!oldHero.id) {
-      return;
-    }
-
+    const formValue = this.formControlUpdate.getRawValue();
     const updatedHero: Hero = {
-      ...oldHero,
-      nombre: this.formControlUpdate.get('nombre')?.value || oldHero.nombre,
-      descripcion: this.formControlUpdate.get('descripcion')?.value || oldHero.descripcion,
-      poderes: this.formControlUpdate.get('poderes')?.value || oldHero.poderes,
-      ubicacion: this.formControlUpdate.get('ubicacion')?.value || oldHero.ubicacion,
-      img: this.formControlUpdate.get('img')?.value || oldHero.img,
+      nombre: formValue.nombre,
+      descripcion: formValue.descripcion,
+      poderes: formValue.poderes,
+      ubicacion: formValue.ubicacion,
+      img: formValue.img || oldHero.img,
     };
 
     this.http
@@ -71,16 +77,18 @@ export class ModalEditService {
   }
 
   onFileChange(event: Event) {
-    this.formControlUpdate.get('img')?.setValue('/img/default-hero.png');
+    this.formControlUpdate.controls.img.setValue('/img/default-hero.png');
     const input = event.target as HTMLInputElement;
-    if (input?.files?.[0]) {
-      const file = input.files[0];
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.formControlUpdate.get('img')?.setValue(reader.result as string);
-      };
-      reader.readAsDataURL(file);
+    if (!input?.files?.[0]) {
+      return;
     }
+
+    const file = input.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.formControlUpdate.controls.img.setValue(reader.result as string);
+    };
+    reader.readAsDataURL(file);
   }
 
   closeModalEdit() {

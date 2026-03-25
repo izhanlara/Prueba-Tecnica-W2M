@@ -1,0 +1,71 @@
+<form [formGroup]="form()" (ngSubmit)="onSubmit()" class="form-modal-edit">
+  <button type="button" mat-icon-button (click)="onCancel()" class="btn-close-modal">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <h2>{{ title() }}</h2>
+
+  <div class="fields-row">
+    <div class="field-group">
+      <mat-label for="nombre">Nombre</mat-label>
+      <input matInput id="nombre" formControlName="nombre" type="text" />
+      @if (hasError('nombre', 'required')) {
+        <small class="field-error">El nombre es obligatorio.</small>
+      }
+      @if (hasError('nombre', 'minlength')) {
+        <small class="field-error">El nombre debe tener al menos 2 caracteres.</small>
+      }
+    </div>
+
+    <div class="field-group">
+      <mat-label for="poderes">Superpoder</mat-label>
+      <input matInput id="poderes" formControlName="poderes" type="text" />
+      @if (hasError('poderes', 'required')) {
+        <small class="field-error">El superpoder es obligatorio.</small>
+      }
+      @if (hasError('poderes', 'minlength')) {
+        <small class="field-error">El superpoder debe tener al menos 2 caracteres.</small>
+      }
+    </div>
+  </div>
+
+  <div class="field-group field-full">
+    <mat-label for="ubicacion">Ciudad</mat-label>
+    <input matInput id="ubicacion" formControlName="ubicacion" type="text" />
+    @if (hasError('ubicacion', 'required')) {
+      <small class="field-error">La ciudad es obligatoria.</small>
+    }
+    @if (hasError('ubicacion', 'minlength')) {
+      <small class="field-error">La ciudad debe tener al menos 2 caracteres.</small>
+    }
+  </div>
+
+  <div class="field-group field-full">
+    <mat-label for="descripcion">Descripción</mat-label>
+    <textarea matInput id="descripcion" formControlName="descripcion" rows="3"></textarea>
+    @if (hasError('descripcion', 'required')) {
+      <small class="field-error">La descripción es obligatoria.</small>
+    }
+    @if (hasError('descripcion', 'minlength')) {
+      <small class="field-error">La descripción debe tener al menos 10 caracteres.</small>
+    }
+  </div>
+
+  <div class="field-group field-full file-field">
+    <mat-label for="img">Elige una imagen</mat-label>
+    <div class="file-input file-input-row">
+      <mat-label for="img" class="file-input-trigger">Seleccionar archivo</mat-label>
+      <input type="file" name="img" id="img" (change)="onFileInputChange($event)" />
+      <p class="file-input-hint">{{ fileName() }}</p>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <mat-checkbox class="terminos">
+      Acepto los <span class="terms-link">Términos y condiciones</span>
+    </mat-checkbox>
+    <button type="submit" mat-raised-button color="primary" class="btn-submit">
+      {{ submitLabel() }}
+    </button>
+  </div>
+</form>

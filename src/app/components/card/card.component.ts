@@ -1,5 +1,5 @@
 import { Component, inject, Signal } from '@angular/core';
-
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { HerosJson } from '../../services/core/heros.service';
 import { Hero } from '../../services/core/heroes.model';
@@ -12,7 +12,7 @@ import { ModalDeleteService } from '../../services/core/modal-services/modal-del
   selector: 'app-card-component-hero',
   templateUrl: './card.component.html',
   styleUrls: ['../styles.components.scss', './card.component.scss'],
-  imports: [ModalEditHeroComponent, ModalDeleteHeroComponent, MatIconModule],
+  imports: [ModalEditHeroComponent, ModalDeleteHeroComponent, MatIconModule, MatButtonModule],
 })
 export class CardComponentHeroComponent {
   readonly modalEditService = inject(ModalEditService);

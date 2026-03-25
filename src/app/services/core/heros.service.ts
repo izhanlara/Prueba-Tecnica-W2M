@@ -33,7 +33,6 @@ export class HerosJson {
     }
 
     const heroIdentifier = oldHero.id ?? oldHero.nombre;
-
     this.allHeros.update((heroes) =>
       heroes.map((hero) => ((hero.id ?? hero.nombre) === heroIdentifier ? updatedHero : hero)),
     );
