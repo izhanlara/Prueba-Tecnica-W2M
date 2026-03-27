@@ -5,13 +5,12 @@ import { FilterHeroPipe } from '../../pipes/search-bar-pipe/search-bar.pipe';
 
 @Component({
   selector: 'app-search-bar',
-  standalone: true,
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss'],
   imports: [MatIconModule, ModalAddHeroComponent],
 })
 export class SearchBarComponent {
-  readonly pipe = inject(FilterHeroPipe);
+  pipe = inject(FilterHeroPipe);
 
   openAddHeroModal() {
     this.pipe.openAddHeroModal();

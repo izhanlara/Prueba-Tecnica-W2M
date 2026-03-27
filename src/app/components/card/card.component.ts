@@ -12,17 +12,22 @@ import { ModalDeleteService } from '../../services/core/modal-services/modal-del
   selector: 'app-card-component-hero',
   templateUrl: './card.component.html',
   styleUrls: ['../styles.components.scss', './card.component.scss'],
-  imports: [ModalEditHeroComponent, ModalDeleteHeroComponent, MatIconModule, MatButtonModule],
+  imports: [
+    ModalEditHeroComponent,
+    ModalDeleteHeroComponent,
+    MatIconModule,
+    MatButtonModule,
+  ],
 })
 export class CardComponentHeroComponent {
   readonly modalEditService = inject(ModalEditService);
   readonly modalDeleteService = inject(ModalDeleteService);
 
-  Hero!: Signal<Hero[]>;
+  hero!: Signal<Hero[]>;
 
   constructor(public herosJson: HerosJson) {
     this.herosJson.getInfoHeros();
-    this.Hero = this.herosJson.Hero;
+    this.hero = this.herosJson.Hero;
   }
 
   editHeroModal(hero: Hero, index: number) {

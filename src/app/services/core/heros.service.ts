@@ -32,12 +32,12 @@ export class HerosJson {
       return;
     }
 
-    const heroIdentifier = oldHero.id ?? oldHero.nombre;
+    const heroIdentifier = oldHero.id;
     this.allHeros.update((heroes) =>
-      heroes.map((hero) => ((hero.id ?? hero.nombre) === heroIdentifier ? updatedHero : hero)),
+      heroes.map((hero) => (hero.id === heroIdentifier ? updatedHero : hero)),
     );
     this.Hero.update((heroes) =>
-      heroes.map((hero) => ((hero.id ?? hero.nombre) === heroIdentifier ? updatedHero : hero)),
+      heroes.map((hero) => (hero.id === heroIdentifier ? updatedHero : hero)),
     );
   }
 }

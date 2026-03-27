@@ -1,7 +1,7 @@
 # SuperHero W2M
 
 Aplicacion web desarrollada con Angular para visualizar un catalogo de heroes, filtrarlos por nombre y editar su informacion mediante un modal.
-Desarrollada en la ultima version LST Anuglar 21, utilizando TypeScript, SCSS y Angular Material para los componentes de UI.
+Desarrollada en la ultima version Anuglar 21, utilizando TypeScript, SCSS y Angular Material para los componentes de UI.
 
 ## Descripcion
 
