@@ -1,34 +1,43 @@
-<main class="c-card">
-  <!-- TODO (maquetar) añadir componente de titulo -->
-  <section class="titles-container">
-    <p class="titleSectionCards">Héroes más allá de la imaginación</p>
-    <p class="descriptionSectionCards">
+<main class="s-card">
+  <section class="s-title__wrapper">
+    <h1 class="s-title__wrapper__text">Héroes más allá de la imaginación</h1>
+    <p class="s-title__wrapper__description">
       Desde tiempos inmemoriales, la humanidad ha soñado con figuras <br />
       extraordinarias capaces de desafiar los límites de la realidad.
     </p>
   </section>
   <div class="c-card__wrapper">
-    @for (hero of hero(); track hero.id; let i = $index) {
-      <div class="card-hero">
-        <!-- TODO (maqueta) Quitar estilos en linea -->
-        <img class="card-img" [src]="hero.img" alt="{{ hero.nombre }}" />
-        <p style="font-size: 1.5rem">
+    @for (hero of _hero(); track hero.id; let i = $index) {
+      <div class="c-card__wrapper__item">
+        <img
+          class="c-card__wrapper__item__img"
+          [src]="hero.img"
+          alt="{{ hero.nombre }}"
+        />
+        <p class="c-card__wrapper__item__name">
           {{ primeraLetraMayuscula(hero.nombre) }}
         </p>
-        <p style="font-size: 0.875rem; font-weight: bold">
+        <p class="c-card__wrapper__item__description">
           {{ hero.descripcion }}
         </p>
-        <p style="font-size: 1rem">{{ hero.poderes }}</p>
-        <p style="font-size: 1rem">{{ hero.ubicacion }}</p>
-        <div class="card-buttons">
-          <button (click)="editHeroModal(hero, i)" class="btn-edit">
-            <img src="img/pen.svg" alt="Icono de editar" class="pen-edit" />
+        <p class="c-card__wrapper__item__powers">{{ hero.poderes }}</p>
+        <p class="c-card__wrapper__item__location">{{ hero.ubicacion }}</p>
+        <div class="c-card__wrapper__item__buttons">
+          <button
+            (click)="editHeroModal(hero, i)"
+            class="c-card__wrapper__item__btn-edit"
+          >
+            <img
+              src="img/pen.svg"
+              alt="Icono de editar"
+              class="c-card__wrapper__item__pen-edit"
+            />
             Editar
           </button>
           <button
             mat-icon-button
             (click)="deleteHeroModal(i)"
-            class="btn-delete"
+            class="c-card__wrapper__item__btn-delete"
           >
             Eliminar
           </button>
@@ -38,4 +47,10 @@
   </div>
   <app-modal-edit-hero #modalEditHero />
   <app-delete-btn #modalDeleteHero />
+  @if (herosJson._allHeros().length > 12) {
+    <button class="b-btn__showMore" (click)="showBtn()">
+      Ver {{ showMore ? "menos" : "más" }}
+    </button>
+  }
+  <app-footer />
 </main>

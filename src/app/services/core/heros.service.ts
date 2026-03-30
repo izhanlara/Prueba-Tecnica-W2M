@@ -1,5 +1,8 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
+import { Observable } from 'rxjs';
+
 import { LoaderService } from './loader/loader';
 import { Hero } from './heroes.model';
 
@@ -7,36 +10,26 @@ import { Hero } from './heroes.model';
   providedIn: 'root',
 })
 export class HerosJson {
-  Hero = signal<Hero[]>([]);
-  allHeros = signal<Hero[]>([]);
+  public readonly _hero = signal<Hero[]>([]);
 
-  jsonUrl = signal('http://localhost:3000/allHeros');
-  constructor(
-    private readonly http: HttpClient,
-    private readonly loaderService: LoaderService,
-  ) {}
+  public readonly _allHeros = signal<Hero[]>([]);
 
-  getInfoHeros() {
-    this.loaderService.setLoading(true);
-    this.http.get<Hero[]>(this.jsonUrl()).subscribe((data) => {
-      this.allHeros.set(data);
-      this.Hero.set(data.slice(0, 12));
-      this.loaderService.setLoading(false);
-    });
+  public readonly loaderService = inject(LoaderService);
+
+  public readonly http = inject(HttpClient);
+
+  public getHeros(): Observable<Hero[]> {
+    return this.http.get<Hero[]>('/allHeros');
   }
 
   updateHero(index: number, updatedHero: Hero) {
-    const oldHero = this.Hero()[index];
-
-    if (!oldHero) {
-      return;
-    }
+    const oldHero = this._hero()[index];
 
     const heroIdentifier = oldHero.id;
-    this.allHeros.update((heroes) =>
+    this._allHeros.update((heroes) =>
       heroes.map((hero) => (hero.id === heroIdentifier ? updatedHero : hero)),
     );
-    this.Hero.update((heroes) =>
+    this._hero.update((heroes) =>
       heroes.map((hero) => (hero.id === heroIdentifier ? updatedHero : hero)),
     );
   }

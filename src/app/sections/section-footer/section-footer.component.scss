@@ -1,49 +1,36 @@
 @use "../../_varibales.sass" as *;
 
 //  TODO () footer siempre en el pie de pagina sin pisar el resto de elementos
-footer {
-  // // position: relative;
-  // bottom: 0;
-  // // left: 50%;
-  // // top: auto;
-  // transform: translateX(20%);
+.s-footer {
   width: 100%;
   max-width: 84.1875rem;
   color: $color-black;
   margin: auto;
-
-  .footer-elements {
-    align-items: center;
-    justify-content: space-between;
-    gap: $space-2;
-    margin-top: $space-5;
-    width: 100%;
-  }
-
   hr {
     margin: $space-2 0;
     border: 1px solid #0000001a;
   }
+}
 
-  p {
-    margin: 0;
-    font-size: $font-size-sm;
+.s-footer__wrapper {
+  display: end flex;
+  align-items: center;
+
+  &__icon {
+    float: right;
   }
 }
 
-.rrss-icons {
-  display: flex;
+.s-footer__icon {
   gap: $space-3;
   float: right;
-  margin: auto;
-  flex-shrink: 0;
+  margin: 0.125rem;
 }
 
 @media (max-width: 600px) {
   .footer-elements {
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
+    flex-direction: column;
+    gap: $space-3;
   }
 
   .rrss-icons {

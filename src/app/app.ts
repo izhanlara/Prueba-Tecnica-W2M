@@ -7,6 +7,4 @@ import { HomePage } from './pages/page-home/page-home.component';
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App {
-  protected readonly title = signal('SuperHero');
-}
+export class App {}

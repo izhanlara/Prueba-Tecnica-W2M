@@ -15,4 +15,7 @@ export class LoaderService {
   getLoading(): boolean {
     return this.loading;
   }
+  hideLoader() {
+    this.setLoading(false);
+  }
 }

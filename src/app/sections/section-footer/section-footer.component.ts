@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SocialLink } from './footer.model';
 
 @Component({
   selector: 'app-footer',
@@ -6,5 +7,38 @@ import { Component } from '@angular/core';
   styleUrls: ['./section-footer.component.scss'],
 })
 export class FooterComponent {
-  currentYear: number = new Date().getFullYear();
+  public readonly currentYear: number = new Date().getFullYear();
+
+  public readonly socialLinks: SocialLink[] = [
+    {
+      id: 1,
+      name: 'Instagram',
+      url: 'https://www.instagram.com',
+      icon: 'img/instagram.svg',
+    },
+    {
+      id: 2,
+      name: 'Youtube',
+      url: 'https://www.youtube.com',
+      icon: 'img/youtube.svg',
+    },
+    {
+      id: 3,
+      name: 'LinkedIn',
+      url: 'https://www.linkedin.com',
+      icon: 'img/linkedin.svg',
+    },
+    {
+      id: 4,
+      name: 'Facebook',
+      url: 'https://www.facebook.com',
+      icon: 'img/facebook.svg',
+    },
+    {
+      id: 5,
+      name: 'Twitter',
+      url: 'https://www.twitter.com',
+      icon: 'img/twitter.svg',
+    },
+  ];
 }

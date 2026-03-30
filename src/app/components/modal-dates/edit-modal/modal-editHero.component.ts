@@ -1,11 +1,10 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormComponent } from '../../form/form.component';
 import { ModalEditService } from '../../../services/core/modal-services/modal-edit.service';
 
 @Component({
   selector: 'app-modal-edit-hero',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './edit-modalHero.html',
   styleUrls: [
     '../modal-styles.scss',

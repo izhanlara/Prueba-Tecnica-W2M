@@ -150,3 +150,30 @@ Los artefactos se generan en la carpeta dist/.
 - [Angular Material](https://material.angular.io/)
 - [Anuglar Icons](https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/)
 - [Json Server](https://www.npmjs.com/package/json-server)
+
+---
+
+### Cambios tras revision:
+
+Front:
+
+Quitamos del package.json:
+
+- Prettier
+- "packageManager": "npm@11.9.0"
+
+- heros.service: Quitamos const heroIdentifier = oldHero.id ?? oldHero.nombre;
+  Y cambiomos por const heroIdentifier = oldHero.id;
+
+Usamos fontIcon="add", lo cual permite que podamos quitar el texto del boton y poner el icono direcamtnte con fontIcon.
+
+Añadimos ruta por proxy.config.js
+
+Añadimos carpetas relativas con @ para no tener que hacer ../../ en las importaciones.
+Añadimos al tsconfig.json, "baseUrl": "./", para que tengamos las rutas relativas desde la raiz del proyecto.
+
+footer: añadimos for para renderizar los iconos de redes sociales, y asi evitar repetir codigo
+
+Maqueta:
+
+---

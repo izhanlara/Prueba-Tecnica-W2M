@@ -1,41 +1,97 @@
-@use '../../_varibales.sass' as *;
+@use "../../_varibales.sass" as *;
 
-.card-component-section {
+.s-title__wrapper {
+  text-align: center;
+  color: $btn-color;
+  font-weight: normal;
+  margin-bottom: &__text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: $space-4;
+  }
+  &__description {
+    font-size: 1.125rem;
+    color: black;
+  }
+}
+
+.c-card__wrapper {
   display: grid;
   grid-template-columns: repeat(4, minmax(15.625rem, 1fr));
   gap: 1.25rem;
   max-width: 75rem;
   width: 100%;
   margin: 0 auto;
-}
 
-.card-hero {
-  width: 100%;
-  height: 100%;
-  background-color: $color-white;
-  border-radius: 0.625rem;
-  overflow: hidden;
-
-  p {
-    margin: $space-3;
-  }
-
-  img {
-    width: 100%;
-    object-fit: cover;
-  }
-}
-
-@media (max-width: 1024px) {
-  .card-component-section {
-    grid-template-columns: repeat(2, minmax(13rem, 1fr));
-  }
-}
-
-@media (max-width: 480px) {
-  .card-component-section {
+  @media (max-width: 1024px) {
     grid-template-columns: 1fr;
     padding: 0 $space-4;
     max-width: 100%;
+
+    &__img {
+      width: 100%;
+    }
   }
+
+  &__item {
+    background-color: $color-white;
+    border-radius: 0.625rem;
+    padding: $space-4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  &__item__img {
+    width: 100%;
+    object-fit: cover;
+  }
+  &__item__name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: $space-2;
+  }
+  &__item__description {
+    font-size: 0.875rem;
+    font-weight: bold;
+  }
+  &__item__powers {
+    font-size: 1rem;
+  }
+  &__item__location {
+    font-size: 1rem;
+  }
+  &__item__buttons {
+    margin-top: auto;
+    display: flex;
+    gap: $space-2;
+  }
+  &__item__btn-edit {
+    background-color: $color-primary;
+    color: $color-white;
+    border: none;
+    padding: $space-2 $space-4;
+    border-radius: 0.625rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  &__item__btn-delete {
+    color: black;
+    border: none;
+    padding: $space-2 $space-4;
+    border-radius: 0.625rem;
+    cursor: pointer;
+  }
+}
+
+.b-btn__showMore {
+  background-color: $btn-color;
+  color: white;
+  border: none;
+  padding: $space-2 $space-4;
+  border-radius: 0.625rem;
+  cursor: pointer;
+  margin: $space-4 auto;
+  display: block;
 }

@@ -20,7 +20,7 @@ export class ModalDeleteService {
   confirmDelete() {
     const index = this.selectedHeroIndex();
     if (index !== null) {
-      const heroToDelete = this.herosJson.Hero()[index];
+      const heroToDelete = this.herosJson._hero()[index];
 
       if (!heroToDelete.id) {
         this.snackBar.open('Error', '', {
@@ -30,17 +30,19 @@ export class ModalDeleteService {
         return;
       }
 
-      this.http.delete(`http://localhost:3000/allHeros/${heroToDelete.id}`).subscribe(() => {
-        this.snackBar.open('Héroe Eliminado con éxito', '', {
-          duration: 3000,
-          panelClass: ['popup-modal-done'],
+      this.http
+        .delete(`http://localhost:3000/allHeros/${heroToDelete.id}`)
+        .subscribe(() => {
+          this.snackBar.open('Héroe Eliminado con éxito', '', {
+            duration: 3000,
+            panelClass: ['popup-modal-done'],
+          });
+          const updatedAllHeroes = this.herosJson
+            ._allHeros()
+            .filter((hero) => hero.id !== heroToDelete.id);
+          this.herosJson._allHeros.set(updatedAllHeroes);
+          this.herosJson._hero.set(updatedAllHeroes.slice(0, 12));
         });
-        const updatedAllHeroes = this.herosJson
-          .allHeros()
-          .filter((hero) => hero.id !== heroToDelete.id);
-        this.herosJson.allHeros.set(updatedAllHeroes);
-        this.herosJson.Hero.set(updatedAllHeroes.slice(0, 12));
-      });
     }
     this.closeModalDelete();
   }

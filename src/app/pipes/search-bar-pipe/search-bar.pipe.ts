@@ -1,11 +1,7 @@
-import { Injectable, inject, Pipe } from '@angular/core';
+import { inject, Pipe, PipeTransform, Injectable } from '@angular/core';
 import { ModalEditService } from '../../services/core/modal-services/modal-edit.service';
 import { ModalAddService } from '../../services/core/modal-services/modal-add.service';
 import { HerosJson } from '../../services/core/heros.service';
-
-interface PipeTransform {
-  transform(value: any, ...args: any[]): any;
-}
 
 @Pipe({
   name: 'filterHero',
@@ -16,25 +12,25 @@ interface PipeTransform {
 export class FilterHeroPipe implements PipeTransform {
   readonly modalEditService = inject(ModalEditService);
   readonly modalAddService = inject(ModalAddService);
-  constructor(public herosJson: HerosJson) {
-    this.herosJson.getInfoHeros();
-  }
+  readonly herosJson = inject(HerosJson);
 
-  transform(value: any[], ...args: any[]) {
-    const searchTerm = args[0];
+  // ! Fix () el btn de showMore sale cuando le das a buscar input vacio
+  transform(value: string): string {
+    const searchTerm = value.trim();
     if (!searchTerm) {
-      this.herosJson.getInfoHeros();
-      return value;
+      this.herosJson._hero.set(this.herosJson._allHeros());
     }
     const filteredHeroes = this.herosJson
-      .allHeros()
-      .filter((hero) => hero.nombre.toLowerCase().includes(searchTerm.toLowerCase()));
-    this.herosJson.Hero.set(filteredHeroes);
-    return filteredHeroes;
+      ._allHeros()
+      .filter((hero) =>
+        hero.nombre.toLowerCase().includes(searchTerm.toLowerCase()),
+      );
+    this.herosJson._hero.set(filteredHeroes);
+    return value;
   }
 
   filterHero(searchTerm: string) {
-    this.transform(this.herosJson.Hero(), searchTerm);
+    return this.transform(searchTerm);
   }
 
   openAddHeroModal() {

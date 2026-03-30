@@ -13,7 +13,7 @@ export class ModalEditService {
   private readonly selectedHeroIndex = signal<number | null>(null);
   private readonly http = inject(HttpClient);
   readonly isOpen = signal(false);
-  private readonly heroList = this.herosJson.Hero;
+  private readonly heroList = this.herosJson._hero;
   readonly snackBar = inject(MatSnackBar);
 
   readonly formControlUpdate = new FormGroup({
@@ -71,6 +71,7 @@ export class ModalEditService {
     };
 
     this.http
+      // TODO () revisar url añadiendolo con signal
       .put<Hero>(`http://localhost:3000/allHeros/${oldHero.id}`, updatedHero)
       .subscribe((savedHero) => {
         this.herosJson.updateHero(index, savedHero);
