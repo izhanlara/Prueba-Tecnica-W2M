@@ -6,10 +6,7 @@ import { FormComponent } from '@form/form.component';
 @Component({
   selector: 'app-modal-edit-hero',
   templateUrl: './edit-modalHero.html',
-  styleUrls: [
-    '../modal-styles.scss',
-    '../../../popup-component/popup-modal-component/popup-modal.component.scss',
-  ],
+  styleUrls: ['../modal-styles.scss'],
   imports: [FormComponent],
 })
 export class ModalEditHeroComponent {

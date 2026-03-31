@@ -1,20 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Hero } from '../../../services/core/heroes.model';
-import { HerosJson } from '../../../services/core/heros.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Hero } from '@services/core/heroes.model';
+import { HerosJson } from '@services/core/heros.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ModalEditService {
-  private readonly herosJson = inject(HerosJson);
+  private readonly serviceHeros = inject(HerosJson);
   private readonly selectedHeroIndex = signal<number | null>(null);
   private readonly http = inject(HttpClient);
   readonly isOpen = signal(false);
-  private readonly heroList = this.herosJson._hero;
-  readonly snackBar = inject(MatSnackBar);
 
   public readonly formControlUpdate = new FormGroup({
     name: new FormControl('', {
@@ -50,7 +47,7 @@ export class ModalEditService {
 
   public updateHero() {
     const index = this.selectedHeroIndex();
-    const oldHero = this.heroList()[index!];
+    const oldHero = this.serviceHeros._hero()[index!];
 
     const formValue = this.formControlUpdate.getRawValue();
     const updatedHero: Hero = {
@@ -60,15 +57,10 @@ export class ModalEditService {
       location: formValue.location,
       img: formValue.img || oldHero.img,
     };
-    // TODO () revisar donde añadir este snackBar
-    // this.snackBar.open('Héroe editado con éxito', '', {
-    //   duration: 3000,
-    //   panelClass: ['popup-modal-done'],
-    // });
     this.http
       .put<Hero>(`/allHeros/${oldHero.id}`, updatedHero)
       .subscribe((savedHero) => {
-        this.herosJson.updateHero(index!, savedHero);
+        this.serviceHeros.updateHero(index!, savedHero);
         this.closeModalEdit();
       });
   }

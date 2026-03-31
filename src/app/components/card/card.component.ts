@@ -57,11 +57,11 @@ export class CardComponent implements OnInit {
     this.modalDeleteService.isOpen.set(true);
   }
 
-  public upperCase(name: string): string {
-    if (!name) {
-      return '';
+  public upperCase(name: string) {
+    if (name) {
+      return name.charAt(0).toUpperCase() + name.slice(1);
     }
-    return name.charAt(0).toUpperCase() + name.slice(1);
+    return '';
   }
 
   public showBtn(): Observable<Hero[]> {

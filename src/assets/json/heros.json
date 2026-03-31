@@ -1,7 +1,7 @@
 {
   "allHeros": [
     {
-      "name": "WONDER WOMAN ",
+      "name": "Wonder Woman ",
       "description": "La Capitana Marvel es una guerrera extraterrestre con habilidades sobrehumanas.",
       "powers": "Curación acelerada e inmortal",
       "location": "New York, USA.",
@@ -10,8 +10,8 @@
     },
     {
       "name": "Hulk",
-      "powers": "Super fuerte y enojón",
       "description": "Hulk es un ser colosal con una inmensa fuerza que prácticamente carece de límites.",
+      "powers": "Super fuerte y enojón",
       "location": "Barcelona, Esp.",
       "img": "img/hulk.png",
       "id": "36bd"

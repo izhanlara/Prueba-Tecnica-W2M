@@ -3,12 +3,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Hero } from '../heroes.model';
+import { HerosJson } from '@core/heros.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ModalAddService {
+  // TODO () quitar isOpen
   readonly isOpen = signal(false);
+  private readonly herosService = inject(HerosJson);
   private readonly http = inject(HttpClient);
   private readonly snackBar = inject(MatSnackBar);
 
@@ -37,30 +40,19 @@ export class ModalAddService {
   }
 
   public onSubmit() {
-    if (this.formControlAdd.invalid) {
-      this.snackBar.open('Error', '', {
-        duration: 3000,
-        panelClass: ['popup-modal-error'],
+    if (this.formControlAdd.valid) {
+      const formValue = this.formControlAdd.getRawValue();
+      const newHero: Hero = {
+        name: formValue.name,
+        powers: formValue.powers,
+        location: formValue.location,
+        description: formValue.description,
+        img: formValue.img || 'img/default-image-url.png',
+      };
+      this.herosService.addHero(newHero).subscribe(() => {
+        this.closeModalAdd();
       });
-      return;
     }
-
-    const formValue = this.formControlAdd.getRawValue();
-    const newHero: Hero = {
-      name: formValue.name,
-      powers: formValue.powers,
-      location: formValue.location,
-      description: formValue.description,
-      img: formValue.img || 'img/default-image-url.png',
-    };
-
-    this.http.post('http://localhost:3000/allHeros', newHero).subscribe(() => {
-      this.snackBar.open('Héroe añadido con éxito', '', {
-        duration: 3000,
-        panelClass: ['popup-modal-done'],
-      });
-      this.closeModalAdd();
-    });
   }
 
   public onFileChange(event: Event) {
@@ -78,6 +70,7 @@ export class ModalAddService {
   }
 
   public closeModalAdd() {
+    this.isOpen.set(false);
     this.formControlAdd.reset({
       name: '',
       powers: '',
@@ -85,6 +78,5 @@ export class ModalAddService {
       description: '',
       img: 'img/default-image-url.png',
     });
-    this.isOpen.set(false);
   }
 }

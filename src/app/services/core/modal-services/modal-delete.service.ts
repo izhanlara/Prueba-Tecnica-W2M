@@ -12,19 +12,19 @@ export class ModalDeleteService {
   public readonly message = signal<string>('Heroe Eliminado con éxito');
   public readonly popUpComponent = inject(PopupModalEditComponent);
   public readonly snackBar = inject(MatSnackBar);
-  private readonly herosJson = inject(HerosJson);
+  private readonly serviceHeros = inject(HerosJson);
 
   // TODO () revisar tipado
   public confirmDelete() {
     const index = this.selectedHeroIndex();
     if (index) {
-      const heroToDelete = this.herosJson._hero()[index];
-      this.herosJson.deleteHero(heroToDelete.id).subscribe(() => {
-        const updatedAllHeroes = this.herosJson
+      const heroToDelete = this.serviceHeros._hero()[index];
+      this.serviceHeros.deleteHero(heroToDelete.id).subscribe(() => {
+        const updatedAllHeroes = this.serviceHeros
           ._allHeros()
           .filter((hero) => hero.id !== heroToDelete.id);
-        this.herosJson._allHeros.set(updatedAllHeroes);
-        this.herosJson._hero.set(updatedAllHeroes.slice(0, 12));
+        this.serviceHeros._allHeros.set(updatedAllHeroes);
+        this.serviceHeros._hero.set(updatedAllHeroes.slice(0, 12));
       });
     }
     this.closeModalDelete();
