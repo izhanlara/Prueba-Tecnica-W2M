@@ -1,8 +1,8 @@
 export interface Hero {
   id?: string;
-  nombre: string;
-  poderes: string;
-  descripcion: string;
-  ubicacion: string;
+  name: string;
+  powers: string;
+  description: string;
+  location: string;
   img: string;
 }

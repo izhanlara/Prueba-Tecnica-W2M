@@ -7,21 +7,21 @@
     </p>
   </section>
   <div class="c-card__wrapper">
-    @for (hero of _hero(); track hero.id; let i = $index) {
+    @for (hero of herosJson._hero(); track hero.id; let i = $index) {
       <div class="c-card__wrapper__item">
         <img
           class="c-card__wrapper__item__img"
           [src]="hero.img"
-          alt="{{ hero.nombre }}"
+          alt="{{ hero.name }}"
         />
         <p class="c-card__wrapper__item__name">
-          {{ primeraLetraMayuscula(hero.nombre) }}
+          {{ upperCase(hero.name) }}
         </p>
         <p class="c-card__wrapper__item__description">
-          {{ hero.descripcion }}
+          {{ hero.description }}
         </p>
-        <p class="c-card__wrapper__item__powers">{{ hero.poderes }}</p>
-        <p class="c-card__wrapper__item__location">{{ hero.ubicacion }}</p>
+        <p class="c-card__wrapper__item__powers">{{ hero.powers }}</p>
+        <p class="c-card__wrapper__item__location">{{ hero.location }}</p>
         <div class="c-card__wrapper__item__buttons">
           <button
             (click)="editHeroModal(hero, i)"
@@ -29,7 +29,7 @@
           >
             <img
               src="img/pen.svg"
-              alt="Icono de editar"
+              alt="Edit Icon"
               class="c-card__wrapper__item__pen-edit"
             />
             Editar

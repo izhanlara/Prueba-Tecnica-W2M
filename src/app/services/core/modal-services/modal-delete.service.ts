@@ -1,6 +1,5 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HerosJson } from '../../../services/core/heros.service';
+import { HerosJson } from '@services/core/heros.service';
 import { PopupModalEditComponent } from '../../../popup-component/popup-modal-component/popup-modal-component/popup-modal.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -8,46 +7,30 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providedIn: 'root',
 })
 export class ModalDeleteService {
-  http = inject(HttpClient);
-  private readonly herosJson = inject(HerosJson);
   public readonly selectedHeroIndex = signal<number | null>(null);
   public readonly isOpen = signal(false);
   public readonly message = signal<string>('Heroe Eliminado con éxito');
-  popUpComponent = inject(PopupModalEditComponent);
+  public readonly popUpComponent = inject(PopupModalEditComponent);
+  public readonly snackBar = inject(MatSnackBar);
+  private readonly herosJson = inject(HerosJson);
 
-  snackBar = inject(MatSnackBar);
-
-  confirmDelete() {
+  // TODO () revisar tipado
+  public confirmDelete(id: number | string | undefined) {
     const index = this.selectedHeroIndex();
-    if (index !== null) {
+    if (index) {
       const heroToDelete = this.herosJson._hero()[index];
-
-      if (!heroToDelete.id) {
-        this.snackBar.open('Error', '', {
-          duration: 3000,
-          panelClass: ['popup-modal-error'],
-        });
-        return;
-      }
-
-      this.http
-        .delete(`http://localhost:3000/allHeros/${heroToDelete.id}`)
-        .subscribe(() => {
-          this.snackBar.open('Héroe Eliminado con éxito', '', {
-            duration: 3000,
-            panelClass: ['popup-modal-done'],
-          });
-          const updatedAllHeroes = this.herosJson
-            ._allHeros()
-            .filter((hero) => hero.id !== heroToDelete.id);
-          this.herosJson._allHeros.set(updatedAllHeroes);
-          this.herosJson._hero.set(updatedAllHeroes.slice(0, 12));
-        });
+      this.herosJson.deleteHero(heroToDelete.id).subscribe(() => {
+        const updatedAllHeroes = this.herosJson
+          ._allHeros()
+          .filter((hero) => hero.id !== heroToDelete.id);
+        this.herosJson._allHeros.set(updatedAllHeroes);
+        this.herosJson._hero.set(updatedAllHeroes.slice(0, 12));
+      });
     }
     this.closeModalDelete();
   }
 
-  closeModalDelete() {
+  public closeModalDelete() {
     this.isOpen.set(false);
   }
 }

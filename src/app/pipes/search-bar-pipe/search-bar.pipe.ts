@@ -23,7 +23,7 @@ export class FilterHeroPipe implements PipeTransform {
     const filteredHeroes = this.herosJson
       ._allHeros()
       .filter((hero) =>
-        hero.nombre.toLowerCase().includes(searchTerm.toLowerCase()),
+        hero.name.toLowerCase().includes(searchTerm.toLowerCase()),
       );
     this.herosJson._hero.set(filteredHeroes);
     return value;

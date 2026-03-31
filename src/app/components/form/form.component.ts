@@ -1,16 +1,23 @@
-import { ChangeDetectionStrategy, Component, computed, input, output, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+  output,
+  signal,
+} from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
 
 export type HeroFormGroup = FormGroup<{
-  nombre: FormControl<string>;
-  poderes: FormControl<string>;
-  ubicacion: FormControl<string>;
-  descripcion: FormControl<string>;
+  name: FormControl<string>;
+  powers: FormControl<string>;
+  location: FormControl<string>;
+  description: FormControl<string>;
   img: FormControl<string>;
 }>;
 
@@ -36,7 +43,9 @@ export class FormComponent {
   readonly fileChange = output<Event>();
 
   readonly fileName = signal('Sin archivos seleccionados');
-  readonly title = computed(() => (this.mode() === 'add' ? 'Crear nuevo héroe' : 'Editar héroe'));
+  readonly title = computed(() =>
+    this.mode() === 'add' ? 'Crear nuevo héroe' : 'Editar héroe',
+  );
   readonly submitLabel = computed(() =>
     this.mode() === 'add' ? 'Crear héroe' : 'Guardar cambios',
   );

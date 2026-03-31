@@ -174,6 +174,8 @@ Añadimos al tsconfig.json, "baseUrl": "./", para que tengamos las rutas relativ
 
 footer: añadimos for para renderizar los iconos de redes sociales, y asi evitar repetir codigo
 
+Quitamos resets innecesarios en el servicio de modal add, ya que al abrir el modal se resetea el formulario, y al cerrar el modal se resetea tambien, lo cual es redundante.
+
 Maqueta:
 
 ---

@@ -1,5 +1,10 @@
 <form [formGroup]="form()" (ngSubmit)="onSubmit()" class="form-modal-edit">
-  <button type="button" mat-icon-button (click)="onCancel()" class="btn-close-modal">
+  <button
+    type="button"
+    mat-icon-button
+    (click)="onCancel()"
+    class="btn-close-modal"
+  >
     <mat-icon>close</mat-icon>
   </button>
 
@@ -8,54 +13,74 @@
   <div class="fields-row">
     <div class="field-group">
       <mat-label for="nombre">Nombre</mat-label>
-      <input matInput id="nombre" formControlName="nombre" type="text" />
-      @if (hasError('nombre', 'required')) {
+      <input matInput id="nombre" formControlName="name" type="text" />
+      @if (hasError("name", "required")) {
         <small class="field-error">El nombre es obligatorio.</small>
       }
-      @if (hasError('nombre', 'minlength')) {
-        <small class="field-error">El nombre debe tener al menos 2 caracteres.</small>
+      @if (hasError("name", "minlength")) {
+        <small class="field-error"
+          >El nombre debe tener al menos 2 caracteres.</small
+        >
       }
     </div>
 
     <div class="field-group">
       <mat-label for="poderes">Superpoder</mat-label>
-      <input matInput id="poderes" formControlName="poderes" type="text" />
-      @if (hasError('poderes', 'required')) {
+      <input matInput id="poderes" formControlName="powers" type="text" />
+      @if (hasError("powers", "required")) {
         <small class="field-error">El superpoder es obligatorio.</small>
       }
-      @if (hasError('poderes', 'minlength')) {
-        <small class="field-error">El superpoder debe tener al menos 2 caracteres.</small>
+      @if (hasError("powers", "minlength")) {
+        <small class="field-error"
+          >El superpoder debe tener al menos 2 caracteres.</small
+        >
       }
     </div>
   </div>
 
   <div class="field-group field-full">
     <mat-label for="ubicacion">Ciudad</mat-label>
-    <input matInput id="ubicacion" formControlName="ubicacion" type="text" />
-    @if (hasError('ubicacion', 'required')) {
+    <input matInput id="ubicacion" formControlName="location" type="text" />
+    @if (hasError("location", "required")) {
       <small class="field-error">La ciudad es obligatoria.</small>
     }
-    @if (hasError('ubicacion', 'minlength')) {
-      <small class="field-error">La ciudad debe tener al menos 2 caracteres.</small>
+    @if (hasError("location", "minlength")) {
+      <small class="field-error"
+        >La ciudad debe tener al menos 2 caracteres.</small
+      >
     }
   </div>
 
   <div class="field-group field-full">
     <mat-label for="descripcion">Descripción</mat-label>
-    <textarea matInput id="descripcion" formControlName="descripcion" rows="3"></textarea>
-    @if (hasError('descripcion', 'required')) {
+    <textarea
+      matInput
+      id="descripcion"
+      formControlName="description"
+      rows="3"
+    ></textarea>
+    @if (hasError("description", "required")) {
       <small class="field-error">La descripción es obligatoria.</small>
     }
-    @if (hasError('descripcion', 'minlength')) {
-      <small class="field-error">La descripción debe tener al menos 10 caracteres.</small>
+    @if (hasError("description", "minlength")) {
+      <small class="field-error"
+        >La descripción debe tener al menos 10 caracteres.</small
+      >
     }
   </div>
 
   <div class="field-group field-full file-field">
     <mat-label for="img">Elige una imagen</mat-label>
     <div class="file-input file-input-row">
-      <mat-label for="img" class="file-input-trigger">Seleccionar archivo</mat-label>
-      <input type="file" name="img" id="img" (change)="onFileInputChange($event)" />
+      <mat-label for="img" class="file-input-trigger"
+        >Seleccionar archivo</mat-label
+      >
+      <input
+        type="file"
+        name="img"
+        id="img"
+        (change)="onFileInputChange($event)"
+      />
       <p class="file-input-hint">{{ fileName() }}</p>
     </div>
   </div>

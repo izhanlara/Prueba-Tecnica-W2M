@@ -1,36 +1,37 @@
-import { Injectable, signal, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { inject, Injectable, signal } from '@angular/core';
 import { Observable } from 'rxjs';
-
-import { LoaderService } from './loader/loader';
 import { Hero } from './heroes.model';
+import { LoaderService } from './loader/loader';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HerosJson {
-  public readonly _hero = signal<Hero[]>([]);
-
+  // TODO () Quitar signal de storage
+  public _hero = signal<Hero[]>([]);
   public readonly _allHeros = signal<Hero[]>([]);
-
   public readonly loaderService = inject(LoaderService);
-
   public readonly http = inject(HttpClient);
 
+  private readonly apiUrl = '/allHeros';
+
   public getHeros(): Observable<Hero[]> {
-    return this.http.get<Hero[]>('/allHeros');
+    return this.http.get<Hero[]>(this.apiUrl);
   }
-
-  updateHero(index: number, updatedHero: Hero) {
-    const oldHero = this._hero()[index];
-
-    const heroIdentifier = oldHero.id;
-    this._allHeros.update((heroes) =>
-      heroes.map((hero) => (hero.id === heroIdentifier ? updatedHero : hero)),
+  // TODO () implmentar ruta en servicio update
+  public updateHero(index: number, updatedHero: Hero) {
+    return this.http.put<Hero>(
+      `${this.apiUrl}/update/${updatedHero.id}`,
+      updatedHero,
     );
-    this._hero.update((heroes) =>
-      heroes.map((hero) => (hero.id === heroIdentifier ? updatedHero : hero)),
-    );
+  }
+  // TODO (Done) revisar tipado
+  public deleteHero(id: number | string | undefined) {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+  // TODO () implmentar ruta en servicio add
+  public addHero(newHero: Hero) {
+    return this.http.post<Hero>(`${this.apiUrl}/add`, newHero);
   }
 }

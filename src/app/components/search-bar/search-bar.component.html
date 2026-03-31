@@ -1,22 +1,26 @@
-<div class="search-bar-container">
-  <div class="search-container">
+<section class="s-search-bar__container">
+  <div class="s-search-bar">
     <input
       matInput
       type="search"
       placeholder="Busca un Héroe..."
       #searchInput
-      class="bar-input"
+      class="s-search-bar__input"
     />
     <button
       type="button"
       (click)="pipe.filterHero(searchInput.value)"
-      class="btn-search"
+      class="s-search-bar__btn-search"
     >
       <mat-icon>search</mat-icon>
     </button>
   </div>
-  <button mat-icon-button (click)="openAddHeroModal()" class="btn-add">
+  <button
+    mat-icon-button
+    (click)="openAddHeroModal()"
+    class="s-search-bar__btn-add"
+  >
     <mat-icon fontIcon="add"></mat-icon>Añadir Heroe
   </button>
   <app-modal-add-hero #modalAddHero />
-</div>
+</section>

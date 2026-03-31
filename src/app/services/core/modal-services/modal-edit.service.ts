@@ -16,70 +16,64 @@ export class ModalEditService {
   private readonly heroList = this.herosJson._hero;
   readonly snackBar = inject(MatSnackBar);
 
-  readonly formControlUpdate = new FormGroup({
-    nombre: new FormControl('', {
+  public readonly formControlUpdate = new FormGroup({
+    name: new FormControl('', {
       nonNullable: true,
       validators: [Validators.required, Validators.minLength(2)],
     }),
-    descripcion: new FormControl('', {
+    description: new FormControl('', {
       nonNullable: true,
       validators: [Validators.required, Validators.minLength(10)],
     }),
-    poderes: new FormControl('', {
+    powers: new FormControl('', {
       nonNullable: true,
       validators: [Validators.required, Validators.minLength(2)],
     }),
-    ubicacion: new FormControl('', {
+    location: new FormControl('', {
       nonNullable: true,
       validators: [Validators.required, Validators.minLength(2)],
     }),
     img: new FormControl('', { nonNullable: true }),
   });
 
-  openModalEdit(hero: Hero, index: number) {
+  public openModalEdit(hero: Hero, index: number) {
     this.selectedHeroIndex.set(index);
-    this.formControlUpdate.reset({
-      nombre: hero.nombre.toUpperCase(),
-      descripcion: hero.descripcion,
-      poderes: hero.poderes,
-      ubicacion: hero.ubicacion,
+    this.formControlUpdate.setValue({
+      name: hero.name.toUpperCase(),
+      description: hero.description,
+      powers: hero.powers,
+      location: hero.location,
       img: hero.img,
     });
     this.isOpen.set(true);
   }
 
-  updateHeroAsync() {
+  public updateHero() {
     const index = this.selectedHeroIndex();
-
-    if (index === null || this.formControlUpdate.invalid) {
-      return;
-    }
-
-    const oldHero = this.heroList()[index];
-
-    if (!oldHero?.id) {
-      return;
-    }
+    const oldHero = this.heroList()[index!];
 
     const formValue = this.formControlUpdate.getRawValue();
     const updatedHero: Hero = {
-      nombre: formValue.nombre,
-      descripcion: formValue.descripcion,
-      poderes: formValue.poderes,
-      ubicacion: formValue.ubicacion,
+      name: formValue.name,
+      description: formValue.description,
+      powers: formValue.powers,
+      location: formValue.location,
       img: formValue.img || oldHero.img,
     };
-
+    // TODO () revisar donde añadir este snackBar
+    // this.snackBar.open('Héroe editado con éxito', '', {
+    //   duration: 3000,
+    //   panelClass: ['popup-modal-done'],
+    // });
     this.http
-      // TODO () revisar url añadiendolo con signal
-      .put<Hero>(`http://localhost:3000/allHeros/${oldHero.id}`, updatedHero)
+      .put<Hero>(`/allHeros/${oldHero.id}`, updatedHero)
       .subscribe((savedHero) => {
-        this.herosJson.updateHero(index, savedHero);
+        this.herosJson.updateHero(index!, savedHero);
         this.closeModalEdit();
       });
   }
 
-  onFileChange(event: Event) {
+  public onFileChange(event: Event) {
     this.formControlUpdate.controls.img.setValue('/img/default-hero.png');
     const input = event.target as HTMLInputElement;
     if (!input?.files?.[0]) {
@@ -94,21 +88,11 @@ export class ModalEditService {
     reader.readAsDataURL(file);
   }
 
-  onSubmit() {
-    if (this.formControlUpdate.invalid) {
-      this.snackBar.open('Error', '', {
-        duration: 3000,
-        panelClass: ['popup-modal-error'],
-      });
-      return;
-    }
-    this.updateHeroAsync();
-    this.snackBar.open('Héroe editado con éxito', '', {
-      duration: 3000,
-      panelClass: ['popup-modal-done'],
-    });
+  public onSubmit() {
+    this.updateHero();
   }
-  closeModalEdit() {
+
+  public closeModalEdit() {
     this.isOpen.set(false);
     this.selectedHeroIndex.set(null);
   }

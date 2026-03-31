@@ -1,17 +1,18 @@
 @use "../../_varibales.sass" as *;
 
 .s-title__wrapper {
+  font-size: $font-size-lg;
+  color: $color-primary;
   text-align: center;
-  color: $btn-color;
-  font-weight: normal;
-  margin-bottom: &__text {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: $space-4;
+
+  &__text {
+    font-size: $font-size-xl;
+    font-weight: normal;
+    margin-bottom: $space-3;
   }
   &__description {
-    font-size: 1.125rem;
-    color: black;
+    font-size: $font-size-md;
+    color: $color-text-dark;
   }
 }
 
@@ -39,16 +40,17 @@
     padding: $space-4;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    text-align: left;
   }
+
   &__item__img {
+    margin: 0 auto $space-4;
     width: 100%;
+    height: 14.9064rem;
     object-fit: cover;
   }
   &__item__name {
     font-size: 1.5rem;
-    font-weight: bold;
     margin-bottom: $space-2;
   }
   &__item__description {
@@ -65,23 +67,18 @@
     margin-top: auto;
     display: flex;
     gap: $space-2;
+    border: none;
+    padding: $space-2 $space-4;
+    border-radius: 0.625rem;
+    cursor: pointer;
   }
   &__item__btn-edit {
-    background-color: $color-primary;
-    color: $color-white;
-    border: none;
-    padding: $space-2 $space-4;
-    border-radius: 0.625rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
+    background-color: $btn-color;
+    color: white;
   }
   &__item__btn-delete {
+    background-color: grey;
     color: black;
-    border: none;
-    padding: $space-2 $space-4;
-    border-radius: 0.625rem;
-    cursor: pointer;
   }
 }
 

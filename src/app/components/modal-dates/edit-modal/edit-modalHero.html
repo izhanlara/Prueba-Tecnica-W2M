@@ -1,13 +1,13 @@
 @if (modalEditService.isOpen()) {
-  <div class="modal-overlay">
-    <div class="modal-container">
-      <app-form-component
-        [form]="formControlUpdate"
-        mode="edit"
-        (submitForm)="onSubmit()"
-        (cancelForm)="modalEditService.closeModalEdit()"
-        (fileChange)="modalEditService.onFileChange($event)"
-      />
-    </div>
+<div class="modal-overlay">
+  <div class="modal-container">
+    <app-form-component
+      [form]="formControlUpdate"
+      mode="edit"
+      (submitForm)="onSubmit()"
+      (cancelForm)="modalEditService.closeModalEdit()"
+      (fileChange)="modalEditService.onFileChange($event)"
+    />
   </div>
+</div>
 }

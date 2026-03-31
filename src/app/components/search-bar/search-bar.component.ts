@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { ModalAddHeroComponent } from '../modal-dates/add-modal/modal-addHero.component';
 import { FilterHeroPipe } from '../../pipes/search-bar-pipe/search-bar.pipe';
+import { ModalAddHeroComponent } from '../modal-dates/add-modal/modal-addHero.component';
 
 @Component({
   selector: 'app-search-bar',
@@ -10,9 +10,9 @@ import { FilterHeroPipe } from '../../pipes/search-bar-pipe/search-bar.pipe';
   imports: [MatIconModule, ModalAddHeroComponent],
 })
 export class SearchBarComponent {
-  pipe = inject(FilterHeroPipe);
+  public readonly pipe = inject(FilterHeroPipe);
 
-  openAddHeroModal() {
+  public openAddHeroModal() {
     this.pipe.openAddHeroModal();
   }
 }

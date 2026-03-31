@@ -1,50 +1,6 @@
 @use "../_varibales.sass" as *;
 
-.s-hero {
-  position: relative;
-
-  &__wrapper__img {
-    width: 100vw;
-    height: 30rem;
-    object-fit: cover;
-  }
-
-  &__wrapper__logo {
-    position: absolute;
-    width: 15.375rem;
-    height: 6.9375rem;
-    top: 4.5rem;
-    left: 5.5rem;
-  }
-
-  &__wrapper__crud-text {
-    font-family:
-      Comic Sans MS,
-      cursive,
-      sans-serif;
-    position: absolute;
-    width: 10.875rem;
-    height: 4.8125rem;
-    top: 22.75rem;
-    left: 80rem;
-    font-size: $font-size-xl;
-    font-weight: bold;
-  }
-}
-
-.titleSectionCards,
-.descriptionSectionCards {
-  font-size: $font-size-lg;
-  color: $color-primary;
-  text-align: center;
-}
-
-.descriptionSectionCards {
-  color: $color-text-dark;
-  font-size: $font-size-md;
-  margin-bottom: $space-3;
-}
-
+// TODO () Migrar scss a nuevo archivo unico
 .card-component-section {
   grid-template-columns: repeat(4, minmax(15.625rem, 1fr));
 }
