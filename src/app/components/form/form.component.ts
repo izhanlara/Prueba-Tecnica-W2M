@@ -1,10 +1,10 @@
-import { Component, computed, input, output, signal } from '@angular/core';
+import { Component, input, output, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 export type HeroFormGroup = FormGroup<{
   name: FormControl<string>;
@@ -28,19 +28,13 @@ export type HeroFormGroup = FormGroup<{
   ],
 })
 export class FormComponent {
-  readonly form = input.required<HeroFormGroup>();
-  readonly mode = input<'add' | 'edit'>('add');
-  readonly submitForm = output<void>();
-  readonly cancelForm = output<void>();
-  readonly fileChange = output<Event>();
+  public readonly form = input.required<HeroFormGroup>();
+  public readonly mode = input<'add' | 'edit' | 'delete'>('add');
+  public readonly submitForm = output<void>();
+  public readonly cancelForm = output<void>();
+  public readonly fileChange = output<Event>();
 
-  readonly fileName = signal('Sin archivos seleccionados');
-  readonly title = computed(() =>
-    this.mode() === 'add' ? 'Crear nuevo héroe' : 'Editar héroe',
-  );
-  readonly submitLabel = computed(() =>
-    this.mode() === 'add' ? 'Crear héroe' : 'Guardar cambios',
-  );
+  public readonly fileName = signal('Sin archivos seleccionados');
 
   control(name: keyof HeroFormGroup['controls']) {
     return this.form().controls[name];

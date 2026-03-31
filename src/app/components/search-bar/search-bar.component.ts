@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { FilterHeroPipe } from '../../pipes/search-bar-pipe/search-bar.pipe';
+import { FilterHeroPipe } from '@pipes/search-bar-pipe/search-bar.pipe';
 import { ModalAddHeroComponent } from '../modal-dates/add-modal/modal-addHero.component';
 
 @Component({

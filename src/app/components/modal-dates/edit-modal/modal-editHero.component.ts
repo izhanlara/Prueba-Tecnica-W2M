@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ModalEditService } from '../../../services/core/modal-services/modal-edit.service';
-import { FormComponent } from '../../form/form.component';
+import { ModalEditService } from '@services/core/modal-services/modal-edit.service';
+import { FormComponent } from '@form/form.component';
 
 @Component({
   selector: 'app-modal-edit-hero',

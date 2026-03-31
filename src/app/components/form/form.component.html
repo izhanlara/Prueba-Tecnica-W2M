@@ -8,12 +8,20 @@
     <mat-icon fontIcon="close"></mat-icon>
   </button>
 
-  <h2>{{ title() }}</h2>
+  <h2>
+    {{
+      mode() === "add"
+        ? "Crear nuevo héroe"
+        : mode() === "edit"
+          ? "Editar héroe"
+          : "Eliminar héroe"
+    }}
+  </h2>
 
   <div class="c-form__fields-row">
     <div class="c-form__field-group">
-      <mat-label for="nombre">Nombre</mat-label>
-      <input matInput id="nombre" formControlName="name" type="text" />
+      <mat-label for="name">Nombre</mat-label>
+      <input matInput id="name" formControlName="name" type="text" />
       @if (hasError("name", "required")) {
         <small class="c-form__field-error">El nombre es obligatorio.</small>
       }
@@ -25,8 +33,8 @@
     </div>
 
     <div class="c-form__field-group">
-      <mat-label for="poderes">Superpoder</mat-label>
-      <input matInput id="poderes" formControlName="powers" type="text" />
+      <mat-label for="powers">Superpoder</mat-label>
+      <input matInput id="powers" formControlName="powers" type="text" />
       @if (hasError("powers", "required")) {
         <small class="c-form__field-error">El superpoder es obligatorio.</small>
       }
@@ -39,8 +47,8 @@
   </div>
 
   <div class="c-form__field-group c-form__field-full">
-    <mat-label for="ubicacion">Ciudad</mat-label>
-    <input matInput id="ubicacion" formControlName="location" type="text" />
+    <mat-label for="location">Ciudad</mat-label>
+    <input matInput id="location" formControlName="location" type="text" />
     @if (hasError("location", "required")) {
       <small class="c-form__field-error">La ciudad es obligatoria.</small>
     }
@@ -52,10 +60,10 @@
   </div>
 
   <div class="c-form__field-group c-form__field-full">
-    <mat-label for="descripcion">Descripción</mat-label>
+    <mat-label for="description">Descripción</mat-label>
     <textarea
       matInput
-      id="descripcion"
+      id="description"
       formControlName="description"
       rows="3"
     ></textarea>
@@ -69,7 +77,7 @@
     }
   </div>
 
-  <div class="c-form__field-group c-form__field-full file-field">
+  <div class="c-form__field-group c-form__field-full">
     <mat-label for="img">Elige una imagen</mat-label>
     <div class="c-form__file-input-row">
       <mat-label for="img" class="c-form__file-input-trigger"
@@ -95,7 +103,13 @@
       color="primary"
       class="c-form__btn-submit"
     >
-      {{ submitLabel() }}
+      {{
+        mode() === "add"
+          ? "Crear héroe"
+          : mode() === "edit"
+            ? "Guardar cambios"
+            : "Eliminar héroe"
+      }}
     </button>
   </div>
 </form>

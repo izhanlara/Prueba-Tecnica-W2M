@@ -21,7 +21,8 @@
       "@sections/*": ["src/app/sections/*"],
       "@services/*": ["src/app/services/*"],
       "@pages/*": ["src/app/pages/*"],
-      "@pipes/*": ["src/app/pipes/*"]
+      "@pipes/*": ["src/app/pipes/*"],
+      "@form/*": ["src/app/components/form/*"]
     }
   },
   "angularCompilerOptions": {

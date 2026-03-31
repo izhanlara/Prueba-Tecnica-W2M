@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HerosJson } from '@services/core/heros.service';
-import { PopupModalEditComponent } from '../../../popup-component/popup-modal-component/popup-modal-component/popup-modal.component';
+import { PopupModalEditComponent } from '../popup-modal.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({

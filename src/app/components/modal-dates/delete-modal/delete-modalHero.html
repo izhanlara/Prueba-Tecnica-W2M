@@ -1,4 +1,4 @@
-@if (modalDeleteService.isOpen()) {
+@if(modalDeleteService.isOpen()) {
 <div class="modal-overlay">
   <div class="modal-container c-modal">
     <div class="c-modal__delete">
@@ -19,11 +19,7 @@
         >
           Sí, eliminar
         </button>
-        <button
-          type="button"
-          mat-stroked-button
-          (click)="modalDeleteService.closeModalDelete()"
-        >
+        <button type="button" mat-stroked-button (click)="closeModalDelete()">
           Cancelar
         </button>
       </div>
