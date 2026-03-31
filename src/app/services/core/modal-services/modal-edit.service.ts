@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CoreModalServices } from './coreModal.service';
 import { Hero } from '@services/core/heroes.model';
 import { HerosJson } from '@services/core/heros.service';
 
@@ -11,7 +12,7 @@ export class ModalEditService {
   private readonly serviceHeros = inject(HerosJson);
   private readonly selectedHeroIndex = signal<number | null>(null);
   private readonly http = inject(HttpClient);
-  readonly isOpen = signal(false);
+  public readonly coreServices = inject(CoreModalServices);
 
   public readonly formControlUpdate = new FormGroup({
     name: new FormControl('', {
@@ -42,7 +43,7 @@ export class ModalEditService {
       location: hero.location,
       img: hero.img,
     });
-    this.isOpen.set(true);
+    this.coreServices.openModal('edit');
   }
 
   public updateHero() {
@@ -85,7 +86,7 @@ export class ModalEditService {
   }
 
   public closeModalEdit() {
-    this.isOpen.set(false);
+    this.coreServices.closeModal();
     this.selectedHeroIndex.set(null);
   }
 }

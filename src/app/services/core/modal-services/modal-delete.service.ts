@@ -1,20 +1,15 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HerosJson } from '@services/core/heros.service';
-import { PopupModalEditComponent } from '../popup-modal.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { CoreModalServices } from './coreModal.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ModalDeleteService {
   public readonly selectedHeroIndex = signal<number | null>(null);
-  public readonly isOpen = signal(false);
-  public readonly message = signal<string>('Heroe Eliminado con éxito');
-  public readonly popUpComponent = inject(PopupModalEditComponent);
-  public readonly snackBar = inject(MatSnackBar);
+  public readonly coreServices = inject(CoreModalServices);
   private readonly serviceHeros = inject(HerosJson);
 
-  // TODO () revisar tipado
   public confirmDelete() {
     const index = this.selectedHeroIndex();
     if (index) {
@@ -30,7 +25,11 @@ export class ModalDeleteService {
     this.closeModalDelete();
   }
 
+  public openModalDelete() {
+    this.coreServices.openModal('delete');
+  }
+
   public closeModalDelete() {
-    this.isOpen.set(false);
+    this.coreServices.closeModal();
   }
 }

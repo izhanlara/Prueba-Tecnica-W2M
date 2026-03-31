@@ -54,7 +54,7 @@ export class CardComponent implements OnInit {
 
   public deleteHeroModal(index: number) {
     this.modalDeleteService.selectedHeroIndex.set(index);
-    this.modalDeleteService.isOpen.set(true);
+    this.modalDeleteService.openModalDelete();
   }
 
   public upperCase(name: string) {

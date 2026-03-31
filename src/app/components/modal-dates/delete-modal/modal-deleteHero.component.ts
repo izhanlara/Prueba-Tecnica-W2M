@@ -13,7 +13,7 @@ export class ModalDeleteHeroComponent {
   public readonly modalDeleteService = inject(ModalDeleteService);
 
   openModalDelete() {
-    this.modalDeleteService.isOpen.set(true);
+    this.modalDeleteService.openModalDelete();
   }
 
   closeModalDelete() {

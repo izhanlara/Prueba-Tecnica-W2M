@@ -32,7 +32,7 @@ export class ModalAddService {
   });
 
   public openAddHeroModal() {
-    this.coreServices.openModal();
+    this.coreServices.openModal('add');
   }
 
   public onSubmit() {
