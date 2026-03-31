@@ -5,7 +5,6 @@ import { ModalDeleteHeroComponent } from '@components/modal-dates/delete-modal/m
 import { ModalEditHeroComponent } from '@components/modal-dates/edit-modal/modal-editHero.component';
 import { Hero } from '@core/heroes.model';
 import { HerosJson } from '@core/heros.service';
-import { FooterComponent } from '@sections/section-footer/section-footer.component';
 import { ModalDeleteService } from '@services/core/modal-services/modal-delete.service';
 import { ModalEditService } from '@services/core/modal-services/modal-edit.service';
 import { Observable } from 'rxjs';
@@ -19,7 +18,6 @@ import { finalize } from 'rxjs/operators';
   imports: [
     MatIconModule,
     MatButtonModule,
-    FooterComponent,
     ModalDeleteHeroComponent,
     ModalEditHeroComponent,
   ],

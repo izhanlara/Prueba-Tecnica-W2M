@@ -13,7 +13,6 @@ export class HerosJson {
   public readonly _allHeros = signal<Hero[]>([]);
   public readonly loaderService = inject(LoaderService);
   public readonly http = inject(HttpClient);
-
   private readonly apiUrl = '/allHeros';
 
   public getHeros(): Observable<Hero[]> {

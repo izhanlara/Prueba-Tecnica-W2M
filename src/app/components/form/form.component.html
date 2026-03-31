@@ -9,13 +9,7 @@
   </button>
 
   <h2>
-    {{
-      mode() === "add"
-        ? "Crear héroe"
-        : mode() === "edit"
-          ? "Editar héroe"
-          : "Eliminar héroe"
-    }}
+    {{ mode() === "add" ? "Crear héroe" : "Guardar cambios" }}
   </h2>
 
   <div class="c-form__fields-row">
@@ -78,10 +72,10 @@
   </div>
 
   <div class="c-form__field-group c-form__field-full">
-    <mat-label for="img">Elige una imagen</mat-label>
+    <label for="img">Elige una imagen</label>
     <div class="c-form__file-input-row">
-      <mat-label for="img" class="c-form__file-input-trigger"
-        >Seleccionar archivo</mat-label
+      <label for="img" class="c-form__file-input-trigger"
+        >Seleccionar archivo</label
       >
       <input
         type="file"
@@ -103,13 +97,7 @@
       color="primary"
       class="c-form__btn-submit"
     >
-      {{
-        mode() === "add"
-          ? "Crear héroe"
-          : mode() === "edit"
-            ? "Guardar cambios"
-            : "Eliminar héroe"
-      }}
+      {{ mode() === "add" ? "Crear héroe" : "Guardar cambios" }}
     </button>
   </div>
 </form>

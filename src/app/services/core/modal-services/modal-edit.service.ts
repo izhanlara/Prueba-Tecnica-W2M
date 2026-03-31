@@ -14,29 +14,29 @@ export class ModalEditService {
   private readonly http = inject(HttpClient);
   public readonly coreServices = inject(CoreModalServices);
 
-  public readonly formControlUpdate = new FormGroup({
-    name: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required, Validators.minLength(2)],
-    }),
-    description: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required, Validators.minLength(10)],
-    }),
-    powers: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required, Validators.minLength(2)],
-    }),
-    location: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required, Validators.minLength(2)],
-    }),
-    img: new FormControl('', { nonNullable: true }),
-  });
+  // public readonly formControlUpdate = new FormGroup({
+  //   name: new FormControl('', {
+  //     nonNullable: true,
+  //     validators: [Validators.required, Validators.minLength(2)],
+  //   }),
+  //   description: new FormControl('', {
+  //     nonNullable: true,
+  //     validators: [Validators.required, Validators.minLength(10)],
+  //   }),
+  //   powers: new FormControl('', {
+  //     nonNullable: true,
+  //     validators: [Validators.required, Validators.minLength(2)],
+  //   }),
+  //   location: new FormControl('', {
+  //     nonNullable: true,
+  //     validators: [Validators.required, Validators.minLength(2)],
+  //   }),
+  //   img: new FormControl('', { nonNullable: true }),
+  // });
 
   public openModalEdit(hero: Hero, index: number) {
     this.selectedHeroIndex.set(index);
-    this.formControlUpdate.setValue({
+    this.coreServices.formControlUpdate.setValue({
       name: hero.name.toUpperCase(),
       description: hero.description,
       powers: hero.powers,
@@ -50,7 +50,7 @@ export class ModalEditService {
     const index = this.selectedHeroIndex();
     const oldHero = this.serviceHeros._hero()[index!];
 
-    const formValue = this.formControlUpdate.getRawValue();
+    const formValue = this.coreServices.formControlUpdate.getRawValue();
     const updatedHero: Hero = {
       name: formValue.name,
       description: formValue.description,
@@ -66,20 +66,20 @@ export class ModalEditService {
       });
   }
 
-  public onFileChange(event: Event) {
-    this.formControlUpdate.controls.img.setValue('/img/default-hero.png');
-    const input = event.target as HTMLInputElement;
-    if (!input?.files?.[0]) {
-      return;
-    }
+  // public onFileChange(event: Event) {
+  //   this.formControlUpdate.controls.img.setValue('/img/default-hero.png');
+  //   const input = event.target as HTMLInputElement;
+  //   if (!input?.files?.[0]) {
+  //     return;
+  //   }
 
-    const file = input.files[0];
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.formControlUpdate.controls.img.setValue(reader.result as string);
-    };
-    reader.readAsDataURL(file);
-  }
+  //   const file = input.files[0];
+  //   const reader = new FileReader();
+  //   reader.onload = () => {
+  //     this.formControlUpdate.controls.img.setValue(reader.result as string);
+  //   };
+  //   reader.readAsDataURL(file);
+  // }
 
   public onSubmit() {
     this.updateHero();

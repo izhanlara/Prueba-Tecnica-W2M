@@ -1,10 +1,11 @@
-import { Component, input, output, signal } from '@angular/core';
+import { Component, input, output, signal, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { CoreModalServices } from '@services/core/modal-services/coreModal.service';
 
 export type HeroFormGroup = FormGroup<{
   name: FormControl<string>;
@@ -29,23 +30,23 @@ export type HeroFormGroup = FormGroup<{
 })
 export class FormComponent {
   public readonly form = input.required<HeroFormGroup>();
-  public readonly mode = input<'add' | 'edit' | 'delete'>('add');
-  public readonly submitForm = output<void>();
-  public readonly cancelForm = output<void>();
+  public readonly mode = input<'add' | 'edit'>('add');
+  public coreModal = inject(CoreModalServices);
   public readonly fileChange = output<Event>();
+  public readonly submitForm = output<void>();
 
-  public readonly fileName = signal('Sin archivos seleccionados');
+  public fileName = signal<string>('Sin archivos seleccionados');
 
-  control(name: keyof HeroFormGroup['controls']) {
+  public control(name: keyof HeroFormGroup['controls']) {
     return this.form().controls[name];
   }
 
-  hasError(name: keyof HeroFormGroup['controls'], error: string) {
+  public hasError(name: keyof HeroFormGroup['controls'], error: string) {
     const targetControl = this.control(name);
     return targetControl.touched && targetControl.hasError(error);
   }
 
-  onSubmit() {
+  public onSubmit() {
     this.form();
     if (this.form().invalid) {
       return;
@@ -53,13 +54,13 @@ export class FormComponent {
     this.submitForm.emit();
   }
 
-  onCancel() {
-    this.cancelForm.emit();
+  public onCancel() {
+    this.coreModal.closeModal();
   }
 
-  onFileInputChange(event: Event) {
+  public onFileInputChange(event: Event) {
     const input = event.target as HTMLInputElement;
-    this.fileName.set(input.files?.[0]?.name ?? 'Sin archivos seleccionados');
+    this.fileName.set(input?.files?.[0]?.name || 'Sin archivos seleccionados');
     this.fileChange.emit(event);
   }
 }
