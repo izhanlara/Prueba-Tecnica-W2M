@@ -1,30 +1,30 @@
 # SuperHero W2M
 
-Aplicacion web desarrollada con Angular para visualizar un catalogo de heroes, filtrarlos por nombre y editar su informacion mediante un modal.
-Desarrollada en la ultima version Anuglar 21, utilizando TypeScript, SCSS y Angular Material para los componentes de UI.
+Aplicación web desarrollada con Angular para visualizar un catálogo de héroes, filtrarlos por nombre y editar su información mediante un modal.
+Desarrollada en la última versión Angular 21, utilizando TypeScript, SCSS y Angular Material para los componentes de UI.
 
-## Descripcion
+## Descripción
 
-SuperHero es una interfaz tipo CRUD orientada a la gestion de heroes.
+SuperHero es una interfaz tipo CRUD orientada a la gestión de héroes.
 
 Actualmente permite:
 
-- Carga de heroes desde JSON.
+- Carga de héroes desde JSON.
 - Render de tarjetas.
-- Busqueda por nombre.
-- Añadir Heroe.
-- Elimiar Heroe.
-- Edicion de heroe.
-- Añadir mensajes de confirmacion al añadir/editar/eliminar un heroe.
+- Búsqueda por nombre.
+- Añadir héroe.
+- Eliminar héroe.
+- Edición de héroe.
+- Añadir mensajes de confirmación al añadir/editar/eliminar un héroe.
 - Ajustes visuales desde SASS.
 
 ## Demo local
 
-Una vez levantado el proyecto, la aplicacion estara disponible en:
+Una vez levantado el proyecto, la aplicación estará disponible en:
 
 - http://localhost:4200/
 
-## Tecnologias
+## Tecnologías
 
 - Angular 21
 - TypeScript
@@ -40,20 +40,20 @@ Una vez levantado el proyecto, la aplicacion estara disponible en:
 ## EndPoint
 
 > [!Note]
-> Cambiamos a json server para simular backend real y permitir persistencia de datos en las operaciones CRUD. Originalmente se cargaban los heroes desde un archivo JSON estático, pero con json server podemos realizar peticiones HTTP reales y mantener el estado de los datos entre sesiones.
+> Cambiamos a json server para simular backend real y permitir persistencia de datos en las operaciones CRUD. Originalmente se cargaban los héroes desde un archivo JSON estático, pero con json server podemos realizar peticiones HTTP reales y mantener el estado de los datos entre sesiones.
 
-- Con json server el codigo es mas limpio y sencillo, ya que se pueden hacer peticiones HTTP reales (GET, POST, PUT, DELETE) a un endpoint local.
-- El endpoint para acceder a los heroes es:
+- Con json server el código es más limpio y sencillo, ya que se pueden hacer peticiones HTTP reales (GET, POST, PUT, DELETE) a un endpoint local.
+- El endpoint para acceder a los héroes es:
 
 http://localhost:3000/allHeros
 
-## Instalacion
+## Instalación
 
 ```bash
 npm install
 ```
 
-## Ejecucion en desarrollo
+## Ejecución en desarrollo
 
 ```bash
 npm start
@@ -63,14 +63,14 @@ npm start
 npm run server
 ```
 
-Tambien puedes usar Angular CLI directamente:
+También puedes usar Angular CLI directamente:
 
 ```bash
 ng serve
 ```
 
 > [!CAUTION]
-> El comando `npm run server` levanta el servidor, sin el servidor la web se quedara cargando con el loader hasta que se levante dicho servidor.
+> El comando `npm run server` levanta el servidor. Sin él, la web se quedará cargando con el loader hasta que dicho servidor inicie.
 
 ## Scripts disponibles
 
@@ -94,44 +94,44 @@ npm test
 - src/
   - app/
     - components/
-      - card/ (componente de tarjeta de heroe)
-      - search/ (componente de barra de busqueda)
+      - card/ (componente de tarjeta de héroe)
+      - search/ (componente de barra de búsqueda)
       - banner/ (componente de banner superior)
-      - footer/ (componente de pie de pagina)
-      - modal/ (componente de modal para añadir/editar heroe)
+      - footer/ (componente de pie de página)
+      - modal/ (componente de modal para añadir/editar héroe)
     - services/
-      - heros-json.service.ts (servicio para cargar heroes desde JSON)
+      - heros-json.service.ts (servicio para cargar héroes desde JSON)
     - pipes/
-      - search.pipe.ts (pipe para filtrar heroes por nombre)
-    - app.component.ts/html/scss (componente raiz)
+      - search.pipe.ts (pipe para filtrar héroes por nombre)
+    - app.component.ts/html/scss (componente raíz)
   - assets/
     - json/
-      - heros.json (archivo JSON con datos de heroes)
+      - heros.json (archivo JSON con datos de héroes)
 ```
 
 ## Flujo funcional actual
 
-1. El servicio HerosJson carga heroes desde src/assets/json/heros.json.
+1. El servicio HerosJson carga héroes desde src/assets/json/heros.json.
 2. Se renderizan en tarjetas dentro del componente de cards.
-3. La barra de busqueda filtra por nombre sobre el estado actual.
-4. El modal de edicion actualiza el heroe seleccionado en memoria.
+3. La barra de búsqueda filtra por nombre sobre el estado actual.
+4. El modal de edición actualiza el héroe seleccionado en memoria.
 
 ## Estado del proyecto
 
 Funcionalidades implementadas:
 
-- Carga de heroes desde JSON.
+- Carga de héroes desde JSON.
 - Render de tarjetas.
-- Busqueda por nombre.
-- Añadir Heroe.
-- Elimiar Heroe.
-- Edicion de heroe.
-- Añadir mensajes de confirmacion al añadir/editar/eliminar un heroe.
+- Búsqueda por nombre.
+- Añadir héroe.
+- Eliminar héroe.
+- Edición de héroe.
+- Añadir mensajes de confirmación al añadir/editar/eliminar un héroe.
 - Ajustes visuales desde SASS.
 
 ## Build
 
-Para generar la version de produccion:
+Para generar la versión de producción:
 
 ```bash
 npm run build
@@ -139,21 +139,21 @@ npm run build
 
 Los artefactos se generan en la carpeta dist/.
 
-## Recursos utiles
+## Recursos útiles
 
 > [!Tip]
-> Adjuntamos recursos que pueden ser utiles para el desarrollo de la prueba tecnica:
+> Adjuntamos recursos que pueden ser útiles para el desarrollo de la prueba técnica:
 
 - [Diseño](https://www.figma.com/design/7SsAVf0GaxR4eUgY1A13A8/PRUEBA-T%C3%89CNICA-FRONT?node-id=34-7942&t=kPv8ReOgt8LDGPTB-0)
 - [Angular CLI](https://angular.dev/tools/cli)
-- [Documentacion Angular](https://angular.dev/)
+- [Documentación Angular](https://angular.dev/)
 - [Angular Material](https://material.angular.io/)
-- [Anuglar Icons](https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/)
+- [Angular Icons](https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/)
 - [Json Server](https://www.npmjs.com/package/json-server)
 
 ---
 
-### Cambios tras revision:
+### Cambios tras revisión:
 
 Front:
 
@@ -162,19 +162,19 @@ Quitamos del package.json:
 - Prettier
 - "packageManager": "npm@11.9.0"
 
-- heros.service: Quitamos const heroIdentifier = oldHero.id ?? oldHero.nombre;
-  Y cambiomos por const heroIdentifier = oldHero.id;
+- heros.service: Quitamos `const heroIdentifier = oldHero.id ?? oldHero.nombre;`
+  Y cambiamos por `const heroIdentifier = oldHero.id;`
 
-Usamos fontIcon="add", lo cual permite que podamos quitar el texto del boton y poner el icono direcamtnte con fontIcon.
+Usamos `fontIcon="add"`, lo cual permite que podamos quitar el texto del botón y poner el icono directamente con fontIcon.
 
 Añadimos ruta por proxy.config.js
 
-Añadimos carpetas relativas con @ para no tener que hacer ../../ en las importaciones.
-Añadimos al tsconfig.json, "baseUrl": "./", para que tengamos las rutas relativas desde la raiz del proyecto.
+Añadimos carpetas relativas con `@` para no tener que hacer `../../` en las importaciones.
+Añadimos al tsconfig.json `"baseUrl": "./"` para disponer de rutas relativas desde la raíz del proyecto.
 
-footer: añadimos for para renderizar los iconos de redes sociales, y asi evitar repetir codigo
+footer: añadimos bucle para renderizar los iconos de redes sociales, evitando así repetir código.
 
-Quitamos resets innecesarios en el servicio de modal add, ya que al abrir el modal se resetea el formulario, y al cerrar el modal se resetea tambien, lo cual es redundante.
+Quitamos reseteos innecesarios en el servicio de modal add, ya que al abrir el modal se resetea el formulario y al cerrarlo se resetea también, lo cual es redundante.
 
 Maqueta:
 
