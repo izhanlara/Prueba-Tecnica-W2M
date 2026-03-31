@@ -1,15 +1,16 @@
 <footer class="s-footer">
-  <hr />
+  <hr class="s-footer__hr" />
   <div class="s-footer__wrapper">
-    <p class="s-footer__wrapper-text">
+    <p class="s-footer__wrapper__text">
       &copy;{{ currentYear }} SUPERHEROCRUD, Inc
     </p>
+    <div class="s-footer__wrapper__icon"></div>
     @for (rrss of socialLinks; track rrss.id) {
       <a
         [href]="rrss.url"
         target="_blank"
         rel="noopener noreferrer"
-        class="s-footer__icon"
+        class="s-footer__wrapper__a"
       >
         <img [src]="rrss.icon" alt="{{ rrss.name }}" />
       </a>

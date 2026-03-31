@@ -15,7 +15,7 @@ export class ModalDeleteService {
   private readonly herosJson = inject(HerosJson);
 
   // TODO () revisar tipado
-  public confirmDelete(id: number | string | undefined) {
+  public confirmDelete() {
     const index = this.selectedHeroIndex();
     if (index) {
       const heroToDelete = this.herosJson._hero()[index];

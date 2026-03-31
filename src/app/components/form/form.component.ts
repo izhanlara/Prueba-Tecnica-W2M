@@ -1,11 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  input,
-  output,
-  signal,
-} from '@angular/core';
+import { Component, computed, input, output, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -33,7 +26,6 @@ export type HeroFormGroup = FormGroup<{
     MatInputModule,
     MatFormFieldModule,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormComponent {
   readonly form = input.required<HeroFormGroup>();

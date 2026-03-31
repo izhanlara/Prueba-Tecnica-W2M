@@ -5,7 +5,7 @@ import { ModalDeleteService } from '../../../services/core/modal-services/modal-
 @Component({
   selector: 'app-delete-btn',
   templateUrl: './delete-modalHero.html',
-  styleUrls: ['../modal-styles.scss'],
+  styleUrls: ['../modal-styles.scss', './delete-modalHero.scss'],
   imports: [MatButtonModule, MatIconModule],
 })
 export class ModalDeleteHeroComponent {
