@@ -1,19 +1,15 @@
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Hero } from '../heroes.model';
 import { HerosJson } from '@core/heros.service';
+import { CoreModalServices } from './coreModal.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ModalAddService {
-  // TODO () quitar isOpen
-  readonly isOpen = signal(false);
+  public readonly coreServices = inject(CoreModalServices);
   private readonly herosService = inject(HerosJson);
-  private readonly http = inject(HttpClient);
-  private readonly snackBar = inject(MatSnackBar);
 
   public readonly formControlAdd = new FormGroup({
     name: new FormControl('', {
@@ -36,7 +32,7 @@ export class ModalAddService {
   });
 
   public openAddHeroModal() {
-    this.isOpen.set(true);
+    this.coreServices.openModal();
   }
 
   public onSubmit() {
@@ -70,7 +66,7 @@ export class ModalAddService {
   }
 
   public closeModalAdd() {
-    this.isOpen.set(false);
+    this.coreServices.closeModal();
     this.formControlAdd.reset({
       name: '',
       powers: '',
