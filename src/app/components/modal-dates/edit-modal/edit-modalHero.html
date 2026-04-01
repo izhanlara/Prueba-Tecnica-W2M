@@ -2,7 +2,7 @@
 <div class="modal-overlay">
   <div class="modal-container">
     <app-form-component
-      [form]="coreModal.formControlUpdate"
+      [form]="coreModal.formControl"
       mode="edit"
       (submitForm)="onSubmit()"
       (cancelForm)="modalEditService.closeModalEdit()"

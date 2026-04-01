@@ -83,7 +83,12 @@
         id="img"
         (change)="onFileInputChange($event)"
       />
-      <p class="c-form__file-input-hint">{{ fileName() }}</p>
+      <p class="c-form__file-input-hint">
+        {{
+          coreModal.formControl.controls.img.value ||
+            "Sin archivos seleccionados"
+        }}
+      </p>
     </div>
   </div>
 

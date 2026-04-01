@@ -15,13 +15,20 @@ export class CoreModalServices {
 
   public closeModal() {
     this.activeModal.set(null);
+    this.formControl.reset({
+      name: '',
+      powers: '',
+      location: '',
+      description: '',
+      img: 'img/default-image-url.png',
+    });
   }
 
   public isOpen(modal: ModalType) {
     return this.activeModal() === modal;
   }
 
-  public readonly formControlUpdate = new FormGroup({
+  public readonly formControl = new FormGroup({
     name: new FormControl('', {
       nonNullable: true,
       validators: [Validators.required, Validators.minLength(2)],
@@ -42,8 +49,7 @@ export class CoreModalServices {
   });
 
   public onFileChange(event: Event) {
-    console.log('File change event:', event);
-    this.formControlUpdate.controls.img.setValue('/img/default-hero.png');
+    this.formControl.controls.img.setValue('/img/default-hero.png');
     const input = event.target as HTMLInputElement;
     if (!input?.files?.[0]) {
       return;
@@ -51,7 +57,7 @@ export class CoreModalServices {
     const file = input.files[0];
     const reader = new FileReader();
     reader.onload = () => {
-      this.formControlUpdate.controls.img.setValue(reader.result as string);
+      this.formControl.controls.img.setValue(reader.result as string);
     };
     reader.readAsDataURL(file);
   }

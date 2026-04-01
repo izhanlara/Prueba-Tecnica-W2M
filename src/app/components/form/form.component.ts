@@ -35,8 +35,6 @@ export class FormComponent {
   public readonly fileChange = output<Event>();
   public readonly submitForm = output<void>();
 
-  public fileName = signal<string>('Sin archivos seleccionados');
-
   public control(name: keyof HeroFormGroup['controls']) {
     return this.form().controls[name];
   }
@@ -59,8 +57,6 @@ export class FormComponent {
   }
 
   public onFileInputChange(event: Event) {
-    const input = event.target as HTMLInputElement;
-    this.fileName.set(input?.files?.[0]?.name || 'Sin archivos seleccionados');
-    this.fileChange.emit(event);
+    this.coreModal.onFileChange(event);
   }
 }
