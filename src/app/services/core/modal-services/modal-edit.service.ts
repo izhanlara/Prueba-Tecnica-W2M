@@ -11,8 +11,6 @@ export class ModalEditService {
   public readonly coreServices = inject(CoreModalServices);
   private readonly selectedHeroIndex = signal<number | null>(null);
 
-  private readonly http = inject(HerosJson);
-
   public openModalEdit(hero: Hero, index: number) {
     this.selectedHeroIndex.set(index);
     this.coreServices.formControl.setValue({
@@ -27,24 +25,27 @@ export class ModalEditService {
 
   public updateHero() {
     const index = this.selectedHeroIndex();
-    if (index !== null) {
-      this.serviceHeros.getHeros().subscribe((heroes) => {
+    const formValue = this.coreServices.formControl.getRawValue();
+
+    this.serviceHeros.getHeros().subscribe((heroes: Hero[]) => {
+      const heroToEdit = heroes[index ?? -1];
+      if (heroToEdit) {
         const updatedHero: Hero = {
-          id: heroes[index].id,
-          name: this.coreServices.formControl.value.name ?? '',
-          description: this.coreServices.formControl.value.description ?? '',
-          powers: this.coreServices.formControl.value.powers ?? '',
-          location: this.coreServices.formControl.value.location ?? '',
-          img: this.coreServices.formControl.value.img ?? '',
+          id: heroToEdit.id,
+          name: formValue.name,
+          description: formValue.description,
+          powers: formValue.powers,
+          location: formValue.location,
+          img: formValue.img || heroToEdit.img,
         };
+
         this.serviceHeros
-          .updateHero(updatedHero.id, updatedHero)
+          .updateHero(heroToEdit.id, updatedHero)
           .subscribe(() => {
-            this.serviceHeros.getHeros();
+            this.closeModalEdit();
           });
-      });
-    }
-    this.closeModalEdit();
+      }
+    });
   }
 
   public onSubmit() {
