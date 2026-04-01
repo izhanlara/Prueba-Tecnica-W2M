@@ -1,3 +1,4 @@
+import { AsyncPipe } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -8,7 +9,6 @@ import { HerosJson } from '@core/heros.service';
 import { ModalDeleteService } from '@services/core/modal-services/modal-delete.service';
 import { ModalEditService } from '@services/core/modal-services/modal-edit.service';
 import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators';
 
 @Component({
   standalone: true,
@@ -16,6 +16,7 @@ import { finalize } from 'rxjs/operators';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
   imports: [
+    AsyncPipe,
     MatIconModule,
     MatButtonModule,
     ModalDeleteHeroComponent,
@@ -25,25 +26,14 @@ import { finalize } from 'rxjs/operators';
 export class CardComponent implements OnInit {
   public readonly modalEditService = inject(ModalEditService);
   public readonly modalDeleteService = inject(ModalDeleteService);
-  public readonly herosJson = inject(HerosJson);
+  public readonly herosService = inject(HerosJson);
 
   public showMore: boolean = true;
 
+  public post$!: Observable<Hero[]>;
+
   public ngOnInit() {
-    this.herosJson
-      .getHeros()
-      .pipe(
-        finalize(() => {
-          if (this.showMore) {
-            this.herosJson._hero.set(this.herosJson._allHeros().slice(0, 12));
-          } else {
-            this.herosJson._hero.set(this.herosJson._allHeros());
-          }
-        }),
-      )
-      .subscribe((heros) => {
-        this.herosJson._allHeros.set(heros);
-      });
+    this.post$ = this.herosService.getHeros();
   }
 
   public editHeroModal(hero: Hero, index: number) {
@@ -65,10 +55,10 @@ export class CardComponent implements OnInit {
   public showBtn(): Observable<Hero[]> {
     this.showMore = !this.showMore;
     if (this.showMore) {
-      this.herosJson._hero.set(this.herosJson._allHeros().slice(0, 12));
+      this.herosService._hero.set(this.herosService._allHeros().slice(0, 12));
     } else {
-      this.herosJson._hero.set(this.herosJson._allHeros());
+      this.herosService._hero.set(this.herosService._allHeros());
     }
-    return this.herosJson.getHeros();
+    return this.herosService.getHeros();
   }
 }
