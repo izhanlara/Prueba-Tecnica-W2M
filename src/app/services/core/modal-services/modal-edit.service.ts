@@ -31,6 +31,7 @@ export class ModalEditService {
 
     const formValue = this.coreServices.formControl.getRawValue();
     const updatedHero: Hero = {
+      id: oldHero.id,
       name: formValue.name,
       description: formValue.description,
       powers: formValue.powers,

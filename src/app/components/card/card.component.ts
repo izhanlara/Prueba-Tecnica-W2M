@@ -27,13 +27,12 @@ export class CardComponent implements OnInit {
   public readonly modalEditService = inject(ModalEditService);
   public readonly modalDeleteService = inject(ModalDeleteService);
   public readonly herosService = inject(HerosJson);
+  public post$!: Observable<Hero[]>;
 
   public showMore: boolean = true;
 
-  public post$!: Observable<Hero[]>;
-
-  public ngOnInit() {
-    this.post$ = this.herosService.getHeros();
+  public ngOnInit(): Observable<Hero[]> {
+    return (this.post$ = this.herosService.getHeros());
   }
 
   public editHeroModal(hero: Hero, index: number) {

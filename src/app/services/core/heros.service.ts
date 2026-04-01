@@ -9,6 +9,7 @@ import { LoaderService } from './loader/loader';
 })
 export class HerosJson {
   // TODO () Quitar signal de storage
+  // Ya se muestra los heroes sin hero, falta cambiar el resto de cosas
   public _hero = signal<Hero[]>([]);
   public readonly _allHeros = signal<Hero[]>([]);
   public readonly loaderService = inject(LoaderService);
@@ -21,8 +22,8 @@ export class HerosJson {
   public updateHero(index: number, updatedHero: Hero) {
     return this.http.put<Hero>(`${this.apiUrl}/${updatedHero.id}`, updatedHero);
   }
-  public deleteHero(id: number | string | undefined) {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+  public deleteHero(id: number): Observable<Hero[]> {
+    return this.http.delete<Hero[]>(`${this.apiUrl}/${id}`);
   }
   public addHero(newHero: Hero) {
     return this.http.post<Hero>(`${this.apiUrl}`, newHero);

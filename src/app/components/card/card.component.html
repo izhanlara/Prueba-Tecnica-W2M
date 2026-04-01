@@ -1,32 +1,32 @@
 <main class="s-card">
   <section class="s-title__wrapper">
-    <h1 class="s-title__wrapper__text">Héroes más allá de la imaginación</h1>
-    <p class="s-title__wrapper__description">
+    <h1 class="s-title__wrapper-text">Héroes más allá de la imaginación</h1>
+    <p class="s-title__wrapper-description">
       Desde tiempos inmemoriales, la humanidad ha soñado con figuras <br />
       extraordinarias capaces de desafiar los límites de la realidad.
     </p>
   </section>
-  <div class="c-card__wrapper">
+  <article class="c-card__wrapper">
     @if (post$ | async; as heros) {
       @for (hero of heros; track hero.id; let i = $index) {
         <div class="c-card__wrapper__item">
           <img
-            class="c-card__wrapper__item__img"
+            class="c-card__wrapper__item-img"
             [src]="hero.img"
             alt="{{ hero.name }}"
           />
           <div class="c-card__wrapper__item-text">
-            <p class="c-card__wrapper__item__name">
+            <p class="c-card__wrapper__item-name">
               {{ upperCase(hero.name) }}
             </p>
 
-            <p class="c-card__wrapper__item__powers">{{ hero.powers }}</p>
-            <p class="c-card__wrapper__item__description">
+            <p class="c-card__wrapper__item-powers">{{ hero.powers }}</p>
+            <p class="c-card__wrapper__item-description">
               {{ hero.description }}
             </p>
-            <p class="c-card__wrapper__item__location">{{ hero.location }}</p>
+            <p class="c-card__wrapper__item-location">{{ hero.location }}</p>
           </div>
-          <div class="c-card__wrapper__item__buttons">
+          <div class="c-card__wrapper__item-buttons">
             <button
               (click)="editHeroModal(hero, i)"
               class="c-card__wrapper__item-btn-edit"
@@ -34,7 +34,7 @@
               <img
                 src="img/pen.svg"
                 alt="Edit Icon"
-                class="c-card__wrapper__item__pen-edit"
+                class="c-card__wrapper__item-pen-edit"
               />
               Editar
             </button>
@@ -49,7 +49,7 @@
         </div>
       }
     }
-  </div>
+  </article>
   <app-modal-edit-hero #modalEditHero />
   <app-delete-btn #modalDeleteHero />
   @if (herosService._allHeros().length > 12) {

@@ -18,6 +18,7 @@ export class ModalAddService {
     if (this.coreServices.formControl.valid) {
       const formValue = this.coreServices.formControl.getRawValue();
       const newHero: Hero = {
+        id: Math.floor(Math.random() * 1000),
         name: formValue.name,
         powers: formValue.powers,
         location: formValue.location,
