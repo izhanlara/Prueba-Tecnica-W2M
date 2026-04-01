@@ -9,6 +9,7 @@ import { HerosJson } from '@core/heros.service';
 import { ModalDeleteService } from '@services/core/modal-services/modal-delete.service';
 import { ModalEditService } from '@services/core/modal-services/modal-edit.service';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   standalone: true,
@@ -32,7 +33,9 @@ export class CardComponent implements OnInit {
   public showMore: boolean = true;
 
   public ngOnInit(): Observable<Hero[]> {
-    return (this.post$ = this.herosService.getHeros());
+    return (this.post$ = this.herosService
+      .getHeros()
+      .pipe(map((hero: Hero[]) => hero.slice(0, 12))));
   }
 
   public editHeroModal(hero: Hero, index: number) {
@@ -54,10 +57,12 @@ export class CardComponent implements OnInit {
   public showBtn(): Observable<Hero[]> {
     this.showMore = !this.showMore;
     if (this.showMore) {
-      this.herosService._hero.set(this.herosService._allHeros().slice(0, 12));
+      this.post$ = this.herosService
+        .getHeros()
+        .pipe(map((hero: Hero[]) => hero.slice(0, 12)));
     } else {
-      this.herosService._hero.set(this.herosService._allHeros());
+      this.post$ = this.herosService.getHeros();
     }
-    return this.herosService.getHeros();
+    return this.post$;
   }
 }

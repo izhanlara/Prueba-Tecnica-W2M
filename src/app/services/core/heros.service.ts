@@ -19,8 +19,8 @@ export class HerosJson {
   public getHeros(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.apiUrl);
   }
-  public updateHero(index: number, updatedHero: Hero) {
-    return this.http.put<Hero>(`${this.apiUrl}/${updatedHero.id}`, updatedHero);
+  public updateHero(id: number, updatedHero: Hero) {
+    return this.http.put<Hero>(`${this.apiUrl}/${id}`, updatedHero);
   }
   public deleteHero(id: number): Observable<Hero[]> {
     return this.http.delete<Hero[]>(`${this.apiUrl}/${id}`);

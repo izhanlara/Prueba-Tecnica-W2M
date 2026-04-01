@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { CoreModalServices } from './coreModal.service';
 import { Hero } from '@services/core/heroes.model';
@@ -9,9 +8,10 @@ import { HerosJson } from '@services/core/heros.service';
 })
 export class ModalEditService {
   private readonly serviceHeros = inject(HerosJson);
-  private readonly selectedHeroIndex = signal<number | null>(null);
-  private readonly http = inject(HttpClient);
   public readonly coreServices = inject(CoreModalServices);
+  private readonly selectedHeroIndex = signal<number | null>(null);
+
+  private readonly http = inject(HerosJson);
 
   public openModalEdit(hero: Hero, index: number) {
     this.selectedHeroIndex.set(index);
@@ -27,23 +27,24 @@ export class ModalEditService {
 
   public updateHero() {
     const index = this.selectedHeroIndex();
-    const oldHero = this.serviceHeros._hero()[index!];
-
-    const formValue = this.coreServices.formControl.getRawValue();
-    const updatedHero: Hero = {
-      id: oldHero.id,
-      name: formValue.name,
-      description: formValue.description,
-      powers: formValue.powers,
-      location: formValue.location,
-      img: formValue.img || oldHero.img,
-    };
-    this.http
-      .put<Hero>(`/allHeros/${oldHero.id}`, updatedHero)
-      .subscribe((savedHero) => {
-        this.serviceHeros.updateHero(index!, savedHero);
-        this.closeModalEdit();
+    if (index !== null) {
+      this.serviceHeros.getHeros().subscribe((heroes) => {
+        const updatedHero: Hero = {
+          id: heroes[index].id,
+          name: this.coreServices.formControl.value.name ?? '',
+          description: this.coreServices.formControl.value.description ?? '',
+          powers: this.coreServices.formControl.value.powers ?? '',
+          location: this.coreServices.formControl.value.location ?? '',
+          img: this.coreServices.formControl.value.img ?? '',
+        };
+        this.serviceHeros
+          .updateHero(updatedHero.id, updatedHero)
+          .subscribe(() => {
+            this.serviceHeros.getHeros();
+          });
       });
+    }
+    this.closeModalEdit();
   }
 
   public onSubmit() {

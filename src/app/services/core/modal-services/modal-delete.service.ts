@@ -1,25 +1,25 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HerosJson } from '@services/core/heros.service';
 import { CoreModalServices } from './coreModal.service';
+import { Hero } from '@core/heroes.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ModalDeleteService {
-  public readonly selectedHeroIndex = signal<number | null>(null);
-  public readonly coreServices = inject(CoreModalServices);
   private readonly serviceHeros = inject(HerosJson);
+  public readonly coreServices = inject(CoreModalServices);
+  public readonly selectedHeroIndex = signal<number | null>(null);
 
   public confirmDelete() {
     const index = this.selectedHeroIndex();
     if (index) {
-      const heroToDelete = this.serviceHeros._hero()[index];
-      this.serviceHeros.deleteHero(heroToDelete.id).subscribe(() => {
-        const updatedAllHeroes = this.serviceHeros
-          ._allHeros()
-          .filter((hero) => hero.id !== heroToDelete.id);
-        this.serviceHeros._allHeros.set(updatedAllHeroes);
-        this.serviceHeros._hero.set(updatedAllHeroes.slice(0, 12));
+      this.serviceHeros.getHeros().subscribe((heroes: Hero[]) => {
+        const hero = heroes[index];
+        this.serviceHeros.deleteHero(hero.id).subscribe(() => {
+          this.serviceHeros.getHeros();
+          return heroes.filter((h) => h.id !== hero.id);
+        });
       });
     }
     this.closeModalDelete();
