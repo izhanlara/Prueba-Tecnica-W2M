@@ -14,16 +14,16 @@
 }
 
 .s-footer__wrapper {
-  margin: 35px 0;
+  margin: 35px auto;
   display: flex;
   gap: $space-2;
 
   padding: 0 $space-4;
-  &__text {
+  &-text {
     font-size: $font-size-sm;
   }
 
-  &__icon {
+  &-icon {
     margin: auto;
   }
 
@@ -31,7 +31,7 @@
     .s-footer__wrapper {
       flex-direction: column;
       gap: $space-3;
-      &__icon {
+      &-icon {
         justify-content: center;
         width: 100%;
       }

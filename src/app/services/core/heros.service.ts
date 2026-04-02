@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Hero } from './heroes.model';
 import { LoaderService } from './loader/loader';
@@ -8,10 +8,8 @@ import { LoaderService } from './loader/loader';
   providedIn: 'root',
 })
 export class HerosJson {
-  // TODO () Quitar signal de storage
-  // Ya se muestra los heroes sin hero, falta cambiar el resto de cosas
-  public _hero = signal<Hero[]>([]);
-  public readonly _allHeros = signal<Hero[]>([]);
+  // public _hero = signal<Hero[]>([]);
+  // public readonly _allHeros = signal<Hero[]>([]);
   public readonly loaderService = inject(LoaderService);
   public readonly http = inject(HttpClient);
   private readonly apiUrl = '/allHeros';

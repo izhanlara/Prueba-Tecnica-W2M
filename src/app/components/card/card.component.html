@@ -52,7 +52,7 @@
   </article>
   <app-modal-edit-hero #modalEditHero />
   <app-delete-btn #modalDeleteHero />
-  @if ((post$ | async)?.length ?? 0 > 12) {
+  @if ((filteredCount$ | async) ?? 0 > 12) {
     <button class="b-btn__showMore" (click)="showBtn()">
       Ver {{ showMore ? "menos" : "más" }}
     </button>

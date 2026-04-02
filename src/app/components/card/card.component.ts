@@ -4,11 +4,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ModalDeleteHeroComponent } from '@components/modal-dates/delete-modal/modal-deleteHero.component';
 import { ModalEditHeroComponent } from '@components/modal-dates/edit-modal/modal-editHero.component';
+import { FilterHeroPipe } from '@pipes/search-bar-pipe/search-bar.pipe';
 import { Hero } from '@core/heroes.model';
-import { HerosJson } from '@core/heros.service';
 import { ModalDeleteService } from '@services/core/modal-services/modal-delete.service';
 import { ModalEditService } from '@services/core/modal-services/modal-edit.service';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -27,15 +27,32 @@ import { map } from 'rxjs/operators';
 export class CardComponent implements OnInit {
   public readonly modalEditService = inject(ModalEditService);
   public readonly modalDeleteService = inject(ModalDeleteService);
-  public readonly herosService = inject(HerosJson);
+  public readonly filterHeroPipe = inject(FilterHeroPipe);
   public post$!: Observable<Hero[]>;
+  public filteredCount$!: Observable<number>;
+
+  private readonly limit$ = new BehaviorSubject<number>(12);
 
   public showMore: boolean = true;
 
   public ngOnInit(): Observable<Hero[]> {
-    return (this.post$ = this.herosService
-      .getHeros()
-      .pipe(map((hero: Hero[]) => hero.slice(0, 12))));
+    this.filteredCount$ = this.filterHeroPipe.filteredHeroes$.pipe(
+      map((heroes) => heroes.length),
+    );
+    this.post$ = combineLatest([
+      this.filterHeroPipe.filteredHeroes$,
+      this.limit$,
+    ]).pipe(
+      map(([heroes, limit]) => {
+        if (limit === Number.POSITIVE_INFINITY) {
+          return heroes;
+        }
+
+        return heroes.slice(0, limit);
+      }),
+    );
+
+    return this.post$;
   }
 
   public editHeroModal(hero: Hero, index: number) {
@@ -56,13 +73,7 @@ export class CardComponent implements OnInit {
 
   public showBtn(): Observable<Hero[]> {
     this.showMore = !this.showMore;
-    if (this.showMore) {
-      this.post$ = this.herosService
-        .getHeros()
-        .pipe(map((hero: Hero[]) => hero.slice(0, 12)));
-    } else {
-      this.post$ = this.herosService.getHeros();
-    }
+    this.limit$.next(this.showMore ? 12 : Number.POSITIVE_INFINITY);
     return this.post$;
   }
 }
