@@ -16,7 +16,6 @@ export class FilterHeroPipe implements PipeTransform {
   public readonly modalEditService = inject(ModalEditService);
   public readonly modalAddService = inject(ModalAddService);
   public readonly heroService = inject(HerosJson);
-
   private readonly searchTerm$ = new BehaviorSubject<string>('');
   private readonly heroes$ = this.heroService.getHeros();
 

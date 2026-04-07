@@ -2,6 +2,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { CoreModalServices } from './coreModal.service';
 import { Hero } from '@services/core/heroes.model';
 import { HerosJson } from '@services/core/heros.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

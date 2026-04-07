@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ModalEditService } from '@services/core/modal-services/modal-edit.service';
 import { FormComponent } from '@form/form.component';
 import { CoreModalServices } from '@core/modal-services/coreModal.service';
@@ -12,7 +11,6 @@ import { CoreModalServices } from '@core/modal-services/coreModal.service';
 export class ModalEditHeroComponent {
   public readonly modalEditService = inject(ModalEditService);
   public readonly coreModal = inject(CoreModalServices);
-  public readonly snackBar = inject(MatSnackBar);
 
   onSubmit() {
     this.modalEditService.onSubmit();

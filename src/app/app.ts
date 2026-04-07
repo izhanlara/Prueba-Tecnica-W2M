@@ -6,6 +6,5 @@ import { FooterComponent } from '@sections/section-footer/section-footer.compone
   selector: 'app-root',
   imports: [HomePage, FooterComponent],
   templateUrl: './app.html',
-  styleUrl: './app.scss',
 })
 export class App {}

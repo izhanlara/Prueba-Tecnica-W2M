@@ -43,14 +43,9 @@ export class CardComponent implements OnInit {
       this.limit$,
     ]).pipe(
       map(([heroes, limit]) => {
-        if (limit === Number.POSITIVE_INFINITY) {
-          return heroes;
-        }
-
         return heroes.slice(0, limit);
       }),
     );
-
     return this.post$;
   }
 

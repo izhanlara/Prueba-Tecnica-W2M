@@ -18,7 +18,7 @@ export class HerosJson {
     return this.http.get<Hero[]>(this.apiUrl);
   }
 
-  public updateHero(id: number, updatedHero: Hero) {
+  public updateHero(id: number, updatedHero: Hero): Observable<Hero> {
     return this.http.put<Hero>(`${this.apiUrl}/${id}`, updatedHero).pipe(
       tap(() => {
         this.snackBar.success('Héroe actualizado correctamente');
@@ -34,7 +34,11 @@ export class HerosJson {
     );
   }
 
-  public addHero(newHero: Hero) {
-    return this.http.post<Hero>(`${this.apiUrl}`, newHero);
+  public addHero(newHero: Hero): Observable<Hero> {
+    return this.http.post<Hero>(`${this.apiUrl}`, newHero).pipe(
+      tap(() => {
+        this.snackBar.success('Héroe agregado correctamente');
+      }),
+    );
   }
 }
