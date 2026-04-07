@@ -30,10 +30,9 @@ export class CardComponent implements OnInit {
   public readonly filterHeroPipe = inject(FilterHeroPipe);
   public post$!: Observable<Hero[]>;
   public filteredCount$!: Observable<number>;
+  public showMore: boolean = true;
 
   private readonly limit$ = new BehaviorSubject<number>(12);
-
-  public showMore: boolean = true;
 
   public ngOnInit(): Observable<Hero[]> {
     this.filteredCount$ = this.filterHeroPipe.filteredHeroes$.pipe(

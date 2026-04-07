@@ -1,11 +1,1 @@
 @use "./scss/abstracts/index" as *;
-
-* {
-  margin: 0;
-  font-family: system-ui, "Segoe UI", "Open Sans", "Helvetica Neue", sans-serif;
-}
-
-body {
-  background-color: $background-color;
-  overflow-x: hidden;
-}

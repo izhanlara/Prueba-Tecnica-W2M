@@ -51,11 +51,12 @@ export class FilterHeroPipe implements PipeTransform {
     );
   }
 
-  filterHero(searchTerm: string) {
+  public filterHero(searchTerm: string): Observable<Hero[]> {
     this.searchTerm$.next((searchTerm ?? '').trim().toLowerCase());
+    return this.filteredHeroes$;
   }
 
-  openAddHeroModal() {
+  public openAddHeroModal() {
     this.modalAddService.openAddHeroModal();
   }
 }

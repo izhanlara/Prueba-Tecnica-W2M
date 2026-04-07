@@ -1,31 +1,31 @@
 {
   "allHeros": [
     {
+      "id": "f198",
       "name": "Wonder Woman",
       "description": "La Capitana Marvel es una guerrera extraterrestre con habilidades sobrehumanas.",
       "powers": "Curación acelerada e inmortal",
       "location": "New York, USA.",
-      "img": "img/wonder_woman.png",
-      "id": "f198"
+      "img": "img/wonder_woman.png"
     },
     {
+      "id": "36bd",
       "name": "Hulk",
       "description": "Hulk es un ser colosal con una inmensa fuerza que prácticamente carece de límites.",
       "powers": "Super fuerte y enojón",
       "location": "Barcelona, Esp.",
-      "img": "img/hulk.png",
-      "id": "36bd"
+      "img": "img/hulk.png"
     },
     {
-      "name": "Batman",
+      "id": "7ce1",
+      "name": "BATMAN",
       "description": "Bruce Wayne es un multimillonario nocturno que combate el crimen.",
       "powers": "Una gran fortuna",
       "location": "Ciudad de México, Méx.",
-      "img": "img/batman.png",
-      "id": "7ce1"
+      "img": "img/batman.png"
     },
     {
-      "name": "WONDER WOMAN",
+      "name": "Wonder Woman",
       "description": "Wonder Woman es considerada una de las guerreras más fuertes del universo.",
       "powers": "Fuerza sobrehumana, Supervelocidad",
       "location": "Sevilla, Esp.",
@@ -33,7 +33,7 @@
       "id": "fa0d"
     },
     {
-      "name": "CAPITANA MARVEL",
+      "name": "Capitana Marvel",
       "description": "La Capitana Marvel es una guerrera extraterrestre con habilidades sobrehumanas.",
       "powers": "Curación acelerada e inmortal",
       "location": "New York, USA.",
@@ -49,12 +49,12 @@
       "id": "7ce1"
     },
     {
-      "name": "Viuda negra",
-      "powers": "Espionaje avanzado, artista marcial y experta gladiadora",
+      "id": "91c5",
+      "name": "VIUDA NEGRA",
       "description": "Una espía experta del más alto nivel.",
+      "powers": "Espionaje avanzado, artista marcial y experta gladiadora",
       "location": "Washington, USA.",
-      "img": "img/viuda_negra.png",
-      "id": "91c5"
+      "img": "img/viuda_negra.png"
     },
     {
       "name": "Spiderman",
@@ -73,36 +73,36 @@
       "id": "9d28"
     },
     {
-      "name": "IRON MAN",
+      "id": "5a7e",
+      "name": "Iron Man",
       "description": "Tony Stark es un genio multimillonario que se convierte en el superhéroe",
       "powers": "Inteligencia superior, traje de alta tecnología",
       "location": "Madrid, Esp.",
-      "img": "img/ironman.png",
-      "id": "5a7e"
+      "img": "img/ironman.png"
     },
     {
-      "name": "Test Btn ",
-      "powers": "Ver mas",
-      "location": "PMI",
-      "description": "Este es un test para ver mas\n",
-      "img": "img/default-image-url.png",
-      "id": "cr48kp8LxTw"
+      "name": "Hulk",
+      "description": "Hulk es un ser colosal con una inmensa fuerza que prácticamente carece de límites.",
+      "powers": "Super fuerte y enojón",
+      "location": "Barcelona, Esp.",
+      "img": "img/hulk.png",
+      "id": "36bd"
     },
     {
-      "id": "OHhbVlZSmpU",
-      "name": "test",
-      "powers": "etst",
-      "location": "sateasdf",
-      "description": "asfasfsafasdfsdaf",
-      "img": "img/default-image-url.png"
+      "name": "Viuda negra",
+      "powers": "Espionaje avanzado, artista marcial y experta gladiadora",
+      "description": "Una espía experta del más alto nivel.",
+      "location": "Washington, USA.",
+      "img": "img/viuda_negra.png",
+      "id": "91c5"
     },
     {
-      "id": "Y9gGhNXEpkI",
-      "name": "testaset",
-      "powers": "asdfasd",
-      "location": "fasfasdfasdf",
-      "description": "asdfasdfasdfasdfasdfsdaf",
-      "img": "img/default-image-url.png"
+      "name": "Spiderman",
+      "powers": "Superpoderes arácnidos",
+      "description": "Peter Parker, mejor conocido como Spiderman, tiene habilidades similares a las de una araña.",
+      "location": "Mallorca, Esp.",
+      "img": "img/spiderman.png",
+      "id": "9d28"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

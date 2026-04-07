@@ -54,7 +54,7 @@
   <app-delete-btn #modalDeleteHero />
   @if ((filteredCount$ | async) ?? 0 > 12) {
     <button class="b-btn__showMore" (click)="showBtn()">
-      Ver {{ showMore ? "menos" : "más" }}
+      Ver {{ showMore ? "mas" : "menos" }}
     </button>
   }
 </main>

@@ -1,8 +1,6 @@
 @use "../../../scss/abstracts/index" as *;
 
-//  TODO () footer siempre en el pie de pagina sin pisar el resto de elementos
 .s-footer {
-  width: 100%;
   max-width: 84.1875rem;
   color: $color-black;
   margin: auto;
@@ -29,12 +27,11 @@
 
   @media (max-width: 600px) {
     .s-footer__wrapper {
-      flex-direction: column;
+      grid-column: 2;
+      display: block;
+      text-align: center;
       gap: $space-3;
-      &-icon {
-        justify-content: center;
-        width: 100%;
-      }
+      margin: 20px auto;
     }
   }
 }
