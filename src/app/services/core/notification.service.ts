@@ -1,6 +1,5 @@
 import { inject, Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
 
 type NotificationType = 'success' | 'error';
 
