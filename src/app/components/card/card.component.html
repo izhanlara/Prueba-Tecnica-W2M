@@ -1,60 +1,22 @@
-<main class="s-card">
-  <section class="s-title__wrapper">
-    <h1 class="s-title__wrapper-text">Héroes más allá de la imaginación</h1>
-    <p class="s-title__wrapper-description">
-      Desde tiempos inmemoriales, la humanidad ha soñado con figuras <br />
-      extraordinarias capaces de desafiar los límites de la realidad.
-    </p>
-  </section>
-  <article class="c-card__wrapper">
-    @if (post$ | async; as heros) {
-      @for (hero of heros; track hero.id; let i = $index) {
-        <div class="c-card__wrapper__item">
-          <img
-            class="c-card__wrapper__item-img"
-            [src]="hero.img"
-            alt="{{ hero.name }}"
-          />
-          <div class="c-card__wrapper__item-text">
-            <p class="c-card__wrapper__item-name">
-              {{ upperCase(hero.name) }}
-            </p>
-
-            <p class="c-card__wrapper__item-powers">{{ hero.powers }}</p>
-            <p class="c-card__wrapper__item-description">
-              {{ hero.description }}
-            </p>
-            <p class="c-card__wrapper__item-location">{{ hero.location }}</p>
-          </div>
-          <div class="c-card__wrapper__item-buttons">
-            <button
-              (click)="editHeroModal(hero, i)"
-              class="c-card__wrapper__item-btn-edit"
-            >
-              <img
-                src="img/pen.svg"
-                alt="Edit Icon"
-                class="c-card__wrapper__item-pen-edit"
-              />
-              Editar
-            </button>
-            <button
-              mat-icon-button
-              (click)="deleteHeroModal(i)"
-              class="c-card__wrapper__item-btn-delete"
-            >
-              Eliminar
-            </button>
-          </div>
-        </div>
-      }
-    }
-  </article>
-  <app-modal-edit-hero #modalEditHero />
-  <app-delete-btn #modalDeleteHero />
-  @if ((filteredCount$ | async) ?? 0 > 12) {
-    <button class="b-btn__showMore" (click)="showBtn()">
-      Ver {{ showMore ? "mas" : "menos" }}
+<div class="c-card">
+  <img class="c-card__img" [src]="card.img" alt="{{ card.title }}" />
+  <div class="c-card__text">
+    <p class="c-card__name">{{ card.title | titlecase }}</p>
+    <p class="c-card__powers">{{ card.subTitle }}</p>
+    <p class="c-card__description">{{ card.description }}</p>
+    <p class="c-card__location">{{ card.location }}</p>
+  </div>
+  <div class="c-card__buttons">
+    <button (click)="editHeroModal()" class="c-card__btn-edit">
+      <img src="img/pen.svg" alt="Edit Icon" class="c-card__icon-edit" />
+      Editar
     </button>
-  }
-</main>
+    <button
+      mat-icon-button
+      (click)="deleteHeroModal()"
+      class="c-card__btn-delete"
+    >
+      Eliminar
+    </button>
+  </div>
+</div>

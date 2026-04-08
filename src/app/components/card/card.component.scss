@@ -1,118 +1,74 @@
-@use "../../../scss/abstracts/_variables.sass" as *;
+@use "../../../scss/abstracts/_index" as *;
 
-.s-title__wrapper {
-  font-size: $font-size-lg;
-  color: $color-primary;
-  text-align: center;
+.c-card {
+  height: 100%;
+  background-color: $color-white;
+  border-radius: 0.625rem;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 
-  &-text {
-    font-size: $font-size-xl;
-    font-weight: normal;
-    margin-bottom: $space-3;
-  }
-  &-description {
-    font-size: $font-size-md;
-    color: $color-text-dark;
-  }
-}
-
-.c-card__wrapper {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(15.625rem, 1fr));
-  gap: 1.25rem;
-  max-width: 75rem;
-  width: 100%;
-  margin: 0 auto;
-  margin-top: 20px;
-
-  @media (max-width: 1024px) {
-    grid-template-columns: 1fr;
-    padding: 0 $space-4;
-    max-width: 100%;
-
-    &__img {
-      width: 100%;
-    }
-  }
-
-  &__item {
-    background-color: $color-white;
-    border-radius: 0.625rem;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-  }
-
-  &__item-img {
+  &__img {
     margin: 0 auto $space-4;
     width: 100%;
     height: 14.9064rem;
     object-fit: cover;
   }
 
-  &__item-text {
+  &__text {
     padding: 0 $space-4;
   }
-  &__item-name {
+
+  &__name {
     font-size: 0.9375rem;
     margin-bottom: $space-2;
   }
-  &__item-powers {
-    font-size: 16px;
+
+  &__powers {
+    font-size: 1rem;
     font-weight: bold;
   }
-  &__item-description {
+
+  &__description {
     font-size: 0.875rem;
   }
-  &__item-location {
+
+  &__location {
     font-size: 1rem;
-    margin-bottom: 10px;
-  }
-  &__item-buttons {
-    margin: 0 auto;
-    margin-top: auto;
     margin-bottom: 0.625rem;
+  }
+
+  &__buttons {
+    margin: auto auto 0.625rem;
     display: flex;
     gap: $space-2;
     padding: $space-2 $space-4;
-    cursor: pointer;
-  }
-  &__item-btn-edit {
     width: auto;
     height: auto;
+    margin-top: auto;
+  }
+
+  &__btn-edit {
     font-size: 1rem;
-    color: white;
+    color: $color-white;
     border: none;
     border-radius: 0.625rem;
-    margin-top: auto;
     display: flex;
     gap: $space-2;
     padding: $space-2 $space-4;
     cursor: pointer;
     background-color: $btn-color;
   }
-  &__item-btn-delete {
+
+  &__btn-delete {
     width: auto;
     font-size: 1rem;
     background-color: #f3f3f3;
-    color: black;
+    color: $color-black;
     border: none;
     border-radius: 0.625rem;
-    margin-top: auto;
     display: flex;
-    gap: $space-2;
     padding: $space-2 $space-4;
     cursor: pointer;
   }
-}
-
-.b-btn__showMore {
-  background-color: $btn-color;
-  color: white;
-  border: none;
-  padding: $space-2 $space-4;
-  border-radius: 0.625rem;
-  cursor: pointer;
-  margin: 35px auto;
-  display: block;
 }

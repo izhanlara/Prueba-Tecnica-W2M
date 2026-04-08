@@ -1,108 +1,100 @@
 {
   "allHeros": [
     {
+      "id": "fa0d",
+      "title": "Wonder Woman",
+      "description": "Wonder Woman es considerada una de las superheroínas más fuertes del planeta.",
+      "subTitle": "Fuerza sobrehumana, Supervelocidad",
+      "location": "Sevilla, Esp.",
+      "img": "img/wonder_woman.png"
+    },
+    {
+      "id": "36bd",
+      "title": "Hulk",
+      "description": "Hulk es un ser colosal con una musculatura impresionante que parece desafiar los límites de lo humano.",
+      "subTitle": "Super fuerte y enojón",
+      "location": "Barcelona, Esp.",
+      "img": "img/hulk.png"
+    },
+    {
+      "id": "2821",
+      "title": "Capitana Marvel",
+      "description": "La Capitana Marvel obtuvo sus poderes cósmicos del Teseracto, que albergaba la gema del espacio.",
+      "subTitle": "Curación acelerada e inmortal",
+      "location": "New York, USA.",
+      "img": "img/capitana_marvel.png"
+    },
+    {
       "id": "f198",
-      "name": "Spiderman",
-      "description": "Peter Parker, mejor conocido como Spiderman, tiene habilidades similares a las de una araña.",
-      "powers": "Superpoderes arácnidos",
+      "title": "Spiderman",
+      "description": "Fuerza, velocidad, agilidad, durabilidad, reflejos, coordinación, equilibrio y resistencia sobrehumanas.",
+      "subTitle": "Superpoderes arácnidos",
       "location": "Mallorca, Esp.",
       "img": "img/spiderman.png"
     },
     {
-      "id": "36bd",
-      "name": "Hulk",
-      "description": "Hulk es un ser colosal con una inmensa fuerza que prácticamente carece de límites.",
-      "powers": "Super fuerte y enojón",
+      "id": "9d28",
+      "title": "Gamora",
+      "description": "Gamora es una combatiente cuerpo a cuerpo y una maestra en el uso de armas. Es una tiradora experta.",
+      "subTitle": "Experta en artes marciales.",
+      "location": "Culiacán, Méx.",
+      "img": "img/gamora.png"
+    },
+    {
+      "id": "36be",
+      "title": "Hulk",
+      "description": "Hulk es un ser colosal con una musculatura impresionante que parece desafiar los límites de lo humano.",
+      "subTitle": "Super fuerte y enojón",
       "location": "Barcelona, Esp.",
       "img": "img/hulk.png"
     },
     {
       "id": "7ce1",
-      "name": "Batman",
-      "description": "Bruce Wayne es un multimillonario nocturno que combate el crimen.",
-      "powers": "Una gran fortuna",
+      "title": "Batman",
+      "description": "Batman utiliza su intelecto y aplicaciones científicas para desarrollar gadgets y vehículos.",
+      "subTitle": "Una gran fortuna",
       "location": "Ciudad de México, Méx.",
       "img": "img/batman.png"
     },
     {
-      "name": "Wonder Woman",
-      "description": "Wonder Woman es considerada una de las guerreras más fuertes del universo.",
-      "powers": "Fuerza sobrehumana, Supervelocidad",
+      "id": "fa0e",
+      "title": "Wonder Woman",
+      "description": "Wonder Woman es considerada una de las superheroínas más fuertes del planeta.",
+      "subTitle": "Fuerza sobrehumana, Supervelocidad",
       "location": "Sevilla, Esp.",
-      "img": "img/wonder_woman.png",
-      "id": "fa0d"
+      "img": "img/wonder_woman.png"
     },
     {
-      "name": "Capitana Marvel",
-      "description": "La Capitana Marvel es una guerrera extraterrestre con habilidades sobrehumanas.",
-      "powers": "Curación acelerada e inmortal",
+      "id": "36bf",
+      "title": "Capitana Marvel",
+      "description": "La Capitana Marvel obtuvo sus poderes cósmicos del Teseracto, que albergaba la gema del espacio.",
+      "subTitle": "Curación acelerada e inmortal",
       "location": "New York, USA.",
-      "img": "img/capitana_marvel.png",
-      "id": "2821"
+      "img": "img/capitana_marvel.png"
     },
     {
-      "name": "Batman",
-      "powers": "Una gran fortuna",
-      "description": "Bruce Wayne es un multimillonario nocturno que combate el crimen.",
-      "location": "Ciudad de México, Méx.",
-      "img": "img/batman.png",
-      "id": "7ce1"
+      "id": "7ce2",
+      "title": "Spiderman",
+      "description": "Fuerza, velocidad, agilidad, durabilidad, reflejos, coordinación, equilibrio y resistencia sobrehumanas.",
+      "subTitle": "Superpoderes arácnidos",
+      "location": "Mallorca, Esp.",
+      "img": "img/spiderman.png"
     },
     {
-      "id": "91c5",
-      "name": "Viuda Negra",
-      "description": "Una espía experta del más alto nivel.",
-      "powers": "Espionaje avanzado, artista marcial y experta gladiadora",
-      "location": "Washington, USA.",
+      "id": "9d29",
+      "title": "Viuda Negra",
+      "description": "Natasha nació en Rusia durante la Guerra Fría y fue entrenada por la KGB",
+      "subTitle": "exespía soviética, artista marcial y francotiradora.",
+      "location": "Sevilla, Esp.",
       "img": "img/viuda_negra.png"
     },
     {
-      "name": "Spiderman",
-      "powers": "Superpoderes arácnidos",
-      "description": "Peter Parker, mejor conocido como Spiderman, tiene habilidades similares a las de una araña.",
-      "location": "Mallorca, Esp.",
-      "img": "img/spiderman.png",
-      "id": "9d28"
-    },
-    {
-      "name": "Gamora",
-      "powers": "Fuerza sobrehumana, agilidad excepcional",
-      "description": "Gamora es una guerrera letal y miembro de los Guardianes de la Galaxia.",
-      "location": "Xandar, Esp.",
-      "img": "img/gamora.png",
-      "id": "9d28"
-    },
-    {
-      "id": "5a7e",
-      "name": "Iron Man",
-      "description": "Tony Stark es un genio multimillonario que se convierte en el superhéroe",
-      "powers": "Inteligencia superior, traje de alta tecnología",
-      "location": "Madrid, Esp.",
+      "id": "2822",
+      "title": "Iron Man",
+      "description": "La armadura de Iron Man está hecha de nanotecnología y se almacena en un reactor que Tony Stark lleva en el pecho.",
+      "subTitle": "Armadura",
+      "location": "Buenos Aires, Arg.",
       "img": "img/ironman.png"
-    },
-    {
-      "name": "Hulk",
-      "description": "Hulk es un ser colosal con una inmensa fuerza que prácticamente carece de límites.",
-      "powers": "Super fuerte y enojón",
-      "location": "Barcelona, Esp.",
-      "img": "img/hulk.png",
-      "id": "36bd"
-    },
-    {
-      "name": "Viuda negra",
-      "powers": "Espionaje avanzado, artista marcial y experta gladiadora",
-      "description": "Una espía experta del más alto nivel.",
-      "location": "Washington, USA.",
-      "img": "img/viuda_negra.png",
-      "id": "91c5"
-    },
-    {
-      "name": "Spiderman",
-      "powers": "Superpoderes arácnidos",
-      "description": "Peter Parker, mejor conocido como Spiderman, tiene habilidades similares a las de una araña.",
-      "location": "Mallorca, Esp.",
-      "img": "img/spiderman.png",
-      "id": "9d28"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

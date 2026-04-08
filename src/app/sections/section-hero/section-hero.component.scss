@@ -1,4 +1,4 @@
-@use "../../../scss/abstracts/_variables.sass" as *;
+@use "../../../scss/abstracts/_index" as *;
 
 .s-hero {
   position: relative;
@@ -7,6 +7,12 @@
     width: 100vw;
     height: 30rem;
     object-fit: cover;
+
+    @media (max-width: 768px) {
+      height: 20rem;
+      background-size: cover;
+      transition: background-size 0.5s ease;
+    }
   }
 
   &__wrapper__logo {
@@ -15,6 +21,14 @@
     height: 6.9375rem;
     top: 4.5rem;
     left: 5.5rem;
+
+    @media (max-width: 768px) {
+      width: 10rem;
+      height: 4.5rem;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 
   &__wrapper__crud-text {

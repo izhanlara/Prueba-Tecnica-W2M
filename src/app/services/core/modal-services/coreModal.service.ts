@@ -16,8 +16,8 @@ export class CoreModalServices {
   public closeModal() {
     this.activeModal.set(null);
     this.formControl.reset({
-      name: '',
-      powers: '',
+      title: '',
+      subTitle: '',
       location: '',
       description: '',
       img: 'img/default-image-url.png',
@@ -28,8 +28,9 @@ export class CoreModalServices {
     return this.activeModal() === modal;
   }
 
+  // formbuilder
   public readonly formControl = new FormGroup({
-    name: new FormControl('', {
+    title: new FormControl('', {
       nonNullable: true,
       validators: [Validators.required, Validators.minLength(2)],
     }),
@@ -37,7 +38,7 @@ export class CoreModalServices {
       nonNullable: true,
       validators: [Validators.required, Validators.minLength(10)],
     }),
-    powers: new FormControl('', {
+    subTitle: new FormControl('', {
       nonNullable: true,
       validators: [Validators.required, Validators.minLength(2)],
     }),

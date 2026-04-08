@@ -14,9 +14,9 @@ export class ModalEditService {
   public openModalEdit(hero: Hero, index: number) {
     this.selectedHeroIndex.set(index);
     this.coreServices.formControl.setValue({
-      name: hero.name.toUpperCase(),
+      title: hero.title.toUpperCase(),
       description: hero.description,
-      powers: hero.powers,
+      subTitle: hero.subTitle,
       location: hero.location,
       img: hero.img,
     });
@@ -32,9 +32,9 @@ export class ModalEditService {
       if (heroToEdit) {
         const updatedHero: Hero = {
           id: heroToEdit.id,
-          name: formValue.name,
+          title: formValue.title,
           description: formValue.description,
-          powers: formValue.powers,
+          subTitle: formValue.subTitle,
           location: formValue.location,
           img: formValue.img || heroToEdit.img,
         };

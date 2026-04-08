@@ -2,42 +2,40 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { Hero } from './heroes.model';
-import { LoaderService } from './loader/loader';
 import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HerosJson {
-  public readonly loaderService = inject(LoaderService);
-  public readonly http = inject(HttpClient);
+  private readonly http = inject(HttpClient);
   private readonly snackBar = inject(NotificationService);
-  private readonly apiUrl = '/allHeros';
+  private readonly API_URL = '/allHeros';
 
   public getHeros(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.apiUrl);
+    return this.http.get<Hero[]>(this.API_URL);
   }
 
   public updateHero(id: number, updatedHero: Hero): Observable<Hero> {
-    return this.http.put<Hero>(`${this.apiUrl}/${id}`, updatedHero).pipe(
+    return this.http.put<Hero>(`${this.API_URL}/${id}`, updatedHero).pipe(
       tap(() => {
-        this.snackBar.success('Héroe actualizado correctamente');
+        this.snackBar.messages('Héroe actualizado correctamente');
       }),
     );
   }
 
   public deleteHero(id: number): Observable<Hero[]> {
-    return this.http.delete<Hero[]>(`${this.apiUrl}/${id}`).pipe(
+    return this.http.delete<Hero[]>(`${this.API_URL}/${id}`).pipe(
       tap(() => {
-        this.snackBar.success('Héroe eliminado correctamente');
+        this.snackBar.messages('Héroe eliminado correctamente');
       }),
     );
   }
 
   public addHero(newHero: Hero): Observable<Hero> {
-    return this.http.post<Hero>(`${this.apiUrl}`, newHero).pipe(
+    return this.http.post<Hero>(`${this.API_URL}`, newHero).pipe(
       tap(() => {
-        this.snackBar.success('Héroe agregado correctamente');
+        this.snackBar.messages('Héroe agregado correctamente');
       }),
     );
   }

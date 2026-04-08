@@ -7,9 +7,9 @@ import { SocialLink } from './footer.model';
   styleUrls: ['./section-footer.component.scss'],
 })
 export class FooterComponent {
-  public readonly currentYear: number = new Date().getFullYear();
+  public readonly CURRENT_YEAR: number = new Date().getFullYear();
 
-  public readonly socialLinks: SocialLink[] = [
+  public readonly SOCIAL_LINKS: SocialLink[] = [
     {
       id: 1,
       name: 'Instagram',

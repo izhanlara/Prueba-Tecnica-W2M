@@ -19,8 +19,8 @@ export class ModalAddService {
       const formValue = this.coreServices.formControl.getRawValue();
       const newHero: Hero = {
         id: Math.floor(Math.random() * 1000),
-        name: formValue.name,
-        powers: formValue.powers,
+        title: formValue.title,
+        subTitle: formValue.subTitle,
         location: formValue.location,
         description: formValue.description,
         img: formValue.img || 'img/default-image-url.png',

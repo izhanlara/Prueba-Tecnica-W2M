@@ -14,12 +14,12 @@
 
   <div class="c-form__fields-row">
     <div class="c-form__field-group">
-      <mat-label for="name">Nombre</mat-label>
-      <input matInput id="name" formControlName="name" type="text" />
-      @if (hasError("name", "required")) {
+      <mat-label for="title">Nombre</mat-label>
+      <input matInput id="title" formControlName="title" type="text" />
+      @if (hasError("title", "required")) {
         <small class="c-form__field-error">El nombre es obligatorio.</small>
       }
-      @if (hasError("name", "minlength")) {
+      @if (hasError("title", "minlength")) {
         <small class="c-form__field-error"
           >El nombre debe tener al menos 2 caracteres.</small
         >
@@ -27,12 +27,12 @@
     </div>
 
     <div class="c-form__field-group">
-      <mat-label for="powers">Superpoder</mat-label>
-      <input matInput id="powers" formControlName="powers" type="text" />
-      @if (hasError("powers", "required")) {
+      <mat-label for="subTitle">Superpoder</mat-label>
+      <input matInput id="subTitle" formControlName="subTitle" type="text" />
+      @if (hasError("subTitle", "required")) {
         <small class="c-form__field-error">El superpoder es obligatorio.</small>
       }
-      @if (hasError("powers", "minlength")) {
+      @if (hasError("subTitle", "minlength")) {
         <small class="c-form__field-error"
           >El superpoder debe tener al menos 2 caracteres.</small
         >

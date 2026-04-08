@@ -8,41 +8,16 @@ type NotificationType = 'success' | 'error';
 })
 export class NotificationService {
   private readonly snackBar = inject(MatSnackBar);
-  private readonly defaultDuration = 3000;
+  private readonly DEFAULT_DURATION = 3000;
 
-  public success(
+  public messages(
     message: string,
     type: NotificationType = 'success',
-    duration = this.defaultDuration,
-    config?: MatSnackBarConfig,
-  ) {
-    this.open(message, type, {
-      ...config,
-      duration,
-      panelClass: [`snackbar-success`],
-    });
-  }
-
-  public error(
-    message: string,
-    type: NotificationType = 'error',
-    duration = this.defaultDuration,
-    config?: MatSnackBarConfig,
-  ) {
-    this.open(message, type, {
-      ...config,
-      duration,
-      panelClass: [`snackbar-error`],
-    });
-  }
-
-  public open(
-    message: string,
-    type: NotificationType,
+    duration?: number,
     config?: MatSnackBarConfig,
   ) {
     this.snackBar.open(message, undefined, {
-      duration: this.defaultDuration,
+      duration: duration ?? this.DEFAULT_DURATION,
       verticalPosition: 'top',
       horizontalPosition: 'center',
       panelClass: [`snackbar-${type}`],

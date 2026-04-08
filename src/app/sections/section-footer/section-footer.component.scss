@@ -1,10 +1,9 @@
-@use "../../../scss/abstracts/index" as *;
+@use "../../../scss/abstracts/_index" as *;
 
 .s-footer {
   max-width: 84.1875rem;
   color: $color-black;
-  margin: auto;
-  margin-bottom: 10px;
+  margin: 30px auto;
   &__hr {
     margin: $space-2 0;
     border: 1px solid #0000001a;
@@ -12,26 +11,37 @@
 }
 
 .s-footer__wrapper {
-  margin: 35px auto;
+  margin: 30px auto;
+  align-items: center;
   display: flex;
   gap: $space-2;
 
-  padding: 0 $space-4;
   &-text {
     font-size: $font-size-sm;
   }
 
+  &-icons {
+    align-items: center;
+    display: flex;
+    gap: $space-2;
+    margin-left: auto;
+  }
+
   &-icon {
-    margin: auto;
+    display: flex;
+    align-items: center;
   }
 
   @media (max-width: 600px) {
-    .s-footer__wrapper {
-      grid-column: 2;
-      display: block;
-      text-align: center;
-      gap: $space-3;
-      margin: 20px auto;
+    display: block;
+    text-align: center;
+    gap: $space-3;
+    margin: 20px auto;
+
+    &-icons {
+      justify-content: center;
+      margin-left: 0;
+      margin-top: $space-2;
     }
   }
 }

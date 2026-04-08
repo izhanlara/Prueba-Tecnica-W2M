@@ -19,7 +19,7 @@ export class FilterHeroPipe implements PipeTransform {
   private readonly searchTerm$ = new BehaviorSubject<string>('');
   private readonly heroes$ = this.heroService.getHeros();
 
-  public readonly filteredHeroes$: Observable<Hero[]> = combineLatest([
+  public readonly filteredHeroes: Observable<Hero[]> = combineLatest([
     this.heroes$,
     this.searchTerm$,
   ]).pipe(
@@ -29,7 +29,7 @@ export class FilterHeroPipe implements PipeTransform {
       }
 
       return heroes.filter((hero) => {
-        const heroName = (hero?.name ?? '').toLowerCase();
+        const heroName = (hero?.title ?? '').toLowerCase();
         return heroName.includes(searchTerm);
       });
     }),
@@ -43,7 +43,7 @@ export class FilterHeroPipe implements PipeTransform {
           return heroes;
         }
         return heroes.filter((hero) => {
-          const heroName = (hero?.name ?? '').toLowerCase();
+          const heroName = (hero?.title ?? '').toLowerCase();
           return heroName.includes(searchTerm);
         });
       }),
@@ -52,7 +52,7 @@ export class FilterHeroPipe implements PipeTransform {
 
   public filterHero(searchTerm: string): Observable<Hero[]> {
     this.searchTerm$.next((searchTerm ?? '').trim().toLowerCase());
-    return this.filteredHeroes$;
+    return this.filteredHeroes;
   }
 
   public openAddHeroModal() {

@@ -98,7 +98,7 @@ npm test
 
 ## Estructura principal del proyecto
 
-```text
+```
 src/
   app/
     components/
@@ -112,6 +112,7 @@ src/
     sections/
       section-hero/
       section-footer/
+      section-titles/
     services/
       core/
     pipes/

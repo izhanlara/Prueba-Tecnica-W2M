@@ -1,0 +1,35 @@
+@use "../../../scss/abstracts/_index" as *;
+
+.c-card__wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(15.625rem, 1fr));
+  gap: 1.25rem;
+  max-width: 75rem;
+  width: 100%;
+  margin: 1.25rem auto 0;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(3, minmax(15rem, 1fr));
+    padding: 0 $space-4;
+  }
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, minmax(14rem, 1fr));
+  }
+
+  @media (max-width: 512px) {
+    grid-template-columns: 1fr;
+    padding: 0 $space-2;
+  }
+}
+
+.b__show-more {
+  background-color: $btn-color;
+  color: $color-white;
+  border: none;
+  padding: $space-2 $space-4;
+  border-radius: 0.625rem;
+  cursor: pointer;
+  margin: 2.1875rem auto;
+  display: block;
+}

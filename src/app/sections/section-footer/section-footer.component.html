@@ -2,18 +2,16 @@
   <hr class="s-footer__hr" />
   <div class="s-footer__wrapper">
     <p class="s-footer__wrapper-text">
-      &copy;{{ currentYear }} SUPERHEROCRUD, Inc
+      &copy;{{ CURRENT_YEAR }} SUPERHEROCRUD, Inc
     </p>
-    <div class="s-footer__wrapper-icon"></div>
-    @for (rrss of socialLinks; track rrss.id) {
-      <a
-        [href]="rrss.url"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="s-footer__wrapper__a"
-      >
-        <img [src]="rrss.icon" alt="{{ rrss.name }}" />
-      </a>
-    }
+    <div class="s-footer__wrapper-icons">
+      @for (rrss of SOCIAL_LINKS; track rrss.id) {
+        <div class="s-footer__wrapper-icon">
+          <a [href]="rrss.url" target="_blank" rel="noopener noreferrer">
+            <img [src]="rrss.icon" alt="{{ rrss.name }}" />
+          </a>
+        </div>
+      }
+    </div>
   </div>
 </footer>

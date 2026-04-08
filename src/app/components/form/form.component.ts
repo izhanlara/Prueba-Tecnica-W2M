@@ -1,15 +1,15 @@
-import { Component, input, output, signal, inject } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { CoreModalServices } from '@services/core/modal-services/coreModal.service';
 
 export type HeroFormGroup = FormGroup<{
-  name: FormControl<string>;
-  powers: FormControl<string>;
+  title: FormControl<string>;
+  subTitle: FormControl<string>;
   location: FormControl<string>;
   description: FormControl<string>;
   img: FormControl<string>;
@@ -35,12 +35,12 @@ export class FormComponent {
   public readonly fileChange = output<Event>();
   public readonly submitForm = output<void>();
 
-  public control(name: keyof HeroFormGroup['controls']) {
-    return this.form().controls[name];
+  public control(title: keyof HeroFormGroup['controls']) {
+    return this.form().controls[title];
   }
 
-  public hasError(name: keyof HeroFormGroup['controls'], error: string) {
-    const targetControl = this.control(name);
+  public hasError(title: keyof HeroFormGroup['controls'], error: string) {
+    const targetControl = this.control(title);
     return targetControl.touched && targetControl.hasError(error);
   }
 
