@@ -1,7 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { Hero } from '@core/heroes.model';
 import { HerosJson } from '@services/core/heros.service';
-import { CoreModalServices } from './coreModal.service';
+import { CoreModalServices } from './core-modal.service';
 
 @Injectable({
   providedIn: 'root',

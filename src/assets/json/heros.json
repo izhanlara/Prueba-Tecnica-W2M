@@ -2,7 +2,7 @@
   "allHeros": [
     {
       "id": "fa0d",
-      "title": "Wonder Woman",
+      "title": "WONDER WOMAN ",
       "description": "Wonder Woman es considerada una de las superheroínas más fuertes del planeta.",
       "subTitle": "Fuerza sobrehumana, Supervelocidad",
       "location": "Sevilla, Esp.",
@@ -74,7 +74,7 @@
     },
     {
       "id": "7ce2",
-      "title": "Spiderman",
+      "title": "SPIDERMAN ",
       "description": "Fuerza, velocidad, agilidad, durabilidad, reflejos, coordinación, equilibrio y resistencia sobrehumanas.",
       "subTitle": "Superpoderes arácnidos",
       "location": "Mallorca, Esp.",
@@ -90,7 +90,7 @@
     },
     {
       "id": "2822",
-      "title": "Iron Man",
+      "title": "IRON MAN",
       "description": "La armadura de Iron Man está hecha de nanotecnología y se almacena en un reactor que Tony Stark lleva en el pecho.",
       "subTitle": "Armadura",
       "location": "Buenos Aires, Arg.",

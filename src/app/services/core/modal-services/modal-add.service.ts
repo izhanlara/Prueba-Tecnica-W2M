@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Hero } from '../heroes.model';
 import { HerosJson } from '@core/heros.service';
-import { CoreModalServices } from '@services/core/modal-services/coreModal.service';
+import { CoreModalServices } from '@core/modal-services/core-modal.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,14 +16,16 @@ export class ModalAddService {
 
   public onSubmit() {
     if (this.coreServices.formControl.valid) {
-      const formValue = this.coreServices.formControl.getRawValue();
       const newHero: Hero = {
         id: Math.floor(Math.random() * 1000),
-        title: formValue.title,
-        subTitle: formValue.subTitle,
-        location: formValue.location,
-        description: formValue.description,
-        img: formValue.img || 'img/default-image-url.png',
+        title: this.coreServices.formControl.get('title')?.value ?? '',
+        subTitle: this.coreServices.formControl.get('subTitle')?.value ?? '',
+        location: this.coreServices.formControl.get('location')?.value ?? '',
+        description:
+          this.coreServices.formControl.get('description')?.value ?? '',
+        img:
+          this.coreServices.formControl.get('img')?.value ??
+          'img/default-image-url.png',
       };
       this.herosService.addHero(newHero).subscribe(() => {
         this.closeModalAdd();

@@ -2,11 +2,11 @@
 <div class="modal-overlay">
   <div class="modal-container">
     <app-form-component
-      [form]="coreModal.formControl"
+      [form]="modalEditService.coreServices.formControl"
       mode="edit"
       (submitForm)="onSubmit()"
       (cancelForm)="modalEditService.closeModalEdit()"
-      (fileChange)="coreModal.onFileChange($event)"
+      (fileChange)="modalEditService.coreServices.onFileChange($event)"
     />
   </div>
 </div>

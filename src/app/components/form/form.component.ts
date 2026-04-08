@@ -1,20 +1,12 @@
 import { Component, inject, input, output } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { CoreModalServices } from '@services/core/modal-services/coreModal.service';
-
-export type HeroFormGroup = FormGroup<{
-  title: FormControl<string>;
-  subTitle: FormControl<string>;
-  location: FormControl<string>;
-  description: FormControl<string>;
-  img: FormControl<string>;
-}>;
-
+import { HeroFormGroup } from '@components/modals/form.modal';
+import { CoreModalServices } from '@core/modal-services/core-modal.service';
 @Component({
   selector: 'app-form-component',
   templateUrl: './form.component.html',

@@ -1,5 +1,5 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { CoreModalServices } from './coreModal.service';
+import { CoreModalServices } from './core-modal.service';
 import { Hero } from '@services/core/heroes.model';
 import { HerosJson } from '@services/core/heros.service';
 
@@ -32,10 +32,10 @@ export class ModalEditService {
       if (heroToEdit) {
         const updatedHero: Hero = {
           id: heroToEdit.id,
-          title: formValue.title,
-          description: formValue.description,
-          subTitle: formValue.subTitle,
-          location: formValue.location,
+          title: formValue.title || heroToEdit.title,
+          description: formValue.description || heroToEdit.description,
+          subTitle: formValue.subTitle || heroToEdit.subTitle,
+          location: formValue.location || heroToEdit.location,
           img: formValue.img || heroToEdit.img,
         };
 

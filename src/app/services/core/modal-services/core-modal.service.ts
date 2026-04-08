@@ -1,5 +1,6 @@
-import { Injectable, signal } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { inject, Injectable, signal } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { HeroFormGroup } from '@components/modals/form.modal';
 
 export type ModalType = 'add' | 'delete' | 'edit';
 
@@ -8,6 +9,7 @@ export type ModalType = 'add' | 'delete' | 'edit';
 })
 export class CoreModalServices {
   public readonly activeModal = signal<ModalType | null>(null);
+  private readonly formBuilder = inject(FormBuilder);
 
   public openModal(modal: ModalType) {
     this.activeModal.set(modal);
@@ -28,26 +30,14 @@ export class CoreModalServices {
     return this.activeModal() === modal;
   }
 
-  // formbuilder
-  public readonly formControl = new FormGroup({
-    title: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required, Validators.minLength(2)],
-    }),
-    description: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required, Validators.minLength(10)],
-    }),
-    subTitle: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required, Validators.minLength(2)],
-    }),
-    location: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required, Validators.minLength(2)],
-    }),
-    img: new FormControl('', { nonNullable: true }),
-  });
+  public readonly formControl: HeroFormGroup =
+    this.formBuilder.nonNullable.group({
+      title: ['', [Validators.required, Validators.minLength(2)]],
+      description: ['', [Validators.required, Validators.minLength(10)]],
+      subTitle: ['', [Validators.required, Validators.minLength(2)]],
+      location: ['', [Validators.required, Validators.minLength(2)]],
+      img: ['img/default-image-url.png'],
+    });
 
   public onFileChange(event: Event) {
     this.formControl.controls.img.setValue('/img/default-hero.png');
