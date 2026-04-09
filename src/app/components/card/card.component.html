@@ -1,10 +1,10 @@
 <div class="c-card">
-  <img class="c-card__img" [src]="card.img" alt="{{ card.title }}" />
+  <img class="c-card__img" [src]="card().img" alt="{{ card().title }}" />
   <div class="c-card__text">
-    <p class="c-card__name">{{ card.title | titlecase }}</p>
-    <p class="c-card__powers">{{ card.subTitle }}</p>
-    <p class="c-card__description">{{ card.description }}</p>
-    <p class="c-card__location">{{ card.location }}</p>
+    <p class="c-card__name">{{ card().title | titlecase }}</p>
+    <p class="c-card__powers">{{ card().subTitle }}</p>
+    <p class="c-card__description">{{ card().description }}</p>
+    <p class="c-card__location">{{ card().location }}</p>
   </div>
   <div class="c-card__buttons">
     <button (click)="editHeroModal()" class="c-card__btn-edit">
