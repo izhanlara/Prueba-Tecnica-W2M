@@ -6,7 +6,7 @@
   text-align: center;
 
   &-text {
-    font-size: $font-size-xl;
+    font-size: 1.9375rem;
     font-weight: normal;
     margin-bottom: $space-3;
   }
@@ -14,5 +14,12 @@
   &-description {
     font-size: $font-size-md;
     color: $color-text-dark;
+  }
+
+  &-description-text {
+    margin: auto;
+  }
+
+  &-description-text-1 {
   }
 }
