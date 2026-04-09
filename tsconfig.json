@@ -18,9 +18,7 @@
       "@sections/*": ["./src/app/sections/*"],
       "@services/*": ["./src/app/services/*"],
       "@pages/*": ["./src/app/pages/*"],
-      "@pipes/*": ["./src/app/pipes/*"],
-      "@modals/*": ["./src/app/components/modal-dates/*"],
-      "@form/*": ["./src/app/components/form/*"]
+      "@pipes/*": ["./src/app/pipes/*"]
     }
   },
   "angularCompilerOptions": {
