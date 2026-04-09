@@ -1,7 +1,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -14,14 +13,14 @@
     "target": "ES2022",
     "module": "preserve",
     "paths": {
-      "@core/*": ["src/app/services/core/*"],
-      "@components/*": ["src/app/components/*"],
-      "@sections/*": ["src/app/sections/*"],
-      "@services/*": ["src/app/services/*"],
-      "@pages/*": ["src/app/pages/*"],
-      "@pipes/*": ["src/app/pipes/*"],
-      "@modals/*": ["src/app/components/modal-dates/*"],
-      "@form/*": ["src/app/components/form/*"]
+      "@core/*": ["./src/app/services/core/*"],
+      "@components/*": ["./src/app/components/*"],
+      "@sections/*": ["./src/app/sections/*"],
+      "@services/*": ["./src/app/services/*"],
+      "@pages/*": ["./src/app/pages/*"],
+      "@pipes/*": ["./src/app/pipes/*"],
+      "@modals/*": ["./src/app/components/modal-dates/*"],
+      "@form/*": ["./src/app/components/form/*"]
     }
   },
   "angularCompilerOptions": {
