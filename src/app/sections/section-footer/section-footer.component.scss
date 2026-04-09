@@ -1,9 +1,10 @@
-@use "../../../scss/abstracts/_index" as *;
+@use "../../../scss/abstracts" as *;
 
 .s-footer {
   max-width: 84.1875rem;
   color: $color-black;
   margin: 30px auto;
+  bottom: auto;
   &__hr {
     margin: $space-2 0;
     border: 1px solid #0000001a;

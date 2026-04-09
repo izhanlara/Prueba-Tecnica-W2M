@@ -1,4 +1,4 @@
-@use "../../../scss/abstracts/_index" as *;
+@use "../../../scss/abstracts" as *;
 
 .s-title__wrapper {
   font-size: $font-size-lg;
@@ -14,12 +14,5 @@
   &-description {
     font-size: $font-size-md;
     color: $color-text-dark;
-  }
-
-  &-description-text {
-    margin: auto;
-  }
-
-  &-description-text-1 {
   }
 }
