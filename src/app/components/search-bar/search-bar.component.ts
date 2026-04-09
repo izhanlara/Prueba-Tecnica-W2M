@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, model } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { FilterHeroPipe } from '@pipes/search-bar-pipe/search-bar.pipe';
-import { ModalAddHeroComponent } from '../modal-dates/add-modal/modal-addHero.component';
+import { ModalAddService } from '@services/core/modal-services/modal-add.service';
+import { ModalAddHeroComponent } from '@modals/add-modal/modal-addHero.component';
 
 @Component({
   selector: 'app-search-bar',
@@ -10,9 +10,14 @@ import { ModalAddHeroComponent } from '../modal-dates/add-modal/modal-addHero.co
   imports: [MatIconModule, ModalAddHeroComponent],
 })
 export class SearchBarComponent {
-  public readonly pipe = inject(FilterHeroPipe);
+  public readonly searchTerm = model<string>('');
+  private readonly modalAddService = inject(ModalAddService);
 
   public openAddHeroModal() {
-    this.pipe.openAddHeroModal();
+    this.modalAddService.openAddHeroModal();
+  }
+
+  public emitSearchTerm(value: string) {
+    this.searchTerm.set(value ?? ''.trim());
   }
 }

@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CardComponent } from '@components/card/card.component';
 import { SpinnerComponent } from '@components/layout/loading-component/spinner/spinner';
 import { ModalDeleteHeroComponent } from '@components/modal-dates/delete-modal/modal-deleteHero.component';
@@ -8,8 +8,7 @@ import { SearchBarComponent } from '@components/search-bar/search-bar.component'
 import { FilterHeroPipe } from '@pipes/search-bar-pipe/search-bar.pipe';
 import { HeroComponent } from '@sections/section-hero/section-hero.component';
 import { SectionTitles } from '@sections/section-titles/section-titles.component';
-import { BehaviorSubject, combineLatest, map } from 'rxjs';
-
+import { Hero } from '@services/core/heroes.model';
 @Component({
   selector: 'app-home-pages',
   templateUrl: './page-home.component.html',
@@ -23,26 +22,22 @@ import { BehaviorSubject, combineLatest, map } from 'rxjs';
     ModalEditHeroComponent,
     ModalDeleteHeroComponent,
     SectionTitles,
+    FilterHeroPipe,
   ],
 })
 export class HomePage {
-  public readonly filterPipe = inject(FilterHeroPipe);
-  private readonly showAllHeroes = new BehaviorSubject<boolean>(false);
+  public readonly searchTerm = signal('');
+  public readonly showAllHeroes = signal(false);
 
-  public readonly filteredCount = this.filterPipe.filteredHeroes.pipe(
-    map((heroes) => heroes.length),
-  );
+  public display(heroes: Hero[]) {
+    return this.showAllHeroes() ? heroes : heroes.slice(0, 12);
+  }
 
-  public readonly display = combineLatest([
-    this.filterPipe.filteredHeroes,
-    this.showAllHeroes,
-  ]).pipe(map(([heroes, showAll]) => (showAll ? heroes : heroes.slice(0, 12))));
-
-  public textBtn(): boolean {
-    return this.showAllHeroes.getValue();
+  public showMoreText(): boolean {
+    return this.showAllHeroes();
   }
 
   public showMore() {
-    this.showAllHeroes.next(!this.showAllHeroes.getValue());
+    this.showAllHeroes.update((value) => !value);
   }
 }

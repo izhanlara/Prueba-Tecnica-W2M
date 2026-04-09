@@ -5,11 +5,12 @@
       type="search"
       placeholder="Busca un Héroe..."
       #searchInput
+      [value]="searchTerm()"
       class="s-search-bar__input"
     />
     <button
       type="button"
-      (click)="pipe.filterHero(searchInput.value)"
+      (click)="emitSearchTerm(searchInput.value)"
       class="s-search-bar__btn-search"
     >
       <mat-icon fontIcon="search"></mat-icon>

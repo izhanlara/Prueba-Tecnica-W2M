@@ -5,7 +5,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { HeroFormGroup } from '@components/modals/form.modal';
+import { HeroFormGroup } from '@components/models/form.modal';
 import { CoreModalServices } from '@core/modal-services/core-modal.service';
 @Component({
   selector: 'app-form-component',

@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { HeroFormGroup } from '@components/modals/form.modal';
+import { HeroFormGroup } from '@components/models/form.modal';
 
 export type ModalType = 'add' | 'delete' | 'edit';
 

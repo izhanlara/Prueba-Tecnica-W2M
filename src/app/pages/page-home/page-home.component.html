@@ -1,19 +1,19 @@
 <app-spinner />
 <app-hero-component />
-<app-search-bar />
+<app-search-bar [(searchTerm)]="searchTerm" />
 <app-section-titles />
-<article class="c-card__wrapper">
-  @if (display | async; as data) {
-    @for (hero of data; track hero.id; let i = $index) {
+@if (searchTerm() | filterHero | async; as heroes) {
+  <article class="c-card__wrapper">
+    @for (hero of display(heroes); track hero.id; let i = $index) {
       <app-card-component-hero [card]="hero" [index]="i" />
     }
+  </article>
+
+  @if (heroes.length > 12) {
+    <button class="b__show-more" (click)="showMore()">
+      Ver {{ showMoreText() ? "menos" : "mas" }}
+    </button>
   }
-</article>
+}
 <app-modal-edit-hero />
 <app-delete-btn />
-
-@if (((filteredCount | async) ?? 0) > 12) {
-  <button class="b__show-more" (click)="showMore()">
-    Ver {{ textBtn() ? "menos" : "mas" }}
-  </button>
-}
