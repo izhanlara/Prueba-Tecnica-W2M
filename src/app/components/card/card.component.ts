@@ -3,8 +3,7 @@ import { Component, input, output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CardComponentOutputs } from '@components/models/card-action.modal';
-import { Hero } from '@core/heroes.model';
-
+import { Card } from '@components/models/card.model';
 @Component({
   selector: 'app-card-component-hero',
   templateUrl: './card.component.html',
@@ -12,7 +11,7 @@ import { Hero } from '@core/heroes.model';
   imports: [TitleCasePipe, MatIconModule, MatButtonModule],
 })
 export class CardComponent {
-  public readonly card = input.required<Hero>();
+  public readonly card = input.required<Card>();
   public readonly index = input.required<number>();
   public readonly heroAction = output<CardComponentOutputs>();
 
@@ -20,7 +19,7 @@ export class CardComponent {
     this.heroAction.emit({
       type: 'edit',
       payload: {
-        index: this.index(),
+        id: this.index(),
       },
     });
   }
@@ -29,7 +28,7 @@ export class CardComponent {
     this.heroAction.emit({
       type: 'delete',
       payload: {
-        index: this.index(),
+        id: this.index(),
       },
     });
   }

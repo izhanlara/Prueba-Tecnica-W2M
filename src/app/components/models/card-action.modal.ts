@@ -1,4 +1,5 @@
-export type CardComponentOutputs = {
-  type: 'edit' | 'delete';
-  payload: { index: number };
-};
+import { TypeOutputs } from './type-outputs';
+export interface CardComponentOutputs {
+  type: TypeOutputs;
+  payload: { id: number };
+}

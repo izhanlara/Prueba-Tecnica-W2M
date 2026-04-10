@@ -48,9 +48,9 @@ export class HomePage {
 
   public openModalAction(event: CardComponentOutputs): void {
     if (event.type === 'edit') {
-      this.modalEditService.openModalEdit(event.payload.index);
+      this.modalEditService.openModalEdit(event.payload.id);
     } else {
-      this.modalDeleteService.openModalDelete(event.payload.index);
+      this.modalDeleteService.openModalDelete(event.payload.id);
     }
   }
 }
