@@ -5,7 +5,11 @@
 @if (searchTerm() | filterHero | async; as heroes) {
   <article class="c-card__wrapper">
     @for (hero of display(heroes); track hero.id; let i = $index) {
-      <app-card-component-hero [card]="hero" [index]="i" />
+      <app-card-component-hero
+        [card]="hero"
+        [index]="i"
+        (heroAction)="openModalAction($event)"
+      />
     }
   </article>
 

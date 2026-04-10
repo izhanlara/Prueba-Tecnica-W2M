@@ -25,7 +25,8 @@ export class ModalDeleteService {
     this.closeModalDelete();
   }
 
-  public openModalDelete() {
+  public openModalDelete(index: number) {
+    this.selectedHeroIndex.set(index);
     this.coreServices.openModal('delete');
   }
 

@@ -7,15 +7,11 @@
     <p class="c-card__location">{{ card().location }}</p>
   </div>
   <div class="c-card__buttons">
-    <button (click)="editHeroModal()" class="c-card__btn-edit">
+    <button (click)="edit()" class="c-card__btn-edit">
       <img src="img/pen.svg" alt="Edit Icon" class="c-card__icon-edit" />
       Editar
     </button>
-    <button
-      mat-icon-button
-      (click)="deleteHeroModal()"
-      class="c-card__btn-delete"
-    >
+    <button mat-icon-button (click)="delete()" class="c-card__btn-delete">
       Eliminar
     </button>
   </div>

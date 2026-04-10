@@ -12,8 +12,8 @@ import { ModalDeleteService } from '@services/core/modal-services/modal-delete.s
 export class ModalDeleteHeroComponent {
   public readonly modalDeleteService = inject(ModalDeleteService);
 
-  openModalDelete() {
-    this.modalDeleteService.openModalDelete();
+  openModalDelete(index: number) {
+    this.modalDeleteService.openModalDelete(index);
   }
 
   closeModalDelete() {

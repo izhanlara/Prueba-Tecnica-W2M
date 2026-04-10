@@ -1,7 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { CoreModalServices } from './core-modal.service';
 import { Hero } from '@services/core/heroes.model';
 import { HerosJson } from '@services/core/heros.service';
+import { CoreModalServices } from './core-modal.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,16 +11,21 @@ export class ModalEditService {
   public readonly coreServices = inject(CoreModalServices);
   public readonly selectedHeroIndex = signal<number | null>(null);
 
-  public openModalEdit(hero: Hero, index: number) {
+  public openModalEdit(index: number) {
     this.selectedHeroIndex.set(index);
-    this.coreServices.formControl.setValue({
-      title: hero.title.toUpperCase(),
-      description: hero.description,
-      subTitle: hero.subTitle,
-      location: hero.location,
-      img: hero.img,
+    this.serviceHeros.getHeros().subscribe((heroes: Hero[]) => {
+      const hero = heroes[index];
+      if (hero) {
+        this.coreServices.formControl.setValue({
+          title: hero.title.toUpperCase(),
+          description: hero.description,
+          subTitle: hero.subTitle,
+          location: hero.location,
+          img: hero.img,
+        });
+      }
+      this.coreServices.openModal('edit');
     });
-    this.coreServices.openModal('edit');
   }
 
   public updateHero() {
