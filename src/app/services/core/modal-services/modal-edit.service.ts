@@ -9,7 +9,7 @@ import { HerosJson } from '@services/core/heros.service';
 export class ModalEditService {
   private readonly serviceHeros = inject(HerosJson);
   public readonly coreServices = inject(CoreModalServices);
-  private readonly selectedHeroIndex = signal<number | null>(null);
+  public readonly selectedHeroIndex = signal<number | null>(null);
 
   public openModalEdit(hero: Hero, index: number) {
     this.selectedHeroIndex.set(index);

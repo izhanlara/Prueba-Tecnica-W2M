@@ -1,7 +1,7 @@
 import { Component, inject, model } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ModalAddService } from '@services/core/modal-services/modal-add.service';
-import { ModalAddHeroComponent } from '@modals/add-modal/modal-addHero.component';
+import { ModalAddHeroComponent } from '@components/modal-dates/add-modal/modal-addHero.component';
 
 @Component({
   selector: 'app-search-bar',

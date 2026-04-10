@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ModalAddService } from '@services/core/modal-services/modal-add.service';
-import { FormComponent } from '@form/form.component';
+import { FormComponent } from '@components/form/form.component';
 
 @Component({
   selector: 'app-modal-add-hero',
