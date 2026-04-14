@@ -1,12 +1,10 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { HomePage } from './pages/page-home/page-home.component';
+import { FooterComponent } from '@sections/section-footer/section-footer.component';
 
 @Component({
   selector: 'app-root',
-  imports: [HomePage],
+  imports: [HomePage, FooterComponent],
   templateUrl: './app.html',
-  styleUrl: './app.scss',
 })
-export class App {
-  protected readonly title = signal('SuperHero');
-}
+export class App {}

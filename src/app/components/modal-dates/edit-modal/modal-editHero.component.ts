@@ -1,22 +1,16 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { FormComponent } from '../../form/form.component';
-import { ModalEditService } from '../../../services/core/modal-services/modal-edit.service';
-
+import { Component, inject } from '@angular/core';
+import { ModalEditService } from '@services/core/modal-services/modal-edit.service';
+import { FormComponent } from '@components/form/form.component';
+import { CoreModalServices } from '@core/modal-services/core-modal.service';
 @Component({
   selector: 'app-modal-edit-hero',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './edit-modalHero.html',
-  styleUrls: [
-    '../modal-styles.scss',
-    '../../../popup-component/popup-modal-component/popup-modal.component.scss',
-  ],
+  styleUrls: ['../modal-styles.scss'],
   imports: [FormComponent],
 })
 export class ModalEditHeroComponent {
-  readonly modalEditService = inject(ModalEditService);
-  readonly snackBar = inject(MatSnackBar);
-  readonly formControlUpdate = this.modalEditService.formControlUpdate;
+  public readonly modalEditService = inject(ModalEditService);
+  public readonly coreModal = inject(CoreModalServices);
 
   onSubmit() {
     this.modalEditService.onSubmit();

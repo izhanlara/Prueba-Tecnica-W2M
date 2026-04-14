@@ -1,31 +1,18 @@
-<section class="card-component-container">
-  <div class="titles-container">
-    <p class="titleSectionCards">Héroes más allá de la imaginación</p>
-    <p class="descriptionSectionCards">
-      Desde tiempos inmemoriales, la humanidad ha soñado con figuras <br />
-      extraordinarias capaces de desafiar los límites de la realidad.
-    </p>
-    <div class="card-component-section">
-      @for (hero of Hero(); track hero.id; let i = $index) {
-        <div class="card-hero">
-          <img class="card-img" [src]="hero.img" alt="{{ hero.nombre }}" />
-          <p style="font-size: 1.5rem">{{ primeraLetraMayuscula(hero.nombre) }}</p>
-          <p style="font-size: 0.875rem; font-weight: bold">{{ hero.descripcion }}</p>
-          <p style="font-size: 1rem">{{ hero.poderes }}</p>
-          <p style="font-size: 1rem">{{ hero.ubicacion }}</p>
-          <div class="card-buttons">
-            <button (click)="editHeroModal(hero, i)" class="btn-edit">
-              <img src="img/pen.svg" alt="Icono de editar" class="pen-edit" />
-              Editar
-            </button>
-            <button mat-icon-button (click)="deleteHeroModal(i)" class="btn-delete">
-              Eliminar
-            </button>
-          </div>
-        </div>
-      }
-    </div>
-    <app-modal-edit-hero #modalEditHero />
-    <app-delete-btn #modalDeleteHero />
+<div class="c-card">
+  <img class="c-card__img" [src]="card().img" alt="{{ card().title }}" />
+  <div class="c-card__text">
+    <p class="c-card__name">{{ card().title | titlecase }}</p>
+    <p class="c-card__powers">{{ card().subTitle }}</p>
+    <p class="c-card__description">{{ card().description }}</p>
+    <p class="c-card__location">{{ card().location }}</p>
   </div>
-</section>
+  <div class="c-card__buttons">
+    <button (click)="edit()" class="c-card__btn-edit">
+      <img src="img/pen.svg" alt="Edit Icon" class="c-card__icon-edit" />
+      Editar
+    </button>
+    <button mat-icon-button (click)="delete()" class="c-card__btn-delete">
+      Eliminar
+    </button>
+  </div>
+</div>

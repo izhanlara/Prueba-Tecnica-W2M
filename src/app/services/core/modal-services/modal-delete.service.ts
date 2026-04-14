@@ -1,51 +1,36 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HerosJson } from '../../../services/core/heros.service';
-import { PopupModalEditComponent } from '../../../popup-component/popup-modal-component/popup-modal-component/popup-modal.component';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Hero } from '@core/heroes.model';
+import { HerosJson } from '@services/core/heros.service';
+import { CoreModalServices } from './core-modal.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ModalDeleteService {
-  http = inject(HttpClient);
-  private readonly herosJson = inject(HerosJson);
+  private readonly serviceHeros = inject(HerosJson);
+  public readonly coreServices = inject(CoreModalServices);
   public readonly selectedHeroIndex = signal<number | null>(null);
-  public readonly isOpen = signal(false);
-  public readonly message = signal<string>('Heroe Eliminado con éxito');
-  popUpComponent = inject(PopupModalEditComponent);
 
-  snackBar = inject(MatSnackBar);
-
-  confirmDelete() {
+  public confirmDelete() {
     const index = this.selectedHeroIndex();
-    if (index !== null) {
-      const heroToDelete = this.herosJson.Hero()[index];
-
-      if (!heroToDelete.id) {
-        this.snackBar.open('Error', '', {
-          duration: 3000,
-          panelClass: ['popup-modal-error'],
+    if (index) {
+      this.serviceHeros.getHeros().subscribe((heroes: Hero[]) => {
+        const hero = heroes[index];
+        this.serviceHeros.deleteHero(hero.id).subscribe(() => {
+          this.serviceHeros.getHeros();
+          return heroes.filter((h) => h.id !== hero.id);
         });
-        return;
-      }
-
-      this.http.delete(`http://localhost:3000/allHeros/${heroToDelete.id}`).subscribe(() => {
-        this.snackBar.open('Héroe Eliminado con éxito', '', {
-          duration: 3000,
-          panelClass: ['popup-modal-done'],
-        });
-        const updatedAllHeroes = this.herosJson
-          .allHeros()
-          .filter((hero) => hero.id !== heroToDelete.id);
-        this.herosJson.allHeros.set(updatedAllHeroes);
-        this.herosJson.Hero.set(updatedAllHeroes.slice(0, 12));
       });
     }
     this.closeModalDelete();
   }
 
-  closeModalDelete() {
-    this.isOpen.set(false);
+  public openModalDelete(index: number) {
+    this.selectedHeroIndex.set(index);
+    this.coreServices.openModal('delete');
+  }
+
+  public closeModalDelete() {
+    this.coreServices.closeModal();
   }
 }

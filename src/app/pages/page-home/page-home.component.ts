@@ -1,34 +1,56 @@
-import { Component, inject } from '@angular/core';
-import { SpinnerComponent } from '../../components/layout/loading-component/spinner/spinner';
-import { HeroComponent } from '../../sections/section-hero/section-hero.component';
-import { CardComponentHeroComponent } from '../../components/card/card.component';
-import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
-import { FooterComponent } from '../../sections/section-footer/section-footer.component';
-import { HerosJson } from '../../services/core/heros.service';
-
+import { AsyncPipe } from '@angular/common';
+import { Component, inject, signal } from '@angular/core';
+import { CardComponent } from '@components/card/card.component';
+import { SpinnerComponent } from '@components/layout/loading-component/spinner/spinner';
+import { ModalDeleteHeroComponent } from '@components/modal-dates/delete-modal/modal-deleteHero.component';
+import { ModalEditHeroComponent } from '@components/modal-dates/edit-modal/modal-editHero.component';
+import { CardComponentOutputs } from '@components/models/card-action.modal';
+import { SearchBarComponent } from '@components/search-bar/search-bar.component';
+import { FilterHeroPipe } from '@pipes/search-bar-pipe/search-bar.pipe';
+import { HeroComponent } from '@sections/section-hero/section-hero.component';
+import { SectionTitles } from '@sections/section-titles/section-titles.component';
+import { Hero } from '@services/core/heroes.model';
+import { ModalDeleteService } from '@services/core/modal-services/modal-delete.service';
+import { ModalEditService } from '@services/core/modal-services/modal-edit.service';
 @Component({
   selector: 'app-home-pages',
   templateUrl: './page-home.component.html',
   styleUrls: ['./page-home.component.scss'],
   imports: [
+    AsyncPipe,
     HeroComponent,
-    CardComponentHeroComponent,
+    CardComponent,
     SearchBarComponent,
-    FooterComponent,
     SpinnerComponent,
+    ModalEditHeroComponent,
+    ModalDeleteHeroComponent,
+    SectionTitles,
+    FilterHeroPipe,
   ],
 })
 export class HomePage {
-  readonly herosJson = inject(HerosJson);
+  public readonly searchTerm = signal('');
+  public readonly showAllHeroes = signal(false);
+  public readonly modalEditService = inject(ModalEditService);
+  public readonly modalDeleteService = inject(ModalDeleteService);
 
-  showMore: boolean = false;
+  public display(heroes: Hero[]) {
+    return this.showAllHeroes() ? heroes : heroes.slice(0, 12);
+  }
 
-  showBtn() {
-    this.showMore = !this.showMore;
-    if (this.showMore) {
-      this.herosJson.Hero.set(this.herosJson.allHeros());
+  public showMoreText(): boolean {
+    return this.showAllHeroes();
+  }
+
+  public showMore() {
+    this.showAllHeroes.update((value) => !value);
+  }
+
+  public openModalAction(event: CardComponentOutputs): void {
+    if (event.type === 'edit') {
+      this.modalEditService.openModalEdit(event.payload.id);
     } else {
-      this.herosJson.Hero.set(this.herosJson.allHeros().slice(0, 12));
+      this.modalDeleteService.openModalDelete(event.payload.id);
     }
   }
 }

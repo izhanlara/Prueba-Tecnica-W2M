@@ -1,11 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { ModalAddService } from '../../../services/core/modal-services/modal-add.service';
-import { FormComponent } from '../../form/form.component';
+import { ModalAddService } from '@services/core/modal-services/modal-add.service';
+import { FormComponent } from '@components/form/form.component';
 
 @Component({
   selector: 'app-modal-add-hero',
   templateUrl: './add-modalHero.html',
-  styleUrls: ['../modal-styles.scss', '../../search-bar/search-bar.component.scss'],
+  styleUrls: [
+    '../modal-styles.scss',
+    '../../search-bar/search-bar.component.scss',
+  ],
   imports: [FormComponent],
 })
 export class ModalAddHeroComponent {

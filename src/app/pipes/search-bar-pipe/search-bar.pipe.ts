@@ -1,11 +1,10 @@
-import { Injectable, inject, Pipe } from '@angular/core';
-import { ModalEditService } from '../../services/core/modal-services/modal-edit.service';
-import { ModalAddService } from '../../services/core/modal-services/modal-add.service';
-import { HerosJson } from '../../services/core/heros.service';
-
-interface PipeTransform {
-  transform(value: any, ...args: any[]): any;
-}
+import { inject, Injectable, Pipe, PipeTransform } from '@angular/core';
+import { Hero } from '@services/core/heroes.model';
+import { HerosJson } from '@services/core/heros.service';
+import { ModalAddService } from '@services/core/modal-services/modal-add.service';
+import { ModalEditService } from '@services/core/modal-services/modal-edit.service';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Pipe({
   name: 'filterHero',
@@ -14,30 +13,49 @@ interface PipeTransform {
   providedIn: 'root',
 })
 export class FilterHeroPipe implements PipeTransform {
-  readonly modalEditService = inject(ModalEditService);
-  readonly modalAddService = inject(ModalAddService);
-  constructor(public herosJson: HerosJson) {
-    this.herosJson.getInfoHeros();
+  public readonly modalEditService = inject(ModalEditService);
+  public readonly modalAddService = inject(ModalAddService);
+  public readonly heroService = inject(HerosJson);
+  private readonly searchTerm$ = new BehaviorSubject<string>('');
+  private readonly heroes$ = this.heroService.getHeros();
+
+  public readonly filteredHeroes: Observable<Hero[]> = combineLatest([
+    this.heroes$,
+    this.searchTerm$,
+  ]).pipe(
+    map(([heroes, searchTerm]) => {
+      if (!searchTerm) {
+        return heroes;
+      }
+
+      return heroes.filter((hero) => {
+        const heroName = (hero?.title ?? '').toLowerCase();
+        return heroName.includes(searchTerm);
+      });
+    }),
+  );
+
+  transform(value: string) {
+    const searchTerm = (value ?? '').trim().toLowerCase();
+    return this.heroes$.pipe(
+      map((heroes) => {
+        if (!searchTerm) {
+          return heroes;
+        }
+        return heroes.filter((hero) => {
+          const heroName = (hero?.title ?? '').toLowerCase();
+          return heroName.includes(searchTerm);
+        });
+      }),
+    );
   }
 
-  transform(value: any[], ...args: any[]) {
-    const searchTerm = args[0];
-    if (!searchTerm) {
-      this.herosJson.getInfoHeros();
-      return value;
-    }
-    const filteredHeroes = this.herosJson
-      .allHeros()
-      .filter((hero) => hero.nombre.toLowerCase().includes(searchTerm.toLowerCase()));
-    this.herosJson.Hero.set(filteredHeroes);
-    return filteredHeroes;
+  public filterHero(searchTerm: string): Observable<Hero[]> {
+    this.searchTerm$.next((searchTerm ?? '').trim().toLowerCase());
+    return this.filteredHeroes;
   }
 
-  filterHero(searchTerm: string) {
-    this.transform(this.herosJson.Hero(), searchTerm);
-  }
-
-  openAddHeroModal() {
+  public openAddHeroModal() {
     this.modalAddService.openAddHeroModal();
   }
 }

@@ -1,13 +1,13 @@
-@if (modalAddService.isOpen()) {
-  <div class="modal-overlay">
-    <div class="modal-container">
-      <app-form-component
-        [form]="modalAddService.formControlAdd"
-        mode="add"
-        (submitForm)="onSubmit()"
-        (cancelForm)="closeModalAdd()"
-        (fileChange)="modalAddService.onFileChange($event)"
-      />
-    </div>
+@if (modalAddService.coreServices.isOpen('add')) {
+<div class="modal-overlay">
+  <div class="modal-container">
+    <app-form-component
+      [form]="modalAddService.coreServices.formControl"
+      mode="add"
+      (submitForm)="onSubmit()"
+      (cancelForm)="closeModalAdd()"
+      (fileChange)="modalAddService.coreServices.onFileChange($event)"
+    />
   </div>
+</div>
 }

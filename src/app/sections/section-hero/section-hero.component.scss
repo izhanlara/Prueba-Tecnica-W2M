@@ -1,0 +1,47 @@
+@use "../../../scss/abstracts" as *;
+
+.s-hero {
+  position: relative;
+
+  &__wrapper__img {
+    width: 100vw;
+    height: 30rem;
+    object-fit: cover;
+
+    @media (max-width: 768px) {
+      height: 20rem;
+      background-size: cover;
+      transition: background-size 0.5s ease;
+    }
+  }
+
+  &__wrapper__logo {
+    position: absolute;
+    width: 15.375rem;
+    height: 6.9375rem;
+    top: 4.5rem;
+    left: 5.5rem;
+
+    @media (max-width: 768px) {
+      width: 10rem;
+      height: 4.5rem;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__wrapper__crud-text {
+    font-family:
+      Comic Sans MS,
+      cursive,
+      sans-serif;
+    position: absolute;
+    width: 10.875rem;
+    height: 4.8125rem;
+    top: 22.75rem;
+    left: 80rem;
+    font-size: $font-size-xl;
+    font-weight: bold;
+  }
+}

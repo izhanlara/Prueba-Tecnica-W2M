@@ -1,114 +1,64 @@
-import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Hero } from '../../../services/core/heroes.model';
-import { HerosJson } from '../../../services/core/heros.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Hero } from '@services/core/heroes.model';
+import { HerosJson } from '@services/core/heros.service';
+import { CoreModalServices } from './core-modal.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ModalEditService {
-  private readonly herosJson = inject(HerosJson);
-  private readonly selectedHeroIndex = signal<number | null>(null);
-  private readonly http = inject(HttpClient);
-  readonly isOpen = signal(false);
-  private readonly heroList = this.herosJson.Hero;
-  readonly snackBar = inject(MatSnackBar);
+  private readonly serviceHeros = inject(HerosJson);
+  public readonly coreServices = inject(CoreModalServices);
+  public readonly selectedHeroIndex = signal<number | null>(null);
 
-  readonly formControlUpdate = new FormGroup({
-    nombre: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required, Validators.minLength(2)],
-    }),
-    descripcion: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required, Validators.minLength(10)],
-    }),
-    poderes: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required, Validators.minLength(2)],
-    }),
-    ubicacion: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required, Validators.minLength(2)],
-    }),
-    img: new FormControl('', { nonNullable: true }),
-  });
-
-  openModalEdit(hero: Hero, index: number) {
+  public openModalEdit(index: number) {
     this.selectedHeroIndex.set(index);
-    this.formControlUpdate.reset({
-      nombre: hero.nombre.toUpperCase(),
-      descripcion: hero.descripcion,
-      poderes: hero.poderes,
-      ubicacion: hero.ubicacion,
-      img: hero.img,
+    this.serviceHeros.getHeros().subscribe((heroes: Hero[]) => {
+      const hero = heroes[index];
+      if (hero) {
+        this.coreServices.formControl.setValue({
+          title: hero.title.toUpperCase(),
+          description: hero.description,
+          subTitle: hero.subTitle,
+          location: hero.location,
+          img: hero.img,
+        });
+      }
+      this.coreServices.openModal('edit');
     });
-    this.isOpen.set(true);
   }
 
-  updateHeroAsync() {
+  public updateHero() {
     const index = this.selectedHeroIndex();
+    const formValue = this.coreServices.formControl.getRawValue();
 
-    if (index === null || this.formControlUpdate.invalid) {
-      return;
-    }
+    this.serviceHeros.getHeros().subscribe((heroes: Hero[]) => {
+      const heroToEdit = heroes[index ?? -1];
+      if (heroToEdit) {
+        const updatedHero: Hero = {
+          id: heroToEdit.id,
+          title: formValue.title || heroToEdit.title,
+          description: formValue.description || heroToEdit.description,
+          subTitle: formValue.subTitle || heroToEdit.subTitle,
+          location: formValue.location || heroToEdit.location,
+          img: formValue.img || heroToEdit.img,
+        };
 
-    const oldHero = this.heroList()[index];
-
-    if (!oldHero?.id) {
-      return;
-    }
-
-    const formValue = this.formControlUpdate.getRawValue();
-    const updatedHero: Hero = {
-      nombre: formValue.nombre,
-      descripcion: formValue.descripcion,
-      poderes: formValue.poderes,
-      ubicacion: formValue.ubicacion,
-      img: formValue.img || oldHero.img,
-    };
-
-    this.http
-      .put<Hero>(`http://localhost:3000/allHeros/${oldHero.id}`, updatedHero)
-      .subscribe((savedHero) => {
-        this.herosJson.updateHero(index, savedHero);
-        this.closeModalEdit();
-      });
-  }
-
-  onFileChange(event: Event) {
-    this.formControlUpdate.controls.img.setValue('/img/default-hero.png');
-    const input = event.target as HTMLInputElement;
-    if (!input?.files?.[0]) {
-      return;
-    }
-
-    const file = input.files[0];
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.formControlUpdate.controls.img.setValue(reader.result as string);
-    };
-    reader.readAsDataURL(file);
-  }
-
-  onSubmit() {
-    if (this.formControlUpdate.invalid) {
-      this.snackBar.open('Error', '', {
-        duration: 3000,
-        panelClass: ['popup-modal-error'],
-      });
-      return;
-    }
-    this.updateHeroAsync();
-    this.snackBar.open('Héroe editado con éxito', '', {
-      duration: 3000,
-      panelClass: ['popup-modal-done'],
+        this.serviceHeros
+          .updateHero(heroToEdit.id, updatedHero)
+          .subscribe(() => {
+            this.closeModalEdit();
+          });
+      }
     });
   }
-  closeModalEdit() {
-    this.isOpen.set(false);
-    this.selectedHeroIndex.set(null);
+
+  public onSubmit() {
+    this.updateHero();
+  }
+
+  public closeModalEdit() {
+    this.coreServices.closeModal();
+    this.coreServices.formControl.reset();
   }
 }

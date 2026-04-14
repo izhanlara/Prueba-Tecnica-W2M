@@ -1,8 +1,23 @@
 <app-spinner />
 <app-hero-component />
-<app-search-bar />
-<app-card-component-hero />
-@if (herosJson.allHeros().length > 12) {
-  <button class="btn-show-more" (click)="showBtn()">Ver {{ showMore ? 'menos' : 'más' }}</button>
+<app-search-bar [(searchTerm)]="searchTerm" />
+<app-section-titles />
+@if (searchTerm() | filterHero | async; as heroes) {
+  <article class="c-card__wrapper">
+    @for (hero of display(heroes); track hero.id; let i = $index) {
+      <app-card-component-hero
+        [card]="hero"
+        [index]="i"
+        (heroAction)="openModalAction($event)"
+      />
+    }
+  </article>
+
+  @if (heroes.length > 12) {
+    <button class="b__show-more" (click)="showMore()">
+      Ver {{ showMoreText() ? "menos" : "mas" }}
+    </button>
+  }
 }
-<app-footer />
+<app-modal-edit-hero />
+<app-delete-btn />
